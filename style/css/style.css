@@ -32,10 +32,17 @@ body {
   vertical-align: middle;
 }
 
+header:hover {
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  transition: all 0.4s;
+  transition: 0.4s;
+}
+
 header {
   width: 100%;
   height: 90px;
-  background: #fff;
+  background: transparent;
   color: #000;
   font-size: 20px;
   position: fixed;
@@ -61,15 +68,13 @@ header .headerContainer .headerLogo a {
 header .headerContainer .headerLogo a img {
   width: 100%;
 }
-
-.fp-viewing-1 header {
-  background: #000;
-  color: #fff;
+header .headerContainer .headerMenu {
+  width: 50%;
 }
-
-.fp-viewing-2 header {
-  background: transparent;
-  color: #000;
+header .headerContainer .headerMenu .headerMenu_wrap {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 #fullpage .section {

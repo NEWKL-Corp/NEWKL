@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 * {
-    font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+    font-family: "Spoqa Han Sans Neo", "sans-serif";
     box-sizing: border-box;
 }
 body {
@@ -14,33 +14,47 @@ body {
     /*~ 드래그 방지*/
     width: 100%;
     height: 100vh;
-  }
+}
 
-  .News {
+.News {
     display: table;
     table-layout: fixed;
     width: 100%;
     height: 100vh;
     background-color: black;
-    background-image: url('./img/newkl-pattern-black.png');
+    background-image: url("./img/newkl-pattern-black.png");
     background-size: cover;
     text-align: center;
-  }
+}
 
-  .News_box {
+.News_box {
     display: table-cell;
     vertical-align: middle;
-  }
-
+}
+header:hover{
+    background: rgb(0, 0, 0, 0.5);
+    color: #fff;
+    transition: all 0.4s;
+    transition: 0.4s;
+}
 header {
-    width: 100%; height: 90px;
-    background: #fff; color: #000;
+    width: 100%;
+    height: 90px;
+    background: transparent;
+    color: #000;
     font-size: 20px;
     position: fixed;
-    top:0; left: 0; z-index: 99;
-    transition: all .4s;
-    transition: .4s;
-    
+    top: 0;
+    left: 0;
+    z-index: 99;
+    transition: all 0.4s;
+    transition: 0.4s;
+    // :hover{
+    //     background: #fff;
+    //     transition: all 0.4s;
+    //     transition: 0.4s;
+
+    // }
     .headerContainer {
         display: flex;
         justify-content: space-between;
@@ -50,36 +64,41 @@ header {
             display: flex;
             align-items: center;
         }
-        .headerLogo{
-            a{
+        .headerLogo {
+            a {
                 width: 40%;
-                img{
+                img {
                     width: 100%;
                 }
             }
         }
-        
+        .headerMenu{
+            width: 50%;
+            .headerMenu_wrap{
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+            }
+        }
     }
-    
-    // .headerMenu{
-
-    // }
-}
-.fp-viewing-1 header {
-    background: #000;
-    color: #fff;
-}
-.fp-viewing-2 header {
-    background: transparent;
-    color: #000;
 }
 
-#fullpage{
+//페이지 별 헤더 속성값
+// .fp-viewing-1 header {
+//     background: #000;
+//     color: #fff;
+// }
+// .fp-viewing-2 header {
+//     background: transparent;
+//     color: #000;
+// }
+
+#fullpage {
     .section {
-    width: 100%;
-    height: 100vh;
+        width: 100%;
+        height: 100vh;
     }
-    
+
     footer {
         height: 400px !important;
         background: #000;
