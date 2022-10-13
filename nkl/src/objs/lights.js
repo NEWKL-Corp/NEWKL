@@ -9,7 +9,7 @@ mainLight.shadow.mapSize.width = 512;
 mainLight.shadow.mapSize.height = 512;
 mainLight.shadow.camera.near = 1;
 mainLight.shadow.camera.far = 20;
-mainLight.shadow.focus = 2;
+mainLight.shadow.focus = 2; 
 
 
 // mainLight.decay = 0.1;

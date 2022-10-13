@@ -51,7 +51,7 @@ class mWorld {
     _s.add(await mMdl().loadModel('./newklworld/asset/robot.glb', [0, 0, 0], [], [0], 'robo')); ///. file, pos, scale, scene or children num, name Object
     // _s.add(await mMdl().loadModel('./newklworld/asset/dongle_anim.glb', [0,0,0], [], []));
 
-    console.log('%c /// NewKL World', 'color: #ff0000');
+    console.log('%c /// NewKL World', 'color: #ff0000'); 
   }
 
   render() {
