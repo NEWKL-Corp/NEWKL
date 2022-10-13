@@ -127,14 +127,21 @@ function set(_d, _p, _s, _n, _t) {
   _c = _m.children.length - 1;
 
   if (_n.length) {
-    _n = _n > _c ? _c : _n;
+    _n = _n > _c ? _c : _n; 
     _r = _m.children[_n]; ///. one model
 
   } else {
     _r = _m; ///. total model
   }
 
-  _r.castShadow = true;
+  _r.traverse(function (node) {
+    if (node.isMesh)
+      node.castShadow = true;
+      node.receiveShadow = false;
+  });
+  // _r.castShadow = true;
+  // _r.receiveShadow = false;
+
   return _r;
 }
 

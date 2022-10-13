@@ -1,4 +1,4 @@
-import { GridHelper, AxesHelper, ArrowHelper, PlaneGeometry, Mesh, MeshPhongMaterial, Object3D, Vector3 } from 'three';
+import { GridHelper, AxesHelper, ArrowHelper, CameraHelper, PlaneGeometry, Mesh, MeshPhongMaterial, Vector3 } from 'three';
 
 let _n = 1
 const arrowHelper = new ArrowHelper(new Vector3([1, 2, 0]), new Vector3([0, 0, 0]), _n, 0xffff00, 0.5 * _n, 0.2 * _n);
@@ -16,7 +16,7 @@ mMkp.fn = mMkp.prototype = {
   groundHelper: (_v) => {
     const _r = new Mesh(new PlaneGeometry(_v[0], _v[0]), new MeshPhongMaterial({ color: 0x999999, depthWrite: false }));
     _r.rotation.x = - Math.PI / 2;
-    _r.receiveShadow = true;
+    _r.receiveShadow = true; 
     _r.name = 'groundHelper';
 
     return _r
@@ -32,7 +32,9 @@ mMkp.fn = mMkp.prototype = {
 
   axesHelper: (_v) => { return new AxesHelper(_v[0]); },
 
-  arrowHelper: arrowHelper
+  arrowHelper: arrowHelper,
+
+  cameraHelper: (_c) => { return new CameraHelper(_c); }
 }
 
 const init = mMkp.fn.init = function (_t, _v) {
