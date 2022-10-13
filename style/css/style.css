@@ -1,35 +1,47 @@
 @charset "UTF-8";
 * {
-  font-family: "Spoqa Han Sans Neo", "sans-serif";
   box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  /*드래그 방지 ~*/
-  user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -webkit-user-select: none;
-  /*~ 드래그 방지*/
   width: 100%;
   height: 100vh;
+  background-color: #000;
 }
 
 .News {
-  display: table;
-  table-layout: fixed;
-  width: 100%;
-  height: 100vh;
-  background-color: black;
-  background-image: url("../../img/newkl-pattern-black.png");
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: #000;
   background-size: cover;
   text-align: center;
 }
+.News .News_box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5vw;
+}
 
-.News_box {
-  display: table-cell;
-  vertical-align: middle;
+.core {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  height: 50%;
+  border-left: 2px solid #333;
+}
+.core ul {
+  position: absolute;
+  top: 0;
+  left: -2.5px;
+  color: #fff;
+}
+.core ul h1 {
+  font-size: 3vw;
+}
+.core ul li:before {
+  content: "·";
 }
 
 header:hover {
