@@ -42,6 +42,9 @@ class mWorld {
     _s.add(await mMkp().axesHelper([5])); ///. size
     _s.add(await mMkp().arrowHelper); ///. ([[1, 2, 0], [0, 0, 0], 1, 0xffff00])); ///. size
 
+    const { mainLight} = mLit().lights();
+    _s.add(await mMkp().cameraHelper(mainLight.shadow.camera));
+
     _s.add(await mSpr().imgLoad('./newklworld/asset/ui-3btn-5.png', [5, 0, 5], [1, 1], [3, 5], 'btn')); ///. file, [x, y, z] position, [w, h] scale, [h, v] coordinate, name Material
     // _s.add(await mMdl().loadModel('./newklworld/asset/world.glb', [0,0,0], [], [0])); ///. file, pos, scale, scene or children num, name Object
     // _s.add(await mMdl().loadModel('./newklworld/asset/bread.glb', [0, 0, 0], [], [0]));

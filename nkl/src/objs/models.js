@@ -134,7 +134,14 @@ function set(_d, _p, _s, _n, _t) {
     _r = _m; ///. total model
   }
 
-  _r.castShadow = true;
+  _r.traverse(function (node) {
+    if (node.isMesh)
+      node.castShadow = true;
+      node.receiveShadow = false;
+  });
+  // _r.castShadow = true;
+  // _r.receiveShadow = false;
+
   return _r;
 }
 
