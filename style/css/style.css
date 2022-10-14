@@ -5,162 +5,97 @@
 
 body {
   width: 100%;
-  height: 100vh;
   background-color: #000;
+  font-size: 1.5vw;
+  color: #fff;
 }
 
 .News {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   height: 100%;
   background-color: #000;
   background-size: cover;
-  text-align: center;
 }
-.News .News_box {
+.News .title {
+  height: 100vh;
   display: flex;
+  justify-content: center;
   flex-direction: column;
-  gap: 0.5vw;
+  text-align: center;
+  gap: 1.5vw;
+  color: #ddd;
 }
-
-.core {
+.News .title h1 {
+  font-size: 1.5rem;
+}
+.News .title h3 {
+  font-size: 1.2rem;
+}
+.News .core {
   position: absolute;
-  top: 60%;
+  top: 65%;
   left: 50%;
-  height: 50%;
   border-left: 2px solid #333;
 }
-.core ul {
-  position: absolute;
-  top: 0;
-  left: -2.5px;
+.News .core ul {
+  height: auto;
+  padding-top: 10em;
+  padding-left: 1em;
+  padding-bottom: 15em;
   color: #fff;
 }
-.core ul h1 {
-  font-size: 3vw;
-}
-.core ul li:before {
-  content: "·";
-}
-
-header:hover {
-  background: rgba(0, 0, 0, 0.5);
-  color: #fff;
-  transition: all 0.6s;
-  transition: 0.6s;
-}
-
-header {
-  width: 100%;
-  height: 4vw;
-  background: transparent;
-  color: #000;
-  font-size: 20px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 99;
-  transition: all 0.4s;
-  transition: 0.4s;
-}
-header .headerContainer {
-  display: flex;
-  justify-content: space-between;
-  height: inherit;
-  padding: 0 20px;
-}
-header .headerContainer div {
-  display: flex;
-  align-items: center;
-}
-header .headerContainer .headerLogo {
-  width: 4vw;
-}
-header .headerContainer .headerLogo a img {
-  width: 100%;
-}
-header .headerContainer .headerMenu .headerMenu_wrap {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  gap: 5vw;
-}
-header .headerContainer .headerMenu .headerMenu_wrap a {
-  color: inherit;
-  text-decoration: none;
-}
-
-#fullpage .section {
-  width: 100%;
-  height: 100vh;
-}
-#fullpage .section .fp-tableCell {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100vh;
-}
-#fullpage .section .fp-tableCell #Consulting::before {
-  content: "";
-  position: absolute;
-  opacity: 0.5;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #062a4e;
-}
-#fullpage .section .fp-tableCell #Consulting {
-  position: relative;
-  background: url("../../img/Consulting_bg.jpg") no-repeat center center/cover;
-}
-#fullpage .section .fp-tableCell #Consulting .container {
-  position: relative;
-  width: 100%;
-  height: 70%;
-  background-color: rgba(255, 255, 255, 0.6);
-}
-#fullpage .section .fp-tableCell #Consulting .container .title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  gap: 1vw;
-  text-align: center;
-  height: 30%;
-}
-#fullpage .section .fp-tableCell #Consulting .container .title h3 {
-  font-size: 26px;
+.News .core ul h1 {
+  font-size: 2.5em;
   font-weight: bold;
-  color: #062a4e;
+  padding-bottom: 2em;
 }
-#fullpage .section .fp-tableCell #Consulting .container .title span {
-  font-size: 21px;
+.News .core ul li:before {
+  content: "·";
+  position: absolute;
+  left: -0.12em;
+  font-size: 2.5em;
+  height: inherit;
+  color: #ccc;
 }
-#fullpage .section .fp-tableCell #Consulting .contents {
+.News .core ul li {
+  font-size: 1.5em;
+  height: 5em;
+  line-height: 5em;
+}
+.News .core .newkl_text {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 70%;
+  position: absolute;
+  left: -50vw;
+  top: 0;
+  width: 50vw;
+  height: 50vw;
+  border: 1px solid #fff;
+  font-size: 1.5em;
 }
-#fullpage .section .fp-tableCell #Consulting .contents .cardWrap {
-  width: 100%;
-  height: 100%;
+.News .core .newkl_img {
   display: flex;
   justify-content: center;
   align-items: center;
-  align-items: flex-start;
+  width: 50vw;
+  height: 50vw;
+  border: 1px solid #fff;
+  position: absolute;
+  left: -50vw;
+  bottom: 0;
 }
-#fullpage .section .fp-tableCell #Consulting .contents .cardWrap .card {
-  background: #fff;
-  width: 20%;
-  height: 90%;
-  margin: 0 2%;
+.News .core .newkl_link {
+  width: 40vw;
+  font-size: 1.1em;
+  border: 1px solid #fff;
+  position: absolute;
+  bottom: 1vw;
 }
-#fullpage footer {
-  height: 400px !important;
-  background: #000;
+.News .core .newkl_link a {
+  text-decoration: none;
+  color: #fff;
 }
