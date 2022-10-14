@@ -30,7 +30,7 @@ mMkp.fn = mMkp.prototype = {
     return _r;
   },
 
-  axesHelper: (_v) => { return new AxesHelper(_v[0]); },
+  axesHelper: (_v) => { return new AxesHelper(_v[0]); }, 
 
   arrowHelper: arrowHelper,
 
