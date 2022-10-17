@@ -1,14 +1,13 @@
 ;(function($){ //자기실행함수
   $(function(){
-
-    $('#fullpage').fullpage({
-      licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
-      autoscolling: true, // automatic 스크롤 사용 유무
-      scrollhHorizontally: true, // true일 경우 스크롤이 위 아래로 움직인다.
-      scrollingSpeed: 1200, // 스크롤 속도 (기본값 : 700)
-      navigation : true, // pager 사용 유무
-      navigationPosition : 'right'
-    });
+		var swiper = new Swiper("#wrap",{
+			direction:"vertical", //수직으로 슬라이드
+			mousewheel:true, //마우스휠을 사용하여 동작가능
+			speed:1200, //영역 전환속도
+		});//end:wrapSwiper();
     
+
   });
+
+	
 })(jQuery);

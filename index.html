@@ -6,19 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta charset="UTF-8" />
 
-  <link rel="icon" href="./img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
   <link rel="stylesheet" href="style/css/reset.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
   <link rel="stylesheet" href="style/css/style.css">
-  <link rel="stylesheet" href="style/css/jquery.fullPage.css">
 </head>
 
 <body>
-  <main>
+  <!-- <main>
 
     <div class="News">
 
       <div class="title">
-        <!-- <a href="./nkl/ctx/newklworld.html">Newkl World</a> -->
         <h1>NO. 1 에듀테크 '뉴클 ; NEWKL 새로운 성장을 위한 새로운 지식과 학습'</h1>
         <h3>Edutech for New Growth, New Knowledge & Learning</h3>
         <h3>Just NEWKL</h3>
@@ -50,112 +50,116 @@
       </div>
     </div>
 
-  </main>
+  </main> -->
 
 
-  <!--------------------------------- 헤더 --------------------------------->
-  <!-- <header>
-    <div class="headerContainer">
-      <div class="headerLogo">
-        <a href="#">
-          <img src="img/logo.png" alt="NEWKL(뉴클)LOGO" />
-        </a>
-      </div>
-
-      <div class="headerMenu">
-        <ul class="headerMenu_wrap">
-          <li>
-            <a href="#none">
-              Consulting
-            </a>
-          </li>
-          <li>
-            <a href="#none">
-              XR Learning
-            </a></li>
-          <li>
-            <a href="#none">
-              Metaverse Learning
-            </a>
-          </li>
-          <li>
-            <a href="#none">
-              Smart Learning
-            </a>
-          </li>
-          <li>
-            <a href="#none">
-              ABOUT
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <div>ㅡ</div>
-    </div>
-  </header> -->
-  <!--------------------------------- 메인 --------------------------------->
-  <!-- <div id="fullpage">
-    <div class="section" style="background: #fcc">
-      <div class="fp-tableCell">
-        Web 3D Contents
-      </div>
-    </div>
-
-    <div class="section" style="background: #062a4e">
-      <div class="fp-tableCell" id="Consulting">
-        <div class="container">
-          <div class="title">
-            <h3>Consulting</h3>
-            <span>
-              HRD에 대한 굳은 신념과 전문성을 기반으로 현장의 학습과 성과를 통찰하고,<br> 
-              고객의 성장을 고민하며,  실천을 통해 회사와 고객의 비전을 실현합니다.
-            </span>
-          </div>
-
-          <div class="contents">
-            <ul class="cardWrap">
-              <li class="card"></li>
-              <li class="card"></li>
-              <li class="card"></li>
-            </ul>
-          </div>
-
-          
+  <div id="wrap" class="swiper mySwiper">
+    <!------------- 헤더 ------------->
+    <header>
+      <div class="headerContainer">
+        <div class="headerLogo">
+          <a href="#">
+            <img src="img/logo.png" alt="NEWKL(뉴클)LOGO" />
+          </a>
         </div>
-      </div>
-    </div>
 
-    <div class="section" style="background: #ccf">
-      <div class="fp-tableCell" id="XR Learning">
-        
-      </div>
-    </div>
+        <nav id="gnb">
+          <ul class="menu">
+            <li class="btn">
+              <a href="#none">
+                Consulting
+              </a>
+            </li>
+            <li class="btn">
+              <a href="#none">
+                XR Learning
+              </a>
+            </li>
+            <li class="btn">
+              <a href="#none">
+                Metaverse Learning
+              </a>
+            </li>
+            <li class="btn">
+              <a href="#none">
+                Smart Learning
+              </a>
+            </li>
+            <li class="btn">
+              <a href="#none">
+                ABOUT
+              </a>
+            </li>
+          </ul>
+        </nav>
 
-    <div class="section" style="background: #cfc">
-      <div class="fp-tableCell" id="Metaverse Learning">
-        
+        <div>ㅡ</div>
       </div>
-    </div>
+    </header>
 
-    <div class="section" style="background: #cff">
-      <div class="fp-tableCell" id="Smart Learning">
-        
-      </div>
-    </div>
+    <main class="container swiper-wrapper">
 
-    <footer class="fp-auto-height section" style="color: #fff;">
-      <div class="fp-tableCell" id="ABOUT">
-        
-      </div>
-    </footer>
-  </div> -->
+      <section id="3Dweb" class="swiper-slide" style="background: #fcc">
+        <div class="table">
+          Web 3D Contents
+        </div>
+      </section>
+
+      <section id="Consulting" class="swiper-slide" style="background: #062a4e">
+        <div class="table">
+          <div class="container">
+            <div class="title">
+              <h3>Consulting</h3>
+              <span>
+                HRD에 대한 굳은 신념과 전문성을 기반으로 현장의 학습과 성과를 통찰하고,<br>
+                고객의 성장을 고민하며, 실천을 통해 회사와 고객의 비전을 실현합니다.
+              </span>
+            </div>
+
+            <div class="contents">
+              <ul class="cardWrap">
+                <li class="card"></li>
+                <li class="card"></li>
+                <li class="card"></li>
+              </ul>
+            </div>
+
+
+          </div>
+        </div>
+      </section>
+
+      <section id="XR Learning" class="swiper-slide" style="background: #ccf">
+        <div class="table">
+
+        </div>
+      </section>
+
+      <section id="Metaverse Learning" class="swiper-slide" style="background: #cfc">
+        <div class="table">
+
+        </div>
+      </section>
+
+      <section id="Smart Learning" class="swiper-slide" style="background: #ccc">
+        <div class="table">
+
+        </div>
+      </section>
+
+      <section id="ABOUT" class="swiper-slide" style="background: #cff">
+        <footer class="table" style="color: #fff;">
+        </footer>
+      </section>
+
+    </main>
+  </div><!-- // wrap -->
 
   <!--------------------------------- 스크립트 --------------------------------->
   <!-- jQeury 연결 -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <!-- plug in 호출 -->
-  <script src="src/jquery.fullPage.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
   <!-- plug in 연결 -->
   <script src="src/jquery-script.js"></script>
   <!-- 부트스트랩 js -->
