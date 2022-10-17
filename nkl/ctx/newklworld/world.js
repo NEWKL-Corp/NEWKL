@@ -23,15 +23,15 @@ class mWorld {
 
     container.append(_r.domElement);
 
-    const controls = mCtrl().Orbit(_c, _r.domElement);
+    let _o = mCtrl().orbit(_c, _r.domElement);
     const { ambientLight, mainLight, spotLight } = mLit().lights();
 
-    _l.updatables.push(controls);
+    _l.updatables.push(_o);
     _s.add(ambientLight, mainLight, spotLight);
 
-    const resizer = new mResizer(container, _c, _r);
+    new mResizer(container, _c, _r);
+    // const resizer = new mResizer(container, _c, _r);
 
-    mCtrl().joystick();
   }
 
   async init() {
@@ -42,13 +42,16 @@ class mWorld {
     _s.add(await mMkp().axesHelper([5])); ///. size
     _s.add(await mMkp().arrowHelper); ///. ([[1, 2, 0], [0, 0, 0], 1, 0xffff00])); ///. size
 
-    _s.add(await mSpr().imgLoad('./newklworld/asset/ui-3btn-5.png', [5, 0, 5], [1, 1], [3, 5],'btn')); ///. file, [x, y, z] position, [w, h] scale, [h, v] coordinate, name Material
+    const { mainLight} = mLit().lights();
+    _s.add(await mMkp().cameraHelper(mainLight.shadow.camera));
+
+    _s.add(await mSpr().imgLoad('./newklworld/asset/ui-3btn-5.png', [5, 0, 5], [1, 1], [3, 5], 'btn')); ///. file, [x, y, z] position, [w, h] scale, [h, v] coordinate, name Material
     // _s.add(await mMdl().loadModel('./newklworld/asset/world.glb', [0,0,0], [], [0])); ///. file, pos, scale, scene or children num, name Object
     // _s.add(await mMdl().loadModel('./newklworld/asset/bread.glb', [0, 0, 0], [], [0]));
     _s.add(await mMdl().loadModel('./newklworld/asset/robot.glb', [0, 0, 0], [], [0], 'robo')); ///. file, pos, scale, scene or children num, name Object
     // _s.add(await mMdl().loadModel('./newklworld/asset/dongle_anim.glb', [0,0,0], [], []));
 
-    console.log('%c /// NewKL World', 'color: #ff0000');
+    console.log('%c /// NewKL World', 'color: #ff0000'); 
   }
 
   render() {

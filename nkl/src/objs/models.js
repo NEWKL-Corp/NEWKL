@@ -1,9 +1,9 @@
 
-import { AnimationMixer, AnimationClip, LoopOnce, Matrix4, Quaternion, Euler, Vector3 } from 'three';
+import { AnimationMixer, AnimationClip, LoopOnce, LoopRepeat, Matrix4, Quaternion, Vector3 } from 'three';
 import { GLTFLoader } from 'GLTFLoader';
 import { DRACOLoader } from 'DRACOLoader';
 
-
+const ids = [];
 const players = {};
 const speed = {
   'Idle': 0,
@@ -23,6 +23,7 @@ mMdl.fn = mMdl.prototype = {
   ver: '22-0929-1541',
   length: 0,
 
+  ids: ids,
   players: players,
 
   loadModel: async (_f, _p, _s, _n, _t) => { // file, pos, scale, num sene or children, name object
@@ -40,23 +41,25 @@ mMdl.fn = mMdl.prototype = {
 
     if (_r.userData.name !== undefined) {
       console.log('///.' + _r.userData.name);
+      ids.push(_r.userData.name); ///. 첫 번째는 자신을 나타낸다
       let _pls = players[_r.userData.name] = {
         model: _r,
         mixer: undefined,
         active: true,
-        state: 'Idle',
-        clips: {},
-        movements: [],
-        deltaMove: new Vector3,
+        state: 'Idle', ///. 현재 클립들을 나타낸다
+        clips: {}, ///. 행동 클립들을 나타낸다
+        movements: [], ///. 이동 위치들을 나타낸다
+        deltaMove: new Vector3(),
         speed: 0,
         activeAction: undefined,
         activeDone: false,
         previousAction: undefined,
-        face: ''
+        face: '',
+        ctrl: '' ///. 캐릭터 콘트롤 픽 그라운드, 화면 조이스틱, 키보드 등을 나타낸다
       };
 
       _pls.mixer = new AnimationMixer(_r); ///. 모델에 애니메이션 버퍼를 나타낸다
-      _pls.mixer.removeEventListener('finished', () => { _pls.activeDone = true; });
+      _pls.mixer.addEventListener('finished', (e) => { _pls.activeDone = true; }); ///. loop
 
       _pls.clips = _d.animations;
 
@@ -124,22 +127,30 @@ function set(_d, _p, _s, _n, _t) {
   _c = _m.children.length - 1;
 
   if (_n.length) {
-    _n = _n > _c ? _c : _n;
+    _n = _n > _c ? _c : _n; 
     _r = _m.children[_n]; ///. one model
 
   } else {
     _r = _m; ///. total model
   }
 
-  _r.castShadow = true;
+  _r.traverse(function (node) {
+    if (node.isMesh)
+      node.castShadow = true;
+      node.receiveShadow = false;
+  });
+  // _r.castShadow = true;
+  // _r.receiveShadow = false;
+
   return _r;
 }
 
 function move(_m) {
-  if (!_m.movements.length) { return; }
+  let _c = _m.movements.length;
+
+  if (!_c) { return; }
 
   if (_m.deltaMove === undefined) { ///. 다음 위치 방향 회전을 나타낸다
-    _m.state = 'Running';
     activeAction(_m.state);
 
     _m.deltaMove = _m.movements[0];
@@ -149,7 +160,7 @@ function move(_m) {
     targetQuaternion.setFromRotationMatrix(rotationMatrix);
   }
 
-  if (!_m.model.quaternion.equals(targetQuaternion)) { ///. 이동 방향으로 회전을 나타낸다
+  if (_m.model.quaternion.y.toFixed(3) !== targetQuaternion.y.toFixed(3) || _m.model.quaternion.w.toFixed(3) !== targetQuaternion.w.toFixed(3)) { ///. 이동 방향으로 회전을 나타낸다
     _m.model.quaternion.rotateTowards(targetQuaternion, _m.speed * 0.5);
 
   } else { ///. 이동 거리을 나타낸다
@@ -171,27 +182,58 @@ function move(_m) {
     _m.model.position.x = _m.model.position.x + (_m.speed * (diffX / distance)) * multiplierX;
     _m.model.position.z = _m.model.position.z + (_m.speed * (diffZ / distance)) * multiplierZ;
 
-    if ((_m.model.position).distanceTo(aPos) < 2 && _m.state !== 'Walking' && _m.movements.length === 1) {
-      _m.state = 'Walking';
-      activeAction(_m.state);
+    ///. 그라운드 이동을 나타낸다
+    if (_m.ctrl === 'pick') {
+      if ((_m.model.position).distanceTo(aPos) < 2.000 && _m.state !== 'Walking' && _c === 1) {
+        _m.activeDone = true;
+        _m.state = 'Walking';
+        activeAction(_m.state);
+      }
+
+      if ((_m.model.position).distanceTo(aPos) < 0.150) { ///. 정지를 나타낸다
+        _m.model.position.x = aPos.x;
+        _m.model.position.z = aPos.z;
+
+        _m.movements.shift(); ///. 도착한 위치 삭제을 나타낸다
+        _m.deltaMove = undefined; ///. 다음 위치 방향 회전을 초기화를 나타낸다
+
+        if (!_m.movements.length) {
+          _m.activeDone = true;
+          _m.state = 'Idle';
+          activeAction(_m.state);
+        }
+      }
     }
 
-    if ((_m.model.position).distanceTo(aPos) < 0.15) {
-      _m.model.position.x = aPos.x;
-      _m.model.position.z = aPos.z;
+    ///. 스틱 또는 키보드 이동을 나타낸다
+    if (_m.ctrl === 'stick' && _m.activeDone) {
+      let _v = _c > 1 ? _m.movements[1] : _m.movements[0];
 
       _m.movements.shift(); ///. 도착한 위치 삭제을 나타낸다
       _m.deltaMove = undefined; ///. 다음 위치 방향 회전을 초기화를 나타낸다
 
-      _m.state = 'Idle';
-      activeAction(_m.state);
-    } else {
-      _m.activeDone = false;
+      _c = _m.movements.length;
+      if (_c) {
+        if (_m.model.position.distanceTo(_v) < 2.000) {
+          if (_m.state !== 'Walking') {
+            _m.state = 'Walking';
+            activeAction(_m.state);
+          }
+        } else {
+          if (_m.state !== 'Running') {
+            _m.state = 'Running';
+            activeAction(_m.state);
+          }
+        }
+      } else {
+        _m.state = 'Idle';
+        activeAction(_m.state);
+      }
     }
   }
 
   function activeAction(_t) {
-    if (_m.activeDone) { return; }; ///. 하나의 동작이 끝나야 다음 동작을 나타낸다
+    if (!_m.activeDone) { return; }; ///. 하나의 동작이 끝나야 다음 동작을 나타낸다
     _m.activeDone = false;
 
     _m.activeAction.stop();
@@ -202,6 +244,8 @@ function move(_m) {
     _m.state = clip.name;
 
     _m.activeAction = _m.mixer.clipAction(clip);
+    if (_m.ctrl === 'pick') { _m.activeAction.setLoop(LoopRepeat); }
+    if (_m.ctrl === 'stick' && _m.state !== 'Idle') { _m.activeAction.setLoop(LoopOnce); }
     _m.activeAction.play();
   }
 }

@@ -54,7 +54,7 @@ const init = mStg.fn.init = function (_t, _v) {
 init.prototype = mStg.fn;
 
 function xmlPaser(_t){
-  console.log(_t)
+  // console.log(_t)
 }
 
 export { mStg };
