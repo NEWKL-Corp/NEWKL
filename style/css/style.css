@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   box-sizing: border-box;
 }
@@ -8,6 +9,107 @@ body {
   box-sizing: border-box;
   background-color: #000;
   font-size: 1.5vw;
+  color: #fff;
+}
+
+.News {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  background-color: #000;
+  background-size: cover;
+}
+.News .title {
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  text-align: center;
+  gap: 1.5vw;
+  color: #ddd;
+  padding-bottom: 50px;
+}
+.News .title h1 {
+  font-size: 1.5rem;
+}
+.News .title h3 {
+  font-size: 1.2rem;
+}
+.News .core {
+  display: flex;
+  width: 100%;
+}
+.News .core .left_contents {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.News .core .left_contents .newkl_text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 40vw;
+  font-size: 1.5em;
+  border-bottom: 1px solid #fff;
+}
+.News .core .left_contents .newkl_img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35vw;
+  border-top: 1px solid #fff;
+}
+.News .core .right_contents {
+  width: 50%;
+  position: relative;
+  border-left: 1px solid #fff;
+}
+.News .core .right_contents ul {
+  height: auto;
+  padding-top: 12em;
+  padding-bottom: 6em;
+  padding-left: 1em;
+  color: #fff;
+  font-weight: 200;
+}
+.News .core .right_contents ul h1 {
+  font-size: 2.5em;
+  font-weight: 500;
+  padding-bottom: 2em;
+}
+.News .core .right_contents ul li:before {
+  content: "●";
+  position: absolute;
+  left: 0;
+  transform: translateX(-50%) scale(0.5);
+  height: inherit;
+  color: #ccc;
+}
+.News .core .right_contents ul li {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 2em;
+  font-size: 1.1em;
+  line-height: 1.5;
+}
+.News .core .right_contents .newkl_link {
+  width: 100%;
+  font-size: 1.1em;
+  border: 1px solid #fff;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 1vw;
+  line-height: 1.5;
+  font-weight: 200;
+}
+.News .core .right_contents .newkl_link .link a {
+  text-decoration: none;
   color: #fff;
 }
 
