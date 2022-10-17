@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "node-sass -wr style/scss/style.scss style/css/style.css",
     "start": "node server.js",
     "dev": "nodemon server.js"
   },
@@ -14,6 +14,10 @@
   "dependencies": {
     "dotenv": "^16.0.3",
     "node": "^18.9.1",
+    "node-sass": "^7.0.3",
     "prettier": "^2.7.1"
+  },
+  "devDependencies": {
+    "sass-lint": "^1.13.1"
   }
 }
