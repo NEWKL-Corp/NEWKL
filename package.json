@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "sass": "node-sass -wr style/scss/style.scss style/css/style.css",
     "start": "node server.js",
     "dev": "nodemon server.js"
   },
@@ -17,9 +16,9 @@
     "express": "^4.18.2",
     "mysql": "^2.18.1",
     "node": "^18.9.1",
-    "node-sass": "^7.0.3",
     "nodemon": "^2.0.20",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "sass": "^1.55.0"
   },
   "devDependencies": {
     "sass-lint": "^1.13.1"
