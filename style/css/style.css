@@ -17,13 +17,11 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 100%;
-  background-color: #000;
-  background-size: cover;
+  height: 100vh;
 }
 .News .title {
   width: 100%;
-  height: 70vh;
+  height: 45%;
   display: flex;
   justify-content: flex-end;
   flex-direction: column;
@@ -31,6 +29,7 @@ body {
   gap: 1.5vw;
   color: #ddd;
   padding-bottom: 50px;
+  background: url("../../img/parking/top_pattern.png") center 10% no-repeat;
 }
 .News .title h1 {
   font-size: 1.5rem;
@@ -41,6 +40,7 @@ body {
 .News .core {
   display: flex;
   width: 100%;
+  height: 55%;
 }
 .News .core .left_contents {
   width: 50%;
@@ -53,9 +53,16 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 40vw;
+  height: 50vh;
   font-size: 1.5em;
+  position: relative;
   border-bottom: 1px solid #fff;
+}
+.News .core .left_contents .newkl_text img {
+  position: absolute;
+}
+.News .core .left_contents .newkl_text p {
+  position: absolute;
 }
 .News .core .left_contents .newkl_img {
   display: flex;
@@ -67,20 +74,19 @@ body {
 .News .core .right_contents {
   width: 50%;
   position: relative;
-  border-left: 1px solid #fff;
 }
 .News .core .right_contents ul {
   height: auto;
-  padding-top: 12em;
-  padding-bottom: 6em;
+  padding-bottom: 1em;
   padding-left: 1em;
+  border-left: 1px solid #fff;
   color: #fff;
   font-weight: 200;
 }
 .News .core .right_contents ul h1 {
-  font-size: 2.5em;
+  font-size: 2em;
   font-weight: 500;
-  padding-bottom: 2em;
+  padding-bottom: 1.5em;
 }
 .News .core .right_contents ul li:before {
   content: "●";
@@ -93,9 +99,9 @@ body {
 .News .core .right_contents ul li {
   display: flex;
   flex-direction: column;
-  padding-bottom: 2em;
-  font-size: 1.1em;
-  line-height: 1.5;
+  padding-bottom: 1.2em;
+  font-size: 1em;
+  line-height: 1.3;
 }
 .News .core .right_contents .newkl_link {
   width: 100%;
@@ -246,5 +252,3 @@ body {
   height: 400px !important;
   background: #000;
 }
-
-/*# sourceMappingURL=style.css.map */
