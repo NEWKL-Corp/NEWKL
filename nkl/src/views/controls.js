@@ -146,7 +146,9 @@ function onMouseClick(e) {
 stick['rect'] = document.getElementById('joystick');
 stick['center'] = [parseInt(stick.rect.style.left, 10), parseInt(stick.rect.style.bottom, 10)];
 stick['off'] = [parseInt(stick.rect.style.width, 10), parseInt(stick.rect.style.height, 10)];
+
 stick.rect.addEventListener('mousemove', onJoystickMove, false);
+stick.rect.addEventListener('touchmove', onJoystickMove, false);
 
 stick['dot'] = document.getElementById('button-joystick');
 

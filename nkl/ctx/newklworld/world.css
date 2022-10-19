@@ -40,7 +40,7 @@ body {
 }
 
 .noSelect-joystick {
-  -webkit-touch-callout: none;
+  /* -webkit-touch-callout: none; */
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
@@ -55,7 +55,7 @@ body {
   position: absolute;
   bottom: 64px;
   left: 64px;
-  /* background-color: transparent; */ 
+  /* background-color: transparent; */
   width: 128px;
   height: 128px;
   border-radius: 50%;
@@ -77,7 +77,7 @@ body {
   height: 64px;
   border-radius: 50%;
   z-index: 12;
-  touch-action: manipulation;
+  /* touch-action: manipulation; */
   /* display: none; */
 }
 
@@ -98,3 +98,28 @@ body {
   pointer-events: auto;
 } */
 
+#overlay {
+  position: absolute;
+  font-size: 16px;
+  z-index: 21;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+#btnPlay {
+  background: transparent;
+  border: 0;
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 4px;
+  color: #ffffff;
+  padding: 12px 18px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
