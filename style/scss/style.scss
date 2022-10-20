@@ -63,10 +63,12 @@ body {
     
                 .newkl_text {
                     @include flex-center;
+                    justify-content: flex-end;
                     width: 100%;
                     font-size: 1em;
                     
                     position: relative;
+                    padding-right: 5%;
                     // background: url("../../img/parking/circle.png") center center no-repeat;
                     img{
                         max-width: 90%;
@@ -79,6 +81,7 @@ body {
                         font-weight: bold;
                         line-height: 1.2;
                         text-align: center;
+                        margin: 2.5%;
                     }
                 }
     
@@ -166,7 +169,7 @@ body {
 @media (max-width: 950px){
     .News{
         .title{
-            width: 75% !important;
+            width: 80% !important;
             height: 40% !important;
             font-weight: bold;
         }
@@ -179,6 +182,7 @@ body {
                     p {
                     width: 70% !important;
                     font-size: 17px !important;
+                    margin: 7.5% !important;
                     }
                 }
                 .right_contents{
@@ -194,6 +198,7 @@ body {
             .newkl_link{
                 line-height: 2.5;
                 .newkl_img{
+                    padding-bottom: 3%;
                     img{
                         max-width: 80px;
                     }

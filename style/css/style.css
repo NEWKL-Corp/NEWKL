@@ -58,9 +58,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  justify-content: flex-end;
   width: 100%;
   font-size: 1em;
   position: relative;
+  padding-right: 5%;
 }
 .News .core .contents .left_contents .newkl_text img {
   max-width: 90%;
@@ -73,6 +75,7 @@ body {
   font-weight: bold;
   line-height: 1.2;
   text-align: center;
+  margin: 2.5%;
 }
 .News .core .contents .right_contents {
   width: 50%;
@@ -147,7 +150,7 @@ body {
 
 @media (max-width: 950px) {
   .News .title {
-    width: 75% !important;
+    width: 80% !important;
     height: 40% !important;
     font-weight: bold;
   }
@@ -161,6 +164,7 @@ body {
   .News .core .contents .newkl_text p {
     width: 70% !important;
     font-size: 17px !important;
+    margin: 7.5% !important;
   }
   .News .core .contents .right_contents {
     width: 100%;
@@ -173,6 +177,9 @@ body {
   }
   .News .core .newkl_link {
     line-height: 2.5;
+  }
+  .News .core .newkl_link .newkl_img {
+    padding-bottom: 3%;
   }
   .News .core .newkl_link .newkl_img img {
     max-width: 80px;
