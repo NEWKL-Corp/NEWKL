@@ -1,10 +1,19 @@
 require('dotenv').config();
 
+const express = require('express');
+const app = express();
+const cors = require('cors');
 const http = require('http');
 const url = require('url');
 const path = require('path');
 const fs = require('fs');
+
 const port = process.argv[2] || process.env.PORT;
+
+app.use(express.json());
+app.use(cors());
+
+app.use('./api/test', require('./routes/testRouter'));
 
 const mimeTypes = {
   html: 'text/html',
