@@ -16,7 +16,7 @@ mMkp.fn = mMkp.prototype = {
   groundHelper: (_v) => {
     const _r = new Mesh(new PlaneGeometry(_v[0], _v[0]), new MeshPhongMaterial({ color: 0x999999, depthWrite: false }));
     _r.rotation.x = - Math.PI / 2;
-    _r.receiveShadow = true; 
+    _r.receiveShadow = true;
     _r.name = 'groundHelper';
 
     return _r
@@ -30,7 +30,7 @@ mMkp.fn = mMkp.prototype = {
     return _r;
   },
 
-  axesHelper: (_v) => { return new AxesHelper(_v[0]); },
+  axesHelper: (_v) => { return new AxesHelper(_v[0]); }, 
 
   arrowHelper: arrowHelper,
 
