@@ -15,7 +15,7 @@ mSpr.fn = mSpr.prototype = {
   ver: '22-0929-1541',
   length: 0,
 
-  imgLoad: async (_f, _p, _s, _c, _t) => { ///. file, [x, y, z] position, [w, h] scale, [h, v] coordinate, name Material
+  loadImg: async (_f, _p, _s, _c, _t) => { ///. file, [x, y, z] position, [w, h] scale, [h, v] coordinate, name Material
     let _r;
 
     const loader = new TextureLoader();
