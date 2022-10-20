@@ -129,7 +129,6 @@ body {
         }
         .newkl_link {
             width: 100%;
-            font-size: 1.1em;
             padding: 1%;
 
             display: flex;
@@ -165,21 +164,57 @@ body {
     }
 }
 @media (max-width: 950px){
-    .title{
-        width: 75% !important;
-        font-weight: bold;
-    }
-    .contents{
-        font-size: 14px;
-        .newkl_text{
-            p {
-            width: 70% !important;
-            font-size: 17px !important;
-            }
+    .News{
+        .title{
+            width: 75% !important;
+            height: 40% !important;
+            font-weight: bold;
         }
-        .right_contents{
-            ul li{
-                font-size: 2.5vw !important;
+        .core{
+            justify-content: flex-start;
+            gap: 2vw;
+            .contents{
+                font-size: 14px;
+                .newkl_text{
+                    p {
+                    width: 70% !important;
+                    font-size: 17px !important;
+                    }
+                }
+                .right_contents{
+                    width: 100%;
+                    ul {
+                        width: 95%;
+                        li{
+                        font-size: 2.5vw !important;
+                        }
+                    }
+                }
+            }
+            .newkl_link{
+                line-height: 2.5;
+                .newkl_img{
+                    img{
+                        max-width: 80px;
+                    }
+                }
+                .about{
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
+                    font-size: 1.8em;
+                    gap: 0;
+                        p{  
+                            width: 100%;
+                            text-align: center;
+                            a{
+                            padding: 0 2%;
+                            border: 1px solid #ccc;
+                            border-radius: 10px;
+                        }
+                    }
+                }
             }
         }
     }
