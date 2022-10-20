@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NewKL : 게시판</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+    <!-- ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <script>
+    $(document).ready(function () {
+      console.log('gd');
+    });
+    function post() {
+      let title = $('#title').val();
+      let name = $('#name').val();
+      let pswd = $('#pswd').val();
+      let contents = $('#contents').val();
+
+      if (title === '' || name === '' || pswd === '' || contents === '')
+        return alert('빠짐없이 작성해 주세요!');
+
+      $.ajax({
+        type: 'POST',
+        url: 'api/board/post',
+        data: {
+          title: title,
+          // name: name,
+          // pswd: pswd,
+          contents: contents,
+        },
+        success: function (response) {
+          alert(response['msg']);
+          window.location.href = `/`;
+        },
+      });
+    }
+  </script>
+
+  <style>
+    body {
+      margin: 0;
+      /*드래그 방지 ~*/
+      user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      -webkit-user-select: none;
+      /*~ 드래그 방지*/
+    }
+  </style>
+
+  <body>
+    <form class="myform">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputEmail4">Title</label>
+          <input type="text" class="form-control" id="title" />
+        </div>
+        <div class="form-group col-md-2" style="margin-left: 60px">
+          <label for="inputZip">Name</label>
+          <input type="text" class="form-control" id="name" />
+        </div>
+        <div class="form-group col-md-2" style="margin-left: 60px">
+          <label for="inputZip">Password</label>
+          <input type="text" class="form-control" id="pswd" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Contents</label>
+        <textarea class="form-control" id="contents" rows="3"></textarea>
+      </div>
+      <button type="submit" class="btn btn-dark" onclick="post()">
+        작성완료
+      </button>
+    </form>
+  </body>
+</html>
