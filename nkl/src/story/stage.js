@@ -1,13 +1,13 @@
-import { FileLoader } from 'three';
+import { FileLoader } from 'three'
 
 const stage = {
   texture: {}, ///. element
   sprite: {},
 
-  player: {}, 
+  player: {},
   npc: {},
   mob: {},
-  
+
   ground: {},
   fixed: {},
   movable: {},
@@ -17,12 +17,12 @@ const stage = {
   animation: {}, ///. event
   sequence: {},
   situation: {},
-  event: {}
+  event: {},
 }
 
 const mStg = function (_t, _v) {
-  return new mStg.fn.init(_t, _v);
-};
+  return new mStg.fn.init(_t, _v)
+}
 
 mStg.fn = mStg.prototype = {
   constructor: mStg,
@@ -32,29 +32,32 @@ mStg.fn = mStg.prototype = {
   stage: stage,
 
   xml: async (_f) => {
-    const loader = new FileLoader();
-    let _t = await loader.loadAsync(_f);
-    xmlPaser(_t);
-  }
+    console.log(_f)
+    const loader = new FileLoader()
+    let _t = await loader.loadAsync('./newklworld/world.xml')
+    xmlPaser(_t)
+  },
 }
 
-const init = mStg.fn.init = function (_t, _v) {
-  if (!_t) { return this; }
-
-  let _r;
-  if (typeof selector === "string") { ///. 문자열을 나타낸다
-
-  } else { ///. 배열을 나타낸다
-
+const init = (mStg.fn.init = function (_t, _v) {
+  if (!_t) {
+    return this
   }
 
-  return _r;
-}
+  let _r
+  if (typeof selector === 'string') {
+    ///. 문자열을 나타낸다
+  } else {
+    ///. 배열을 나타낸다
+  }
 
-init.prototype = mStg.fn;
+  return _r
+})
 
-function xmlPaser(_t){
+init.prototype = mStg.fn
+
+function xmlPaser(_t) {
   // console.log(_t)
 }
 
-export { mStg };
+export { mStg }

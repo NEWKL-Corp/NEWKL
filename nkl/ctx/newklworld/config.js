@@ -41,7 +41,7 @@ async function trigger() {
 
   ///. DATA BINDING
   const { mStg } = await import('/src/story/stage.js')
-  await mStg().xml('/world.xml') ///. file
+  await mStg().xml('./newklworld/world.xml') ///. file
 
   ///. LOADING
   const { mWorld } = await import('./world.js')
