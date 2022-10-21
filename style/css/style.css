@@ -217,6 +217,13 @@ body {
   background: #000;
 }
 
+/* 가로모드 방지 */
+@media screen and (orientation: landscape) {
+  .News {
+    height: 100% !important;
+    padding: 10% 0 !important;
+  }
+}
 .News {
   display: -webkit-box;
   display: -ms-flexbox;

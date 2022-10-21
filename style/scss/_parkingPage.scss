@@ -1,8 +1,15 @@
-.News {
-    @include flex-center;
-    flex-direction: column;
-    height: 100vh;
-    background: url("../../img/parking/top_pattern.png") center 5% no-repeat;
+/* 가로모드 방지 */
+@media screen and (orientation:landscape) {
+    .News{
+    height: 100% !important;
+    padding: 10% 0 !important;
+    }
+}
+    .News {
+        @include flex-center;
+        flex-direction: column;
+        height: 100vh;
+        background: url("../../img/parking/top_pattern.png") center 5% no-repeat;
 
     .title {
         width: 100%;
