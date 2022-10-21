@@ -18,7 +18,7 @@ body {
   align-items: center;
   flex-direction: column;
   height: 100vh;
-  background: url("../../img/parking/top_pattern.png") center 5% no-repeat;
+  background: url('/parking/top_pattern.png') center 5% no-repeat;
 }
 .News .title {
   width: 100%;
@@ -97,7 +97,7 @@ body {
   font-weight: 200;
 }
 .News .core .contents .right_contents ul li:before {
-  content: "●";
+  content: '●';
   position: absolute;
   left: 0;
   transform: translateX(-50%) scale(0.5);
@@ -260,7 +260,7 @@ body {
   background-color: #fcc !important;
 }
 #wrap .container #Consulting::before {
-  content: "";
+  content: '';
   position: absolute;
   opacity: 0.5;
   top: 0;
@@ -271,7 +271,7 @@ body {
 }
 #wrap .container #Consulting {
   position: relative;
-  background: url("../../img/Consulting_bg.jpg") no-repeat center center/cover !important;
+  background: url('../../img/Consulting_bg.jpg') no-repeat center center/cover !important;
 }
 #wrap .container #Consulting .table {
   display: flex;
