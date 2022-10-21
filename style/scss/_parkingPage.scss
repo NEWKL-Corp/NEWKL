@@ -1,8 +1,21 @@
-/* 가로모드 방지 */
+/* 가로모드 작업 */
 @media screen and (orientation:landscape) {
-    .News{
-    height: 100% !important;
-    padding: 10% 0 !important;
+    // 가로 - 모바일
+    @media (max-width: 1280px){
+        .News{
+            height: 100% !important;
+            padding: 10% 0 !important;
+            .title{
+                width: 100% !important;
+                padding: 3% 12% !important;
+                margin: 12% 0;
+                background-color: rgba(143, 137, 226, 0.2);
+                font-weight: bold;
+                h1{
+                    width: 70%;
+                }
+            }
+        }
     }
 }
     .News {
@@ -17,6 +30,7 @@
         display: flex;
         justify-content: flex-end;
         flex-direction: column;
+        align-items: center;
         text-align: center;
         gap: 1.5vw;
         color: #333;
@@ -129,7 +143,6 @@
             .about {
                 display: flex;
                 font-size: 0.8em;
-                color: #aaa;
                 gap: 2vw;
                 p {
                     cursor: pointer;
@@ -140,7 +153,7 @@
                 }
                 a {
                     text-decoration: none;
-                    color: #aaa;
+                    color: rgb(122, 122, 122);
                 }
             }
         }
@@ -149,8 +162,8 @@
 @media (max-width: 950px) {
     .News {
         .title {
-            width: 80% !important;
-            height: 40% !important;
+            width: 80%;
+            height: 40%;
             font-weight: bold;
         }
         .core {

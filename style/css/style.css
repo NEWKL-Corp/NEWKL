@@ -217,11 +217,21 @@ body {
   background: #000;
 }
 
-/* 가로모드 방지 */
-@media screen and (orientation: landscape) {
+/* 가로모드 작업 */
+@media screen and (orientation: landscape) and (max-width: 1280px) {
   .News {
     height: 100% !important;
     padding: 10% 0 !important;
+  }
+  .News .title {
+    width: 100% !important;
+    padding: 3% 12% !important;
+    margin: 12% 0;
+    background-color: rgba(143, 137, 226, 0.2);
+    font-weight: bold;
+  }
+  .News .title h1 {
+    width: 70%;
   }
 }
 .News {
@@ -254,6 +264,9 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   text-align: center;
   gap: 1.5vw;
   color: #333;
@@ -411,7 +424,6 @@ body {
   display: -ms-flexbox;
   display: flex;
   font-size: 0.8em;
-  color: #aaa;
   gap: 2vw;
 }
 .News .core .newkl_link .about p {
@@ -423,13 +435,13 @@ body {
 }
 .News .core .newkl_link .about a {
   text-decoration: none;
-  color: #aaa;
+  color: rgb(122, 122, 122);
 }
 
 @media (max-width: 950px) {
   .News .title {
-    width: 80% !important;
-    height: 40% !important;
+    width: 80%;
+    height: 40%;
     font-weight: bold;
   }
   .News .core {
