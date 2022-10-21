@@ -239,7 +239,7 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   height: 100vh;
-  background: url('/parking/top_pattern.png') center 5% no-repeat;
+  background: url("/img/parking/top_pattern.png") center 5% no-repeat;
 }
 .News .title {
   width: 100%;

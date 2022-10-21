@@ -10,8 +10,6 @@ const route = require('./routes/index')
 
 const app = express()
 
-app.use(express.static('img'))
-app.use(express.static('style'))
 app.use(express.static('src'))
 app.use(express.static('nkl'))
 
