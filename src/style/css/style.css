@@ -239,7 +239,7 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   height: 100vh;
-  background: url("../../img/parking/top_pattern.png") center 5% no-repeat;
+  background: url('/parking/top_pattern.png') center 5% no-repeat;
 }
 .News .title {
   width: 100%;
@@ -360,7 +360,7 @@ body {
   font-weight: 200;
 }
 .News .core .contents .right_contents ul li:before {
-  content: "●";
+  content: '●';
   position: absolute;
   left: 0;
   -webkit-transform: translateX(-50%) scale(0.5);

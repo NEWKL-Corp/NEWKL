@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NewKL : 게시판</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+    <!-- ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <script>
+    $(document).ready(function () {
+      show();
+    });
+    function show() {
+      $.ajax({
+        type: 'GET',
+        url: 'api/board/list',
+        data: {},
+        success: function (response) {
+          console.log(response)
+          for (let i = 0; i < response.length; i++) {
+            // let row_num = response[i].row_num;
+            let title = response[i].TITLE;
+            let writer = response[i].WRITER;
+            let contents = response[i].CONTENTS;
+            let regDate = response[i].REG_DATE
+            let splitRegDate = regDate.split('T')[0]
+            let temp_html = `
+                                    <div>
+                                        <p>
+                                        제목: ${title} <br/>
+                                        작성자: ${writer} <br/>
+                                        내용: ${contents} <br/>
+                                        작성일자: ${splitRegDate}
+                                        </p>
+                                                    <hr>
+
+                                        </div>
+
+                                    </div>
+                                    `;
+            $('#show').append(temp_html);
+          }
+        },
+      });
+    }
+
+    function post() {
+      let title = $('#title').val();
+      let name = $('#name').val();
+      let pswd = $('#pswd').val();
+      let contents = $('#contents').val();
+
+      if (title === '' || name === '' || pswd === '' || contents === '')
+        return alert('빠짐없이 작성해 주세요!');
+
+      $.ajax({
+        type: 'POST',
+        url: 'api/board/post',
+        data: {
+          title: title,
+          name: name,
+          pswd: pswd,
+          contents: contents,
+        },
+        success: function (response) {
+          alert(response['msg']);
+          window.location.href = '/';
+        },
+      });
+    }
+  </script>
+
+  <style>
+    body {
+      margin: 0;
+      /*드래그 방지 ~*/
+      user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      -webkit-user-select: none;
+      /*~ 드래그 방지*/
+    }
+  </style>
+
+  <body>
+        <div>
+          <label >Title</label>
+          <input type="text"  id="title" />
+        </div><div>
+          <label >Name</label>
+          <input type="text"  id="name" />
+        </div><div>
+          <label >Password</label>
+          <input type="text"  id="pswd" />
+        </div><div>
+          <label >Contents</label>
+          <input type="text"  id="contents" />
+        </div>
+      <button type="submit" class="btn btn-dark" onclick="post()">
+        Submit
+      </button>
+      <hr>
+
+    <div id="show">
+  </body>
+</html>

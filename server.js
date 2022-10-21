@@ -1,71 +1,38 @@
-require('dotenv').config();
+require('dotenv').config()
 
-const express = require('express');
-const app = express();
-const cors = require('cors');
-const http = require('http');
-const url = require('url');
-const path = require('path');
-const fs = require('fs');
+const express = require('express')
+const http = require('http')
+const fs = require('fs')
+const cors = require('cors')
+const path = require('path')
 
-const port = process.argv[2] || process.env.PORT;
+const route = require('./routes/index')
 
-app.use(express.json());
-app.use(cors());
+const app = express()
 
-app.use('./api/test', require('./routes/testRouter'));
+app.use(express.static('img'))
+app.use(express.static('style'))
+app.use(express.static('src'))
+app.use(express.static('nkl'))
 
-const mimeTypes = {
-  html: 'text/html',
-  jpeg: 'image/jpeg',
-  jpg: 'image/jpeg',
-  png: 'image/png',
-  svg: 'image/svg+xml',
-  json: 'application/json',
-  js: 'text/javascript',
-  mp3: 'audio/mpeg',
-  mp4: 'video/mp4',
-  css: 'text/css',
-  glb: 'model/gltf-binary',
-  gltf: 'model/gltf-binary',
-};
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
+app.use(cors())
 
-const server = http.createServer(function (request, response) {
-  let parsedUrl = url.parse(request.url);
-  let resource = parsedUrl.pathname;
-  let filename = path.join(process.cwd(), resource);
+// //도메인 접속 시 index.html 반환
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, './index.html'))
+})
+app.get('/parking', (req, res) => {
+  res.sendFile(path.join(__dirname, './parking.html'))
+})
+app.get('/newklworld', (req, res) => {
+  res.sendFile(path.join(__dirname, './nkl/ctx/newklworld.html'))
+})
 
-  try {
-    let _f = fs.statSync(filename);
-    if (_f.isDirectory()) filename += '/index.html';
-  } catch (err) {
-    response.writeHead(404, { 'Content-Type': 'text/plain' });
-    response.write('/// ' + err.errno + '\n' + err);
-    response.end();
-    return;
-  }
+app.use('/', route)
 
-  fs.readFile(filename, 'binary', function (err, file) {
-    if (err) {
-      response.writeHead(500, { 'Content-Type': 'text/plain' });
-      response.write('/// ' + err.errno + '\n' + err);
-      response.end();
-      return;
-    }
-
-    let mimeType = mimeTypes[filename.split('.').pop()];
-
-    if (!mimeType) {
-      mimeType = 'text/plain';
-    }
-
-    response.writeHead(200, { 'Content-Type': mimeType });
-    response.write(file, 'binary');
-    response.end();
-  });
-});
-
-// server.listen(8080, function () {
-server.listen(parseInt(port, 10), function () {
-  console.log('Server is running to', port + 'PORT');
-});
+const port = process.argv[2] || process.env.PORT
+app.listen(port, () => {
+  console.log('Server listening on port : ', port)
+})
