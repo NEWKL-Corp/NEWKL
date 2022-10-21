@@ -14,12 +14,12 @@
       show();
     });
     function show() {
+      console.log('ss')
       $.ajax({
         type: 'GET',
         url: 'api/board/list',
         data: {},
         success: function (response) {
-          console.log(response)
           for (let i = 0; i < response.length; i++) {
             // let row_num = response[i].row_num;
             let title = response[i].TITLE;
