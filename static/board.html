@@ -14,10 +14,10 @@
       show();
     });
     function show() {
-      console.log('ss')
+
       $.ajax({
         type: 'GET',
-        url: 'api/board/list',
+        url: 'api/board',
         data: {},
         success: function (response) {
           for (let i = 0; i < response.length; i++) {
@@ -26,13 +26,13 @@
             let writer = response[i].WRITER;
             let contents = response[i].CONTENTS;
             let regDate = response[i].REG_DATE
-            let splitRegDate = regDate.split('T')[0]
+            let comment = response[i].COMMENT_ID
+            let splitRegDate = regDate.split(' ')[0]
             let temp_html = `
-                                    <div>
+                                    <div onclick="alert('모달창')">
                                         <p>
-                                        제목: ${title} <br/>
-                                        작성자: ${writer} <br/>
-                                        내용: ${contents} <br/>
+                                        제목: ${title} ${comment? '[자물쇠], 답변있음':'[자물쇠]'} /
+                                        작성자: ${writer} /
                                         작성일자: ${splitRegDate}
                                         </p>
                                                     <hr>

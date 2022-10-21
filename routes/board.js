@@ -4,7 +4,7 @@ const db_config = require('../dbConfig')
 const mysql = require('mysql')
 const pool = new mysql.createPool(db_config)
 
-router.post('/post', async (req, res) => {
+router.post('/board/post', async (req, res) => {
   const { title, name, pswd, contents } = req.body
   pool.query(
     `
@@ -17,10 +17,37 @@ router.post('/post', async (req, res) => {
   )
 })
 
-router.get('/list', async (req, res) => {
+router.post('/board/:boardId', async (req, res) => {
+  const { boardId } = req.params
+  const { pswd } = req.body
+  const masterKey = process.env.MASTERKEY
+  if (psed === masterKey) {
+    pool.query(
+      `
+      select * from TB_BOARD where BOARD_ID = ${boardId}
+      `,
+      (error, rows) => {
+        if (error) throw error
+        console.log(rows)
+      }
+    )
+  } else {
+    pool.query(
+      `
+      select * from TB_BOARD where BOARD_ID = ${boardId} and PASSWORD = ${pswd}
+      `,
+      (error, rows) => {
+        if (error) throw error
+        console.log(rows)
+      }
+    )
+  }
+})
+
+router.get('/', async (req, res) => {
   pool.query(
     `
-    select TITLE, WRITER, CONTENTS, REG_DATE from TB_BOARD
+    select tb.BOARD_ID, tb.TITLE, tb.WRITER , tb.REG_DATE, tc.COMMENT_ID from TB_BOARD as tb , TB_COMMENT as tc WHERE tc.BOARD_ID = tb.BOARD_ID  
     `,
     (error, rows) => {
       if (error) throw error
