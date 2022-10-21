@@ -1,31 +1,252 @@
 @charset "UTF-8";
 * {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 body {
   max-width: 1920px;
-  height: 100%;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   background-color: #fff;
   font-size: 1.5vw;
   color: #111;
 }
 
-.News {
+#wrap {
+  height: 100vh;
+  overflow: hidden;
+}
+#wrap header:hover {
+  background: rgba(255, 255, 255, 0.7);
+  -webkit-transition: all 0.7s;
+  transition: all 0.7s;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+}
+#wrap header {
+  width: 100%;
+  max-width: 1920px;
+  height: 3.5vw;
+  background: transparent;
+  color: #000;
+  font-size: 16px;
+  font-weight: 550;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+#wrap header .headerContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: inherit;
+  padding: 0 20px;
+}
+#wrap header .headerContainer div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#wrap header .headerContainer .headerLogo {
+  width: 4vw;
+}
+#wrap header .headerContainer .headerLogo a img {
+  width: 100%;
+}
+#wrap header .headerContainer #gnb {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#wrap header .headerContainer #gnb .menu {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 5vw;
+}
+#wrap header .headerContainer #gnb .menu li a {
+  color: inherit;
+  text-decoration: none;
+}
+#wrap .swiper-slide {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+#wrap .container #main3d {
+  background-color: #fcc !important;
+}
+#wrap .container #Consulting::before {
+  content: "";
+  position: absolute;
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #062a4e;
+}
+#wrap .container #Consulting {
+  position: relative;
+  background: url("../../img/Consulting_bg.jpg") no-repeat center center/cover !important;
+}
+#wrap .container #Consulting .table {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+#wrap .container #Consulting .table .container {
+  position: relative;
+  width: 100%;
+  height: 70%;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+#wrap .container #Consulting .table .container .title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  gap: 1vw;
+  text-align: center;
+  height: 30%;
+}
+#wrap .container #Consulting .table .container .title h3 {
+  font-size: 26px;
+  font-weight: bold;
+  color: #062a4e;
+}
+#wrap .container #Consulting .table .container .title span {
+  font-size: 21px;
+}
+#wrap .container #Consulting .table .container .contents {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 70%;
+}
+#wrap .container #Consulting .table .container .contents .cardWrap {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+#wrap .container #Consulting .table .container .contents .cardWrap .card {
+  background: #fff;
+  min-width: 270px;
+  height: 90%;
+  margin: 0 2%;
+}
+#wrap .container #XRLearning {
+  background-color: #ccf;
+}
+#wrap .container #MetaverseLearning {
+  background-color: #cfc;
+}
+#wrap .container #SmartLearning {
+  background-color: #ccc;
+}
+#wrap .container #ABOUT {
+  background-color: #cff;
+}
+#wrap footer {
+  height: 400px !important;
+  background: #000;
+}
+
+.News {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   height: 100vh;
   background: url("../../img/parking/top_pattern.png") center 5% no-repeat;
 }
 .News .title {
   width: 100%;
   height: 45%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-end;
-  flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   text-align: center;
   gap: 1.5vw;
   color: #333;
@@ -38,27 +259,47 @@ body {
   font-size: 1.2rem;
 }
 .News .core {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   width: 100%;
   height: 55%;
 }
 .News .core .contents {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 100%;
   height: 65%;
 }
 .News .core .contents .left_contents {
   width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .News .core .contents .left_contents .newkl_text {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  justify-content: flex-end;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   width: 100%;
   font-size: 1em;
   position: relative;
@@ -81,9 +322,16 @@ body {
   width: 50%;
   height: 100%;
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   border-left: 1px solid #ccc;
 }
 .News .core .contents .right_contents h1 {
@@ -93,8 +341,13 @@ body {
   padding-bottom: 0.5em;
 }
 .News .core .contents .right_contents ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   padding-left: 2em;
   color: #111;
   font-weight: 200;
@@ -103,7 +356,8 @@ body {
   content: "●";
   position: absolute;
   left: 0;
-  transform: translateX(-50%) scale(0.5);
+  -webkit-transform: translateX(-50%) scale(0.5);
+          transform: translateX(-50%) scale(0.5);
   height: inherit;
   color: #ccc;
 }
@@ -116,21 +370,38 @@ body {
 .News .core .newkl_link {
   width: 100%;
   padding: 1%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   gap: 1vw;
   line-height: 1.5;
   font-weight: 200;
 }
 .News .core .newkl_link .newkl_img {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .News .core .newkl_link .about {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   font-size: 0.8em;
   color: #aaa;
@@ -155,7 +426,9 @@ body {
     font-weight: bold;
   }
   .News .core {
-    justify-content: flex-start;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
     gap: 2vw;
   }
   .News .core .contents {
@@ -186,9 +459,15 @@ body {
   }
   .News .core .newkl_link .about {
     width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
     font-size: 1.8em;
     gap: 0;
   }
@@ -201,150 +480,4 @@ body {
     border: 1px solid #ccc;
     border-radius: 10px;
   }
-}
-#wrap {
-  height: 100vh;
-  overflow: hidden;
-}
-#wrap header:hover {
-  background: rgba(255, 255, 255, 0.7);
-  transition: all 0.7s;
-  transition: 0.7s;
-}
-#wrap header {
-  width: 100%;
-  max-width: 1920px;
-  height: 3.5vw;
-  background: transparent;
-  color: #000;
-  font-size: 16px;
-  font-weight: 550;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 99;
-  transition: all 0.4s;
-  transition: 0.4s;
-}
-#wrap header .headerContainer {
-  display: flex;
-  justify-content: space-between;
-  height: inherit;
-  padding: 0 20px;
-}
-#wrap header .headerContainer div {
-  display: flex;
-  align-items: center;
-}
-#wrap header .headerContainer .headerLogo {
-  width: 4vw;
-}
-#wrap header .headerContainer .headerLogo a img {
-  width: 100%;
-}
-#wrap header .headerContainer #gnb {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-#wrap header .headerContainer #gnb .menu {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  gap: 5vw;
-}
-#wrap header .headerContainer #gnb .menu li a {
-  color: inherit;
-  text-decoration: none;
-}
-#wrap .swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-#wrap .container #main3d {
-  background-color: #fcc !important;
-}
-#wrap .container #Consulting::before {
-  content: "";
-  position: absolute;
-  opacity: 0.5;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #062a4e;
-}
-#wrap .container #Consulting {
-  position: relative;
-  background: url("../../img/Consulting_bg.jpg") no-repeat center center/cover !important;
-}
-#wrap .container #Consulting .table {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-#wrap .container #Consulting .table .container {
-  position: relative;
-  width: 100%;
-  height: 70%;
-  background-color: rgba(255, 255, 255, 0.6);
-}
-#wrap .container #Consulting .table .container .title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  gap: 1vw;
-  text-align: center;
-  height: 30%;
-}
-#wrap .container #Consulting .table .container .title h3 {
-  font-size: 26px;
-  font-weight: bold;
-  color: #062a4e;
-}
-#wrap .container #Consulting .table .container .title span {
-  font-size: 21px;
-}
-#wrap .container #Consulting .table .container .contents {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 70%;
-}
-#wrap .container #Consulting .table .container .contents .cardWrap {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-items: flex-start;
-}
-#wrap .container #Consulting .table .container .contents .cardWrap .card {
-  background: #fff;
-  min-width: 270px;
-  height: 90%;
-  margin: 0 2%;
-}
-#wrap .container #XRLearning {
-  background-color: #ccf;
-}
-#wrap .container #MetaverseLearning {
-  background-color: #cfc;
-}
-#wrap .container #SmartLearning {
-  background-color: #ccc;
-}
-#wrap .container #ABOUT {
-  background-color: #cff;
-}
-#wrap footer {
-  height: 400px !important;
-  background: #000;
 }
