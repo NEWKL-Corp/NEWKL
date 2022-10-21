@@ -139,6 +139,7 @@ function set(_d, _p, _s, _n, _t) {
       node.castShadow = true;
       node.receiveShadow = false;
   });
+
   // _r.castShadow = true;
   // _r.receiveShadow = false;
 
