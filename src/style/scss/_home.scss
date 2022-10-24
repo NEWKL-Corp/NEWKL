@@ -1,14 +1,20 @@
 #wrap {
     height: 100vh;
     overflow: hidden;
-
+    .inner{
+        @include flex-center;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        height: 100%
+    }
+    
     header:hover {
         background: rgba(255, 255, 255, 0.7);
         // color: #111;
         transition: all 0.7s;
         transition: 0.7s;
     }
-
     header {
         width: 100%;
         max-width: 1920px;
@@ -23,18 +29,13 @@
         z-index: 99;
         transition: all 0.4s;
         transition: 0.4s;
-
+        .inner{
+            justify-content: space-between;
+        }
         .headerContainer {
             display: flex;
             justify-content: space-between;
             height: inherit;
-            padding: 0 20px;
-
-            div {
-                display: flex;
-                align-items: center;
-            }
-
             .headerLogo {
                 width: 4vw;
 
@@ -74,7 +75,6 @@
         #main3d {
             background-color: #fcc !important;
         }
-
         #Consulting::before {
             content: "";
             position: absolute;
@@ -91,53 +91,92 @@
 
             .table {
                 @include flex-center;
+                flex-wrap: wrap;
+
                 position: relative;
                 width: 100%;
                 height: 100%;
-
+                
                 .table_wrap {
                     position: relative;
                     width: 100%;
-                    height: 70%;
-                    background-color: rgba(255, 255, 255, 0.6);
-
-                    .title {
-                        @include flex-center;
-                        flex-direction: column;
-                        justify-content: center;
-                        gap: 1vw;
-                        text-align: center;
-                        height: 30%;
-
-                        h3 {
-                            font-size: 26px;
-                            font-weight: bold;
-                            color: #062a4e;
-                        }
-
-                        span {
-                            font-size: 21px;
-                        }
-                    }
-
-                    .contents {
-                        @include flex-center;
-                        height: 70%;
-
-                        .cardWrap {
+                    height: 50%;
+                    &.front{
+                        display: flex;
+                        background-color: rgba(255, 255, 255, 0.3);
+                        .table_left{
                             width: 100%;
                             height: 100%;
-                            @include flex-center;
-                            align-items: flex-start;
-
-                            .card {
-                                background: #fff;
-                                min-width: 270px;
-                                height: 90%;
-                                margin: 0 2%;
+                            border: 1px solid red;
+                            
+                            .title {
+                                display: flex;
+                                flex-direction: column;
+                                align-items: flex-start;
+                                text-align: start;
+                                gap: 1vw;
+                                padding-top: 30%;
+                                line-height: 1.2;
+                                h3 {
+                                    @include title-font;
+                                }
+                                span {
+                                    font-size: 21px;
+                                    
+                                }
+                        }
+                        }
+                        .table_right{
+                            width: 100%;
+                            height: 100%;
+                            border: 1px solid red;
+                            
+                        }
+                    }
+                    &.end{
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-evenly;
+                        height: 25%;
+                        background-color: rgba(255, 255, 255, 0.6);
+                        .inner{
+                            flex-direction: column;
+                            .title {
+                                @include flex-center;
+                                flex-direction: column;
+                                justify-content: center;
+                                gap: 1vw;
+                                text-align: center;
+        
+                                h3 {
+                                    @include title-font;
+                                }
+        
+                                span {
+                                    font-size: 21px;
+                                }
+                            }
+        
+                            .contents {
+                                @include flex-center;
+                                height: 70%;
+        
+                                .cardWrap {
+                                    width: 100%;
+                                    height: 100%;
+                                    @include flex-center;
+        
+                                    .card {
+                                        background: #fff;
+                                        min-width: 270px;
+                                        height: 80%;
+                                        margin: 0 2%;
+                                    }
+                                }
                             }
                         }
                     }
+
                 }
             }
         }
@@ -148,11 +187,57 @@
                 width: 100%;
                 height: 100%;
                 background-color: #88a2b4a1;
-                .table_wrap{
-                    max-width: 1200px;
-                    height: 100%;
-                    margin: 0 auto;
-                    
+                .inner{
+                    flex-wrap: wrap;
+                    .intro{
+                        width: 100%;
+                        height: 50%;
+                        display: flex;
+                        .xr_title{
+                            width: 100%;
+                            @include flex-center;
+                            @include title-font;
+                            justify-content: flex-start;
+                        }
+                        .xr_index{
+                            width: 100%;
+                            @include flex-center;
+                        }
+                    }
+                    .youtube{
+                        width: 100%;
+                        // height: 50%;
+                        display: flex;
+                        flex-wrap: wrap;
+                        align-content: flex-start;
+                        justify-content: center;
+                        gap: 2vw;
+                        .yt_title{
+                            width: 100%;
+                            .tab_menu{
+                                display: flex;
+                                justify-content: space-around;
+                                gap: 5vw;
+                                li{ 
+                                    width: 100%;
+                                    border: 1px solid red;
+                                    cursor: pointer;
+                                }
+                            }
+                        }
+                        .yt_box{
+                            width: 100%;
+                            height: 80%;
+                            border: 1px solid red;
+                            display: flex;
+                            p{
+                                @include flex-center;
+                                width: 50%;
+                            }
+                            // img{
+                            // }
+                        }
+                    }
                 }
             }
         }

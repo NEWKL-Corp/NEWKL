@@ -16,6 +16,21 @@ body {
   height: 100vh;
   overflow: hidden;
 }
+#wrap .inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+}
 #wrap header:hover {
   background: rgba(255, 255, 255, 0.7);
   -webkit-transition: all 0.7s;
@@ -40,6 +55,11 @@ body {
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
+#wrap header .inner {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
 #wrap header .headerContainer {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -48,15 +68,6 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
   height: inherit;
-  padding: 0 20px;
-}
-#wrap header .headerContainer div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 #wrap header .headerContainer .headerLogo {
   width: 4vw;
@@ -128,6 +139,8 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   position: relative;
   width: 100%;
   height: 100%;
@@ -135,10 +148,69 @@ body {
 #wrap .container #Consulting .table .table_wrap {
   position: relative;
   width: 100%;
-  height: 70%;
+  height: 50%;
+}
+#wrap .container #Consulting .table .table_wrap.front {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+#wrap .container #Consulting .table .table_wrap.front .table_left {
+  width: 100%;
+  height: 100%;
+  border: 1px solid red;
+}
+#wrap .container #Consulting .table .table_wrap.front .table_left .title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  text-align: start;
+  gap: 1vw;
+  padding-top: 30%;
+  line-height: 1.2;
+}
+#wrap .container #Consulting .table .table_wrap.front .table_left .title h3 {
+  font-size: 26px;
+  font-weight: bold;
+  color: #062a4e;
+}
+#wrap .container #Consulting .table .table_wrap.front .table_left .title span {
+  font-size: 21px;
+}
+#wrap .container #Consulting .table .table_wrap.front .table_right {
+  width: 100%;
+  height: 100%;
+  border: 1px solid red;
+}
+#wrap .container #Consulting .table .table_wrap.end {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  height: 25%;
   background-color: rgba(255, 255, 255, 0.6);
 }
-#wrap .container #Consulting .table .table_wrap .title {
+#wrap .container #Consulting .table .table_wrap.end .inner {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+#wrap .container #Consulting .table .table_wrap.end .inner .title {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -155,17 +227,16 @@ body {
   justify-content: center;
   gap: 1vw;
   text-align: center;
-  height: 30%;
 }
-#wrap .container #Consulting .table .table_wrap .title h3 {
+#wrap .container #Consulting .table .table_wrap.end .inner .title h3 {
   font-size: 26px;
   font-weight: bold;
   color: #062a4e;
 }
-#wrap .container #Consulting .table .table_wrap .title span {
+#wrap .container #Consulting .table .table_wrap.end .inner .title span {
   font-size: 21px;
 }
-#wrap .container #Consulting .table .table_wrap .contents {
+#wrap .container #Consulting .table .table_wrap.end .inner .contents {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -177,7 +248,7 @@ body {
           align-items: center;
   height: 70%;
 }
-#wrap .container #Consulting .table .table_wrap .contents .cardWrap {
+#wrap .container #Consulting .table .table_wrap.end .inner .contents .cardWrap {
   width: 100%;
   height: 100%;
   display: -webkit-box;
@@ -189,14 +260,11 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
 }
-#wrap .container #Consulting .table .table_wrap .contents .cardWrap .card {
+#wrap .container #Consulting .table .table_wrap.end .inner .contents .cardWrap .card {
   background: #fff;
   min-width: 270px;
-  height: 90%;
+  height: 80%;
   margin: 0 2%;
 }
 #wrap .container #XRLearning {
@@ -207,10 +275,96 @@ body {
   height: 100%;
   background-color: rgba(136, 162, 180, 0.631372549);
 }
-#wrap .container #XRLearning .layer .table_wrap {
-  max-width: 1200px;
-  height: 100%;
-  margin: 0 auto;
+#wrap .container #XRLearning .layer .inner {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+#wrap .container #XRLearning .layer .inner .intro {
+  width: 100%;
+  height: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+#wrap .container #XRLearning .layer .inner .intro .xr_title {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 26px;
+  font-weight: bold;
+  color: #062a4e;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+#wrap .container #XRLearning .layer .inner .intro .xr_index {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#wrap .container #XRLearning .layer .inner .youtube {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 2vw;
+}
+#wrap .container #XRLearning .layer .inner .youtube .yt_title {
+  width: 100%;
+}
+#wrap .container #XRLearning .layer .inner .youtube .yt_title .tab_menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  gap: 5vw;
+}
+#wrap .container #XRLearning .layer .inner .youtube .yt_title .tab_menu li {
+  width: 100%;
+  border: 1px solid red;
+  cursor: pointer;
+}
+#wrap .container #XRLearning .layer .inner .youtube .yt_box {
+  width: 100%;
+  height: 80%;
+  border: 1px solid red;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+#wrap .container #XRLearning .layer .inner .youtube .yt_box p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 50%;
 }
 #wrap .container #MetaverseLearning {
   background-color: #cfc;

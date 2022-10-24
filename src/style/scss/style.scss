@@ -19,4 +19,10 @@ body {
     align-items: center;
 }
 
-@import "home";
+@mixin title-font {
+    font-size: 26px;
+    font-weight: bold;
+    color: #062a4e;
+}
+
+@import 'home';
