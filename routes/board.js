@@ -1,4 +1,3 @@
-// const { testCtrl } = require('../controllers/boardController');
 const router = require('express').Router()
 const db_config = require('../dbConfig')
 const mysql = require('mysql')
@@ -34,7 +33,7 @@ router.post('/check', async (req, res) => {
       `,
       (error, rows) => {
         if (error) throw error
-        else return res.send({ success: true })
+        else return res.send({ success: true, masterKey: true })
       }
     )
   } else {
@@ -47,7 +46,7 @@ router.post('/check', async (req, res) => {
         if (error) throw error
         else {
           if (rows.length) {
-            return res.send({ success: true })
+            return res.send({ success: true, masterKey: false })
           } else {
             return res.send({
               success: false,

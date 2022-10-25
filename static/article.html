@@ -21,12 +21,85 @@
     const queryString = window.location.search
     const urlParams = new URLSearchParams(queryString)
     const board_id = urlParams.get('boardId')
+    const masterKey = urlParams.get('m')
 
+    let flag = true
     let standardPSWD = ''
 
     $(document).ready(function () {
       showArticle(board_id)
+      showComment(board_id)
+      if (masterKey) {
+        let temp_html = `
+            <div>
+              <label>답변</label>
+              <input type="text" id="comment" placeholder="내용" />
+              <button onclick="postComment(${board_id})">답변 작성</button>
+            </div>
+            <hr>
+        `
+        $('#comment').append(temp_html)
+      }
     })
+
+    function showComment(board_id) {
+      $.ajax({
+        type: 'POST',
+        url: 'api/comment',
+        data: {
+          board_id,
+        },
+        success: function (res) {
+          if (res.success) {
+            let comment = res.rows[0].CONTENTS
+            let regDate = res.rows[0].REG_DATE
+            let splitRegDate = regDate.split(' ')[0]
+            let temp_html = `
+            <div>
+              <p>답변 내용 : ${comment}</p>
+              <p>작성일자 : ${splitRegDate}</p>
+              ${
+                masterKey
+                  ? `<div>
+                    <button onclick="updateComment(${board_id})">
+                      답변 수정
+                    </button>
+                    <button onclick="delComment(${board_id})">답변 삭제</button>
+                  </div>`
+                  : ''
+              }
+            </div>
+            <hr>
+        `
+            $('#comment').append(temp_html)
+          }
+        },
+        error: function (err) {
+          console.log(err)
+        },
+      })
+    }
+
+    function postComment(board_id) {
+      let comment = $('#comment').val()
+      console.log(comment)
+      $.ajax({
+        type: 'POST',
+        url: 'api/comment/post',
+        data: {
+          board_id,
+          comment,
+        },
+        success: function (res) {
+          if (res.success) {
+            window.location.replace()
+          }
+        },
+        error: function (err) {
+          console.log(err)
+        },
+      })
+    }
 
     function showArticle(board_id) {
       $.ajax({
@@ -41,7 +114,6 @@
             let writer = res.rows[0].WRITER
             let contents = res.rows[0].CONTENTS
             let regDate = res.rows[0].REG_DATE
-            let comment = res.rows[0].COMMENT_ID
             let email = res.rows[0].EMAIL
             let phone_number = res.rows[0].PHONE_NUMBER
             standardPSWD = res.rows[0].PSWD
@@ -56,8 +128,7 @@
                 <p> 작성일자: ${splitRegDate} </p>
                 <p> 내용: ${contents} </p>
                 <hr>
-                ${comment ? `<p> 답변: ${comment} </p> <hr>` : ''}
-                                    `
+                `
             $('#article').append(temp_html)
           }
         },
@@ -116,9 +187,10 @@
 
   <body>
     <div id="article"></div>
-    <button id="" onclick="goTo(1)">수정</button>
-    <button id="" onclick="goTo(2)">삭제</button>
-    <button id="" onclick="goTo(3)">목록</button>
-    <button id="" onclick="goTo(4)">글쓰기</button>
+    <div id="comment"></div>
+    <button onclick="goTo(1)">수정</button>
+    <button onclick="goTo(2)">삭제</button>
+    <button onclick="goTo(3)">목록</button>
+    <button onclick="goTo(4)">글쓰기</button>
   </body>
 </html>
