@@ -37,7 +37,6 @@
         },
         success: function (res) {
           if (res.success) {
-            let board_id = res.rows[0].BOARD_ID
             let title = res.rows[0].TITLE
             let writer = res.rows[0].WRITER
             let contents = res.rows[0].CONTENTS
@@ -68,6 +67,25 @@
       })
     }
 
+    function deleteArticle() {
+      $.ajax({
+        type: 'POST',
+        url: 'api/board/delete',
+        data: {
+          board_id,
+        },
+        success: function (res) {
+          if (res.success) {
+            alert(res.msg)
+            window.location.href = '/board.html'
+          }
+        },
+        error: function (err) {
+          console.log(err)
+        },
+      })
+    }
+
     function goTo(num) {
       let confirmMsg = ''
       let confirmUrl = ''
@@ -87,7 +105,11 @@
 
       var confirmResult = confirm(`${confirmMsg}`)
       if (confirmResult) {
-        window.location.href = `${confirmUrl}`
+        if (num === 2) {
+          deleteArticle()
+        } else {
+          window.location.href = `${confirmUrl}`
+        }
       }
     }
   </script>

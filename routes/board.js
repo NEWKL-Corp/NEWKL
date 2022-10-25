@@ -108,4 +108,18 @@ router.post('/post', async (req, res) => {
     )
   }
 })
+
+router.post('/delete', async (req, res) => {
+  const { board_id } = req.body
+
+  pool.query(
+    `
+    delete from TB_BOARD where BOARD_ID = ${board_id}
+    `,
+    (error, rows) => {
+      if (error) throw error
+      else return res.send({ success: true, msg: '게시글이 삭제되었습니다.' })
+    }
+  )
+})
 module.exports = router
