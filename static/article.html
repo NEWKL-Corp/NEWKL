@@ -25,10 +25,10 @@
     let standardPSWD = ''
 
     $(document).ready(function () {
-      one(board_id)
+      showArticle(board_id)
     })
 
-    function one(board_id) {
+    function showArticle(board_id) {
       $.ajax({
         type: 'POST',
         url: 'api/board/article',
@@ -37,7 +37,6 @@
         },
         success: function (res) {
           if (res.success) {
-            console.log(res.rows[0])
             let board_id = res.rows[0].BOARD_ID
             let title = res.rows[0].TITLE
             let writer = res.rows[0].WRITER
@@ -58,6 +57,7 @@
                 <p> 작성일자: ${splitRegDate} </p>
                 <p> 내용: ${contents} </p>
                 <hr>
+                ${comment ? `<p> 답변: ${comment} </p> <hr>` : ''}
                                     `
             $('#article').append(temp_html)
           }
@@ -67,9 +67,36 @@
         },
       })
     }
+
+    function goTo(num) {
+      let confirmMsg = ''
+      let confirmUrl = ''
+      if (num === 1) {
+        confirmMsg = '수정페이지로 이동합니다.'
+        confirmUrl = `/write.html?boardId=${board_id}`
+      } else if (num === 2) {
+        confirmMsg = '정말로 삭제하시겠습니까?'
+        confirmUrl = '/board.html'
+      } else if (num === 3) {
+        confirmMsg = '전체 글 목록으로 이동합니다.'
+        confirmUrl = '/board.html'
+      } else {
+        confirmMsg = '작성페이지로 이동합니다.'
+        confirmUrl = '/write.html'
+      }
+
+      var confirmResult = confirm(`${confirmMsg}`)
+      if (confirmResult) {
+        window.location.href = `${confirmUrl}`
+      }
+    }
   </script>
 
   <body>
     <div id="article"></div>
+    <button id="" onclick="goTo(1)">수정</button>
+    <button id="" onclick="goTo(2)">삭제</button>
+    <button id="" onclick="goTo(3)">목록</button>
+    <button id="" onclick="goTo(4)">글쓰기</button>
   </body>
 </html>

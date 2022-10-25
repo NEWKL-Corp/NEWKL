@@ -39,7 +39,7 @@ router.post('/check', async (req, res) => {
   } else {
     pool.query(
       `
-      select * from TB_BOARD where BOARD_ID = ${board_id} and PSWD = ${pswd}
+      select * from TB_BOARD where BOARD_ID = ${board_id} and PSWD = '${pswd}'
       `,
 
       (error, rows) => {
@@ -83,15 +83,28 @@ router.post('/article', async (req, res) => {
 })
 
 router.post('/post', async (req, res) => {
-  const { title, name, pswd, contents, email, phone_number } = req.body
-  pool.query(
-    `
-    insert into TB_BOARD (TITLE, WRITER, PSWD ,CONTENTS, EMAIL, PHONE_NUMBER, REG_DATE) values ('${title}','${name}', '${pswd}','${contents}', '${email}','${phone_number}' , now() )
-    `,
-    (error, rows) => {
-      if (error) throw error
-      else return res.send({ success: true })
-    }
-  )
+  const { board_id, title, name, pswd, contents, email, phone_number } =
+    req.body
+  if (board_id) {
+    pool.query(
+      `
+      update TB_BOARD set TITLE =  '${title}', WRITER = '${name}', PSWD =  '${pswd}', CONTENTS = '${contents}', EMAIL = '${email}', PHONE_NUMBER = '${phone_number}' where BOARD_ID = ${board_id}
+      `,
+      (error, rows) => {
+        if (error) throw error
+        else return res.send({ success: true, msg: '게시글이 수정되었습니다.' })
+      }
+    )
+  } else {
+    pool.query(
+      `
+      insert into TB_BOARD (TITLE, WRITER, PSWD ,CONTENTS, EMAIL, PHONE_NUMBER, REG_DATE) values ('${title}','${name}', '${pswd}','${contents}', '${email}','${phone_number}' , now() )
+      `,
+      (error, rows) => {
+        if (error) throw error
+        else return res.send({ success: true, msg: '게시글이 작성되었습니다.' })
+      }
+    )
+  }
 })
 module.exports = router

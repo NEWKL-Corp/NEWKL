@@ -18,6 +18,40 @@
     }
   </style>
   <script>
+    const queryString = window.location.search
+    const urlParams = new URLSearchParams(queryString)
+    const board_id = urlParams.get('boardId')
+
+    if (board_id) {
+      $(document).ready(function () {
+        showArticle(board_id)
+      })
+    }
+
+    function showArticle(board_id) {
+      $.ajax({
+        type: 'POST',
+        url: 'api/board/article',
+        data: {
+          board_id,
+        },
+        success: function (res) {
+          if (res.success) {
+            console.log('dd')
+            $('#title').val(res.rows[0].TITLE)
+            $('#name').val(res.rows[0].WRITER)
+            $('#pswd').val(res.rows[0].PSWD)
+            $('#contents').val(res.rows[0].CONTENTS)
+            $('#email').val(res.rows[0].EMAIL)
+            $('#phone').val(res.rows[0].PHONE_NUMBER)
+          }
+        },
+        error: function (err) {
+          console.log(err)
+        },
+      })
+    }
+
     function post() {
       let title = $('#title').val()
       let name = $('#name').val()
@@ -40,6 +74,7 @@
         type: 'POST',
         url: 'api/board/post',
         data: {
+          board_id,
           title,
           name,
           pswd,
@@ -49,6 +84,7 @@
         },
         success: function (res) {
           if (res.success) {
+            alert(res.msg)
             window.location.href = '/board.html'
           }
         },
