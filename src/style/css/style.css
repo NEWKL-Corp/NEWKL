@@ -42,7 +42,7 @@ body {
   width: 100%;
   max-width: 1920px;
   height: 3.5vw;
-  background: transparent;
+  background: #fff;
   color: #000;
   font-size: 16px;
   font-weight: 550;
@@ -54,6 +54,7 @@ body {
   transition: all 0.4s;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  border-bottom: 1px solid #bbb;
 }
 #wrap header .inner {
   -webkit-box-pack: justify;
@@ -115,19 +116,8 @@ body {
 #wrap .container #main3d {
   background-color: #fcc !important;
 }
-#wrap .container #Consulting::before {
-  content: "";
-  position: absolute;
-  opacity: 0.5;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #062a4e;
-}
 #wrap .container #Consulting {
   position: relative;
-  background: url("../../img/Consulting_bg.jpg") no-repeat center center/cover !important;
 }
 #wrap .container #Consulting .table {
   display: -webkit-box;
@@ -144,24 +134,28 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  gap: 5%;
 }
 #wrap .container #Consulting .table .table_wrap {
   position: relative;
   width: 100%;
-  height: 50%;
 }
 #wrap .container #Consulting .table .table_wrap.front {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background-color: rgba(255, 255, 255, 0.3);
+  margin-top: 3%;
+  height: 40%;
+  background-color: #f0f5ff;
 }
 #wrap .container #Consulting .table .table_wrap.front .table_left {
   width: 100%;
   height: 100%;
-  border: 1px solid red;
 }
 #wrap .container #Consulting .table .table_wrap.front .table_left .title {
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -169,21 +163,56 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   text-align: start;
-  gap: 1vw;
-  padding-top: 30%;
+  padding-top: 20%;
   line-height: 1.2;
 }
 #wrap .container #Consulting .table .table_wrap.front .table_left .title h3 {
   font-size: 26px;
   font-weight: bold;
   color: #062a4e;
+  font-size: 1.5em;
 }
 #wrap .container #Consulting .table .table_wrap.front .table_left .title span {
   font-size: 21px;
+}
+#wrap .container #Consulting .table .table_wrap.front .table_left .title .btn_section button {
+  cursor: pointer;
+}
+#wrap .container #Consulting .table .table_wrap.front .table_left .title .btn_section .contact_btn:hover {
+  background-color: #fff;
+  border: 1px solid #7156bc;
+  color: #7156bc;
+  -webkit-transition: all 0.6s;
+  transition: all 0.6s;
+}
+#wrap .container #Consulting .table .table_wrap.front .table_left .title .btn_section .contact_btn {
+  width: 150px;
+  height: 50px;
+  background-color: #7156bc;
+  border: 1px solid #7156bc;
+  border-radius: 15px;
+  font-size: 1em;
+  color: #fff;
+  margin-right: 5%;
+}
+#wrap .container #Consulting .table .table_wrap.front .table_left .title .btn_section .more_btn:hover {
+  background-color: #7156bc;
+  color: #fff;
+  -webkit-transition: all 0.6s;
+  transition: all 0.6s;
+}
+#wrap .container #Consulting .table .table_wrap.front .table_left .title .btn_section .more_btn {
+  width: 150px;
+  height: 50px;
+  background-color: #fff;
+  border: 1px solid #7156bc;
+  color: #7156bc;
+  font-size: 1em;
+  border-radius: 15px;
 }
 #wrap .container #Consulting .table .table_wrap.front .table_right {
   width: 100%;
@@ -202,13 +231,28 @@ body {
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
   height: 25%;
-  background-color: rgba(255, 255, 255, 0.6);
+  position: relative;
+}
+#wrap .container #Consulting .table .table_wrap.end .inner::after {
+  content: "";
+  width: 100%;
+  height: 60%;
+  background-color: #f0f5ff;
+  position: absolute;
+  top: 60%;
+  z-index: -1;
 }
 #wrap .container #Consulting .table .table_wrap.end .inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 #wrap .container #Consulting .table .table_wrap.end .inner .title {
   display: -webkit-box;
@@ -232,6 +276,8 @@ body {
   font-size: 26px;
   font-weight: bold;
   color: #062a4e;
+  font-size: 2.5em;
+  padding-bottom: 20px;
 }
 #wrap .container #Consulting .table .table_wrap.end .inner .title span {
   font-size: 21px;
@@ -262,32 +308,6 @@ body {
           align-items: center;
 }
 #wrap .container #Consulting .table .table_wrap.end .inner .contents .cardWrap .card {
-  background: #fff;
-  min-width: 270px;
-  height: 80%;
-  margin: 0 2%;
-}
-#wrap .container #XRLearning {
-  background: url(../../img/XRLearning_bg.jpg) center bottom/cover;
-}
-#wrap .container #XRLearning .layer {
-  width: 100%;
-  height: 100%;
-  background-color: rgba(136, 162, 180, 0.631372549);
-}
-#wrap .container #XRLearning .layer .inner {
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-}
-#wrap .container #XRLearning .layer .inner .intro {
-  width: 100%;
-  height: 50%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-#wrap .container #XRLearning .layer .inner .intro .xr_title {
-  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -297,32 +317,123 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  background: #fff;
+  width: 100%;
+  min-width: 270px;
+  height: inherit;
+  margin: 0 2%;
+  border-radius: 30px;
+  -webkit-box-shadow: 4px 4px 4px 4px #eee;
+          box-shadow: 4px 4px 4px 4px #eee;
+}
+#wrap .container #Consulting .table .table_wrap.end .inner .contents .cardWrap .card .card_title {
+  width: 100%;
   font-size: 26px;
   font-weight: bold;
   color: #062a4e;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+}
+#wrap .container #Consulting .table .table_wrap.end .inner .contents .cardWrap .card .card_text {
+  width: 80%;
+  line-height: 1.3;
+  font-weight: 500;
+}
+#wrap .container #XRLearning .layer {
+  width: 100%;
+  height: 100%;
+  padding-top: 3.5vw;
+  background: url(../../img/low-poly-grid-haikei.svg) no-repeat center top/cover;
+}
+#wrap .container #XRLearning .layer .inner {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  gap: 3vw;
+}
+#wrap .container #XRLearning .layer .inner .intro {
+  width: 100%;
+  height: 35%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+#wrap .container #XRLearning .layer .inner .intro .xr_title {
+  font-size: 26px;
+  font-weight: bold;
+  color: #062a4e;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+#wrap .container #XRLearning .layer .inner .intro .xr_title .img {
+  color: transparent;
+  width: 300px;
+  height: 100%;
+  background: url(../../img/xrImage.png) no-repeat center center/cover !important;
+  margin: 5% auto;
 }
 #wrap .container #XRLearning .layer .inner .intro .xr_index {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  gap: 3vw;
 }
-#wrap .container #XRLearning .layer .inner .youtube {
-  width: 100%;
+#wrap .container #XRLearning .layer .inner .intro .xr_index div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+#wrap .container #XRLearning .layer .inner .intro .xr_index div h2 {
+  font-size: 26px;
+  font-weight: bold;
+  color: #062a4e;
+}
+#wrap .container #XRLearning .layer .inner .intro .xr_index div p {
+  line-height: 1.2;
+  width: 50%;
+}
+#wrap .container #XRLearning .layer .inner .youtube {
+  width: 100%;
+  height: 40%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -ms-flex-line-pack: start;
       align-content: flex-start;
   -webkit-box-pack: center;
@@ -330,29 +441,41 @@ body {
           justify-content: center;
   gap: 2vw;
 }
-#wrap .container #XRLearning .layer .inner .youtube .yt_title {
-  width: 100%;
-}
-#wrap .container #XRLearning .layer .inner .youtube .yt_title .tab_menu {
+#wrap .container #XRLearning .layer .inner .youtube .yt_title.tab_menu {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  gap: 5vw;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 1vw;
 }
-#wrap .container #XRLearning .layer .inner .youtube .yt_title .tab_menu li {
-  width: 100%;
-  border: 1px solid red;
+#wrap .container #XRLearning .layer .inner .youtube .yt_title.tab_menu span {
+  background: #749ef9;
+  background: -webkit-gradient(linear, left top, left bottom, from(#749ef9), to(#1753d5));
+  background: linear-gradient(to bottom, #749ef9 0%, #1753d5 100%);
+  background: -webkit-linear-gradient(top, #749ef9 0%, #1753d5 100%);
+  border-radius: 20px;
+  color: #fff;
+  display: inline-block;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#749ef9", endColorstr="#1753d5",GradientType=0 );
+  font-size: 1.3em;
+  height: 42px;
+  line-height: 42px;
+  margin: 9px 0;
+  padding: 0 25px;
+  text-align: center;
+  width: 15%;
   cursor: pointer;
 }
 #wrap .container #XRLearning .layer .inner .youtube .yt_box {
   width: 100%;
   height: 80%;
-  border: 1px solid red;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  border-radius: 30px;
 }
 #wrap .container #XRLearning .layer .inner .youtube .yt_box p {
   display: -webkit-box;
@@ -366,8 +489,30 @@ body {
           align-items: center;
   width: 50%;
 }
+#wrap .container #XRLearning .layer .inner .youtube .yt_box iframe {
+  border-radius: 30px;
+}
+#wrap .container #XRLearning .layer .inner .youtube .btn_section {
+  width: 100%;
+}
+#wrap .container #XRLearning .layer .inner .youtube .btn_section button:hover {
+  background: #749ef9;
+  -webkit-transition: all 0.6s;
+  transition: all 0.6s;
+  color: #fff;
+}
+#wrap .container #XRLearning .layer .inner .youtube .btn_section button {
+  width: 150px;
+  height: 50px;
+  border-radius: 30px;
+  border: 3px solid #749ef9;
+  background-color: #fff;
+  color: #749ef9;
+  font-size: 1em;
+  cursor: pointer;
+}
 #wrap .container #MetaverseLearning {
-  background-color: #cfc;
+  background: url(../../img/wave-haikei.svg) no-repeat center center/cover !important;
 }
 #wrap .container #SmartLearning {
   background-color: #ccc;

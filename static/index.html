@@ -81,8 +81,8 @@
                     <span>HRD에 대한 굳은 신념과 전문성을 기반으로 현장의 학습과 성과를 통찰하고, 고객의 성장을 고민하며, 실천을 통해 회사와 고객의 비전을 실현합니다.</span>
   
                     <div class="btn_section">
-                      <button type="button">Contact</button>
-                      <button type="button">More</button>
+                      <button type="button" class="contact_btn">Contact</button>
+                      <button type="button" class="more_btn">More</button>
                     </div>
                   </div>
   
@@ -102,9 +102,23 @@
     
                 <div class="contents">
                   <ul class="cardWrap">
-                    <li class="card"></li>
-                    <li class="card"></li>
-                    <li class="card"></li>
+
+                    <li class="card">
+                      <h2 class="card_title">HRD Consulting</h2>
+                      <h4 class="card_text"> 무엇을 위해 존재하고, 어떻게 기여할 것인지에 대한  해답을 제공합니다.</h4>
+                    </li>
+
+                    <li class="card">
+                      <h2 class="card_title">Program</h2>
+                      <h4 class="card_text">과정개발 10단계 모델은 오래 기억되는 감성의학습 경험과 분명한 현장 변화를 만듭니다. </h4>
+                    </li>
+
+                    <li class="card">
+                      <h2 class="card_title">XR Consulting</h2>
+                      <h4 class="card_text"> 전략, 콘텐츠개발, 시스템 구축 
+                        운영 평가 고객맞춤 저비용 고효율의 Total HRD컨설팅입니다.</h4>
+                    </li>
+
                   </ul>
                 </div>
               </div>
@@ -142,29 +156,58 @@
               <div class="intro">
                 <div class="xr_title">
                   <p>XR Learning</p>
-                  <div>img</div>
+                  <div class="img">XRLearning</div>
                 </div>
                 <div class="xr_index">
-                  index
+                  <div class="xrbook">
+                    <h2>XR Book</h2>
+                    <p>Digital XR BOOK을 통해 언제 어디서나
+                      참여자들과 연결, 공유 하며 성찰과 회복의
+                      XR Reflection Writing 경험할 수 있습니다.
+                    </p>
+                  </div>
+                  <div class="xrlive">
+                    <h2>XR Live</h2>
+                    <p>개인 차원에서 자유로운 비 계획적 학습과
+                      조직차원에서 계획적 학습에 적합하며,
+                      학습과정과 결과의 Data를 활용 할 수 있습니다.
+                    </p>
+                  </div>
                 </div>
               </div>
               <div class="youtube">
-                <div class="yt_title">
+                <!-- <div class="yt_title">
                   <ul class="tab_menu">
                     <li>유튜브 1번</li>
                     <li>유튜브 2번</li>
                     <li>유튜브 3번</li>
                     <li>유튜브 4번</li>
                   </ul>
+                </div> -->
+                <div class="swiper" id="yt_slide">
+                  <div class="swiper-pagination yt_title tab_menu">
+                  </div>
+
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide yt_box">
+                        <p>어린 왕자 나를 만나다, XR Reflection Writing Program</p>
+                        <iframe width="50%" height="100%" src="https://www.youtube.com/embed/HO5TmL_uFEQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                      </div>
+                    <div class="swiper-slide yt_box">
+                        <p>어린 왕자 나를 만나다, XR Reflection Writing Program</p>
+                        <iframe width="50%" height="100%" src="https://www.youtube.com/embed/HO5TmL_uFEQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                      </div>
+                    <div class="swiper-slide yt_box">
+                        <p>어린 왕자 나를 만나다, XR Reflection Writing Program</p>
+                        <iframe width="50%" height="100%" src="https://www.youtube.com/embed/HO5TmL_uFEQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                      </div>
+                  </div>
                 </div>
-                <div class="yt_box">
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, in quo quam praesentium numquam ullam aliquam fuga, porro blanditiis, dicta rerum animi ipsam. Magni quia aspernatur odit ipsa hic sequi.</p>
-                  <img src="" alt="">
-                </div>
+                
 
                 <div class="btn_section">
-                  <button type="button">Contact</button>
-                  <button type="button">More</button>
+                  <button type="button" class="contact_btn">Contact</button>
+                  <button type="button" class="more_btn">More</button>
                 </div>
               </div>
 
@@ -174,7 +217,8 @@
   
         <section id="MetaverseLearning" class="swiper-slide">
           <div class="table">
-  
+            <div class="inner">
+            </div>
           </div>
         </section>
   
@@ -202,9 +246,9 @@
   <!-- plug in 연결 -->
   <script src="/jquery-script.js"></script>
   <!-- 부트스트랩 js -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script> -->
 </body>
 </body>
 

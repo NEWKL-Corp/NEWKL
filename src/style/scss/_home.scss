@@ -6,7 +6,7 @@
         width: 100%;
         max-width: 1200px;
         margin: 0 auto;
-        height: 100%
+        height: 100%;
     }
     
     header:hover {
@@ -19,7 +19,7 @@
         width: 100%;
         max-width: 1920px;
         height: 3.5vw;
-        background: transparent;
+        background: #fff;
         color: #000;
         font-size: 16px;
         font-weight: 550;
@@ -29,6 +29,7 @@
         z-index: 99;
         transition: all 0.4s;
         transition: 0.4s;
+        border-bottom: 1px solid #bbb;
         .inner{
             justify-content: space-between;
         }
@@ -75,19 +76,19 @@
         #main3d {
             background-color: #fcc !important;
         }
-        #Consulting::before {
-            content: "";
-            position: absolute;
-            opacity: 0.5;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #062a4e;
-        }
+        // #Consulting::before {
+        //     content: "";
+        //     position: absolute;
+        //     opacity: 0.5;
+        //     top: 0;
+        //     left: 0;
+        //     right: 0;
+        //     bottom: 0;
+        //     background-color: #062a4e;
+        // }
         #Consulting {
             position: relative;
-            background: url("../../img/Consulting_bg.jpg") no-repeat center center / cover !important;
+            // background: url("../../img/Consulting_bg.jpg") no-repeat center center / cover !important;
 
             .table {
                 @include flex-center;
@@ -96,35 +97,74 @@
                 position: relative;
                 width: 100%;
                 height: 100%;
-                
+                align-content: center;
+                gap: 5%;
                 .table_wrap {
                     position: relative;
                     width: 100%;
-                    height: 50%;
                     &.front{
                         display: flex;
-                        background-color: rgba(255, 255, 255, 0.3);
+                        margin-top: 3%;
+                        height: 40%;
+                        background-color: #f0f5ff;
                         .table_left{
                             width: 100%;
                             height: 100%;
-                            border: 1px solid red;
+                            // border: 1px solid red;
                             
                             .title {
+                                height: 100%;
                                 display: flex;
                                 flex-direction: column;
-                                align-items: flex-start;
+                                justify-content: space-evenly;
                                 text-align: start;
-                                gap: 1vw;
-                                padding-top: 30%;
+                                padding-top: 20%;
                                 line-height: 1.2;
                                 h3 {
                                     @include title-font;
+                                    font-size: 1.5em;
                                 }
                                 span {
                                     font-size: 21px;
                                     
                                 }
-                        }
+                                .btn_section{
+                                    button{
+                                        cursor: pointer;
+                                    }
+                                    .contact_btn:hover{
+                                        background-color: #fff;
+                                        border: 1px solid #7156bc;
+                                        color: #7156bc;
+                                        transition: all .6s;
+                                    }
+                                    .contact_btn{
+                                        width: 150px;
+                                        height: 50px;
+                                        background-color: #7156bc;
+                                        border: 1px solid #7156bc;
+                                        border-radius: 15px;
+                                        font-size: 1em;
+                                        color: #fff;
+                                        margin-right: 5%;
+                                    }
+                                    .more_btn:hover{
+                                        background-color: #7156bc;
+                                        color: #fff;
+                                        transition: all .6s;
+                                    }
+                                    .more_btn{
+                                        width: 150px;
+                                        height: 50px;
+                                        background-color: #fff;
+                                        border: 1px solid #7156bc;
+                                        color: #7156bc;
+                                        font-size: 1em;
+                                        border-radius: 15px;
+                                    }
+                                }
+                            }
+
                         }
                         .table_right{
                             width: 100%;
@@ -138,9 +178,20 @@
                         flex-direction: column;
                         justify-content: space-evenly;
                         height: 25%;
-                        background-color: rgba(255, 255, 255, 0.6);
+                        position: relative;
+                        .inner::after{
+                            content: '';
+                            width: 100%;
+                            height: 60%;
+                            background-color: #f0f5ff;
+                            position: absolute;
+                            top: 60%;
+                            z-index: -1;
+                        }
                         .inner{
+                            display: flex;
                             flex-direction: column;
+                            justify-content: space-between;
                             .title {
                                 @include flex-center;
                                 flex-direction: column;
@@ -150,6 +201,8 @@
         
                                 h3 {
                                     @include title-font;
+                                    font-size: 2.5em;
+                                    padding-bottom: 20px;
                                 }
         
                                 span {
@@ -167,10 +220,25 @@
                                     @include flex-center;
         
                                     .card {
+                                        @include flex-center;
+                                        flex-direction: column;
+                                        justify-content: space-evenly;
                                         background: #fff;
+                                        width: 100%;
                                         min-width: 270px;
-                                        height: 80%;
+                                        height: inherit;
                                         margin: 0 2%;
+                                        border-radius: 30px;
+                                        box-shadow: 4px 4px 4px 4px #eee;
+                                        .card_title{
+                                            width: 100%;
+                                            @include title-font;
+                                        }
+                                        .card_text{
+                                            width: 80%;
+                                            line-height: 1.3;
+                                            font-weight: 500;
+                                        }
                                     }
                                 }
                             }
@@ -182,45 +250,87 @@
         }
 
         #XRLearning {
-            background: url(../../img/XRLearning_bg.jpg) center bottom / cover;
+            // background: url(../../img/XRLearning_bg.jpg) center bottom / cover;
             .layer{
                 width: 100%;
                 height: 100%;
-                background-color: #88a2b4a1;
+                padding-top: 3.5vw;
+                background: url(../../img/low-poly-grid-haikei.svg)no-repeat center top / cover;
                 .inner{
                     flex-wrap: wrap;
+                    align-content: center;
+                    gap: 3vw;
                     .intro{
                         width: 100%;
-                        height: 50%;
+                        height: 35%;
                         display: flex;
                         .xr_title{
-                            width: 100%;
-                            @include flex-center;
                             @include title-font;
-                            justify-content: flex-start;
+                            width: 100%;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: flex-start;
+                            .img{
+                                color: transparent;
+                                width: 300px;
+                                height: 100%;
+                                background: url(../../img/xrImage.png)no-repeat center center / cover !important;
+                                margin: 5% auto;
+                            }
                         }
                         .xr_index{
                             width: 100%;
-                            @include flex-center;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            gap: 3vw;
+                            div{
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-evenly;
+                                h2{
+                                    @include title-font;
+                                }
+                                p{
+                                    line-height: 1.2;
+                                    width: 50%;
+                                }
+                            }
+                            
+                            // @include flex-center;
                         }
                     }
                     .youtube{
                         width: 100%;
-                        // height: 50%;
+                        height: 40%;
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-direction: column;
                         align-content: flex-start;
                         justify-content: center;
                         gap: 2vw;
                         .yt_title{
-                            width: 100%;
-                            .tab_menu{
+                            &.tab_menu{
+                                position: relative;
                                 display: flex;
-                                justify-content: space-around;
-                                gap: 5vw;
-                                li{ 
-                                    width: 100%;
-                                    border: 1px solid red;
+                                justify-content: center;
+                                gap: 1vw;
+                                span{ 
+                                    background: #749ef9;
+                                    background: linear-gradient(to bottom, #749ef9 0%, #1753d5 100%);
+                                    background: -moz-linear-gradient(top, #749ef9 0%, #1753d5 100%);
+                                    background: -webkit-linear-gradient(top, #749ef9 0%, #1753d5 100%);
+                                    border-radius: 20px;
+                                    color: #fff;
+                                    display: inline-block;
+                                    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#749ef9', endColorstr='#1753d5',GradientType=0 );
+                                    font-size: 1.3em;
+                                    height: 42px;
+                                    line-height: 42px;
+                                    margin: 9px 0;
+                                    padding: 0 25px;
+                                    text-align: center;
+                                    width: 15%;
                                     cursor: pointer;
                                 }
                             }
@@ -228,13 +338,38 @@
                         .yt_box{
                             width: 100%;
                             height: 80%;
-                            border: 1px solid red;
+                            // border: 1px solid red;
                             display: flex;
+                            border-radius: 30px;
                             p{
                                 @include flex-center;
                                 width: 50%;
                             }
-                            // img{
+                            iframe{
+                                border-radius: 30px;
+                            }
+                        }
+
+                        .btn_section{
+                            width: 100%;
+                            button:hover{
+                                background: #749ef9;
+                                transition: all .6s;
+                                color: #fff;
+                            }
+                            button{
+                                width: 150px;
+                                height: 50px;
+                                border-radius: 30px;
+                                border: 3px solid #749ef9;
+                                background-color: #fff;
+                                color: #749ef9;
+                                font-size: 1em;
+                                cursor: pointer;
+                            }
+                            // .more_btn{
+                            //     border: 3px solid #724fff;
+                            //     color: #724fff;
                             // }
                         }
                     }
@@ -243,7 +378,7 @@
         }
 
         #MetaverseLearning {
-            background-color: #cfc;
+            background: url(../../img/wave-haikei.svg) no-repeat center center / cover !important;
         }
 
         #SmartLearning {
