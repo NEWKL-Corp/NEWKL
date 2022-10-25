@@ -6,7 +6,6 @@ const path = require('path')
 const boardRouter = require('./board')
 
 // Constatns
-
 router.use('/board', boardRouter)
 
 module.exports = router
