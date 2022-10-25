@@ -76,7 +76,7 @@
         }
 
         #Consulting::before {
-            content: "";
+            content: '';
             position: absolute;
             opacity: 0.5;
             top: 0;
@@ -87,7 +87,8 @@
         }
         #Consulting {
             position: relative;
-            background: url("../../img/Consulting_bg.jpg") no-repeat center center / cover !important;
+            background: url('../../img/Consulting_bg.jpg') no-repeat center
+                center / cover !important;
 
             .table {
                 @include flex-center;

@@ -1,17 +1,17 @@
 /* 가로모드 작업 */
-@media screen and (orientation:landscape) {
+@media screen and (orientation: landscape) {
     // 가로 - 모바일
-    @media (max-width: 1280px){
-        .News{
+    @media (max-width: 1280px) {
+        .News {
             height: 100% !important;
-            .title{
+            .title {
                 width: 100% !important;
                 padding: 3% 12% !important;
                 margin: 12% 0;
                 margin-top: 20%;
                 background-color: rgba(143, 137, 226, 0.2);
                 font-weight: bold;
-                h1{
+                h1 {
                     width: 70%;
                 }
             }
@@ -21,11 +21,11 @@
         }
     }
 }
-    .News {
-        @include flex-center;
-        flex-direction: column;
-        height: 100vh;
-        background: url("/img/parking/top_pattern.png") center 5% no-repeat;
+.News {
+    @include flex-center;
+    flex-direction: column;
+    height: 100vh;
+    background: url('/img/parking/top_pattern.png') center 5% no-repeat;
 
     .title {
         width: 100%;
@@ -112,7 +112,7 @@
                     font-weight: 200;
 
                     li:before {
-                        content: "●";
+                        content: '●';
                         position: absolute;
                         left: 0;
                         transform: translateX(-50%) scale(0.5);
