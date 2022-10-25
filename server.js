@@ -7,11 +7,8 @@ const cors = require('cors')
 const path = require('path')
 
 const route = require('./routes/index')
-
 const app = express()
-
 app.use(express.static('src'))
-app.use(express.static('nkl'))
 app.use(express.static('static'))
 
 app.use(express.json())

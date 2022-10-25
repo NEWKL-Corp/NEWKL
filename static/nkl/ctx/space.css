@@ -1,0 +1,131 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+#scene-container {
+  width: 100%;
+  height: 100%;
+  background: pink;
+}
+
+#button-menu {
+  width: 100%;
+  height: 100%;
+  background: pink;
+}
+
+#event-menu {
+  width: 100%;
+  height: 100%;
+  background: pink;
+}
+
+#event-popup {
+  width: 100%;
+  height: 100%;
+  background: pink;
+}
+
+/* 
+///. Jostick
+*/
+
+#joystick {
+  position: fixed;
+  pointer-events: none;
+  z-index: 11;
+}
+
+.noSelect-joystick {
+  /* -webkit-touch-callout: none; */
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#wrapper-joystick {
+  pointer-events: auto;
+  display: block;
+  position: absolute;
+  bottom: 64px;
+  left: 64px;
+  /* background-color: transparent; */
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  z-index: 12;
+  /* touch-action: manipulation; */
+  background-color: rgba(128, 128, 128, 0.1);
+}
+
+#button-joystick {
+  pointer-events: auto;
+  display: block;
+  position: absolute;
+  bottom: 32px;
+  right: 32px;
+  /* left: auto; */
+  /* background-color: transparent; */
+  background-color: rgba(255, 180, 60, 0.2);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  z-index: 12;
+  /* touch-action: manipulation; */
+  /* display: none; */
+}
+
+/* #button-jump {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: rgba(white, 0.2);
+  opacity: 1;
+  touch-action: manipulation;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: auto;
+} */
+
+/* 
+///. Button Play
+*/
+
+#overlay {
+  position: absolute;
+  font-size: 16px;
+  z-index: 21;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+#btnPlay {
+  background: transparent;
+  border: 0;
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 4px;
+  color: #ffffff;
+  width: 48%;
+  height: 8%;
+  font-size: 2vh;
+  padding: 12px 18px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
