@@ -60,40 +60,26 @@ router.post('/check', async (req, res) => {
 })
 
 router.post('/article', async (req, res) => {
-  const { board_id, pswd } = req.body
-  console.log(board_id, pswd)
-  const masterKey = process.env.MASTERKEY
-  if (pswd === masterKey) {
-    pool.query(
-      `
+  const { board_id } = req.body
+  pool.query(
+    `
       select * from TB_BOARD where BOARD_ID = ${board_id}
       `,
-      (error, rows) => {
-        if (error) throw error
-        else return res.send({ success: true, rows })
-      }
-    )
-  } else {
-    pool.query(
-      `
-      select * from TB_BOARD where BOARD_ID = ${board_id} and PSWD = ${pswd}
-      `,
 
-      (error, rows) => {
-        if (error) throw error
-        else {
-          if (rows.length) {
-            return res.send({ success: true, rows })
-          } else {
-            return res.send({
-              success: false,
-              msg: '비밀번호가 일치하지 않습니다.',
-            })
-          }
+    (error, rows) => {
+      if (error) throw error
+      else {
+        if (rows.length) {
+          return res.send({ success: true, rows })
+        } else {
+          return res.send({
+            success: false,
+            msg: '잠시 후 다시 시도해주세요.',
+          })
         }
       }
-    )
-  }
+    }
+  )
 })
 
 router.post('/post', async (req, res) => {

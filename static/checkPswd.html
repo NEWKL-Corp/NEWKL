@@ -36,8 +36,7 @@
         },
         success: function (res) {
           if (res.success) {
-            console.log(res.rows[0])
-            window.location.href = `/checkPswd.html?boardId=${board_id}`
+            window.location.href = `/article.html?boardId=${board_id}`
           } else {
             alert(res.msg)
           }
