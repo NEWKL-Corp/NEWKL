@@ -5,9 +5,11 @@
 			mousewheel:true, //마우스휠을 사용하여 동작가능
 			speed:1200, //영역 전환속도
 		});//end:wrapSwiper();
-    
-
   });
 
+  $(function(){
+	var innerheight = document.body
+	innerheight.style.minHeight = Number(window.innerHeight) + 'px'
+  });
 	
 })(jQuery);

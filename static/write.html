@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NewKL : 게시판</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+    <!-- ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <style>
+    button {
+      background-color: #f9b514;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    function post() {
+      let title = $('#title').val()
+      let name = $('#name').val()
+      let pswd = $('#pswd').val()
+      let contents = $('#contents').val()
+      let email = $('#email').val()
+      let phone_number = $('#phone').val()
+
+      if (
+        title === '' ||
+        name === '' ||
+        pswd === '' ||
+        contents === '' ||
+        email === '' ||
+        phone_number === ''
+      )
+        return alert('빈 칸 없이 작성해 주세요.')
+
+      $.ajax({
+        type: 'POST',
+        url: 'api/board/post',
+        data: {
+          title,
+          name,
+          pswd,
+          contents,
+          email,
+          phone_number,
+        },
+        success: function (res) {
+          if (res.success) {
+            window.location.href = '/board.html'
+          }
+        },
+        error: function (err) {
+          console.log(err)
+          window.location.href = '/write.html'
+        },
+      })
+    }
+
+    function goToBoardPage() {
+      let title = $('#title').val()
+      let name = $('#name').val()
+      let pswd = $('#pswd').val()
+      let contents = $('#contents').val()
+      let email = $('#email').val()
+      let phone_number = $('#phone').val()
+
+      if (title || name || pswd || contents || email || phone_number) {
+        var confirmResult = confirm('작성하신 내용은 저장되지 않습니다.')
+        if (confirmResult) {
+          window.location.href = '/board.html'
+        }
+      } else {
+        window.location.href = '/board.html'
+      }
+    }
+  </script>
+
+  <body>
+    <div>
+      <label>이름</label>
+      <input type="text" id="name" placeholder="공백 포함 50자" />
+    </div>
+    <div>
+      <label>비밀번호</label>
+      <input type="text" id="pswd" placeholder="공백 포함 50자" />
+    </div>
+    <div>
+      <label>제목</label>
+      <input type="text" id="title" placeholder="공백 포함 50자" />
+    </div>
+    <div>
+      <label>이메일</label>
+      <input type="text" id="email" placeholder="공백 포함 50자" />
+    </div>
+    <div>
+      <label>전화번호</label>
+      <input type="text" id="phone" placeholder="공백 포함 50자" />
+    </div>
+    <div>
+      <label>내용</label>
+      <input type="text" id="contents" />
+    </div>
+    <button type="submit" class="btn btn-dark" onclick="goToBoardPage()">
+      돌아가기
+    </button>
+    <button type="submit" class="btn btn-dark" onclick="post()">
+      작성완료
+    </button>
+
+    <hr />
+  </body>
+</html>

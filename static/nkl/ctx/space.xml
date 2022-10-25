@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<story>
+  {"code": "wtnw2209", "title": "Welcome to NEWKL SPACE", "world": ""}
+  <sequence>
+    {"title": "NEWKL SPACE", "inorder": true}
+    <ctx>{"canvas": "container", "id": "scene-container", "exp": "3D World", "function": "", "state": "active"}</ctx>
+    <ctx>{"ui": "button", "id": "button-joystick", "exp": "캐릭터 이동", "function": "control", "state": "active"}</ctx>
+    <ctx>{"ui": "button", "id": "button-menu", "exp": "메뉴 버튼", "function": "control", "state": "active"}</ctx>
+    <ctx>{"ui": "event", "id": "event-menu", "exp": "전체 메뉴", "function": "setMenu", "state": "inactive"}</ctx>
+    <ctx>{"ui": "event", "id": "event-popup", "exp": "팝업", "function": "setPopup", "state": "inactive"}</ctx>
+    <scene>
+      {"title": "Hellow NewKL Space", "inorder": true, "objs": ["world"], "bgm": ""}
+      <situation>
+        {"title": "", "inorder": true, "nar": []}
+        <ctx>{"element": "npc", "obj":"dongle", "exp": "동글이", "url": "dongle"}</ctx>
+        <ctx>{"element": "reward", "obj":"award", "exp": "성공", "url": "giftbox"}</ctx>
+        <ctx>{"element": "reward", "obj":"panel", "exp": "실패", "url": "panelbox"}</ctx>
+        <ctx>{"element": "quiz", "obj":"q0201-01", "exp": "퀴즈 보드", "url": "quiz0201-01"}</ctx>
+        <ctx>{"element": "done", "obj":"b0201-01", "exp": "확인 보드", "url": "done0201-01"}</ctx>
+        <ctx>{"event": "move", "obj": "map", "exp": "이동하기", "quest": "observer-1|5", "done": "auto"}</ctx>
+        <ctx>{"event": "touch", "obj": "dongle", "exp": "NPC 이야기", "quest": "observer-2|0", "done": "auto"}</ctx>
+        <ctx>{"event": "talk", "obj": "dongle", "exp": "NPC 이야기", "quest": "nar|001", "done": "auto"}</ctx>
+        <ctx>{"event": "talk", "obj": "dongle", "exp": "NPC 이야기", "quest": "nar|002", "done": "auto"}</ctx>
+        <ctx>{"event": "quiz", "obj": "dongle", "exp": "NPC 선다형 문제", "quest": "quiz|0201", "done": "answer"}</ctx>
+        <ctx>{"eval": "reward", "obj": "", "exp": "평가", "done": "answer"}</ctx>
+      </situation>
+      <situation>
+        {"title": "", "inorder": true, "nar": ""}
+        <ctx>{"element": "npc", "obj":"dongle", "exp": "동글이", "url": "dongle"}</ctx>
+        <ctx>{"event": "move", "obj": "map", "exp": "이동하기", "quest": [900, 900], "done": "auto", "dims": []}</ctx>
+        <ctx>{"event": "touch", "obj": "dongle", "exp": "NPC 이야기", "quest": "000", "done": "auto", "dims": []}</ctx>
+        <ctx>{"event": "talk", "obj": "dongle", "exp": "NPC 이야기", "quest": "001", "done": "auto", "dims": ["home", "forward", "backward"]}</ctx>
+        <ctx>{"event": "capture", "obj": "", "exp": "수행 증명", "quest": "img", "done": "answer", "dims": ["home", "forward", "backward"]}</ctx>
+      </situation>
+    </scene>
+    <scene>
+      {"title": "Goodbye NewKL Space", "inorder": true, "objs": ["world"], "bgm": "", "event": "auto"}
+      <situation>
+        {"title": "", "inorder": true, "nar": ""}
+        <ctx>{"element": "npc", "obj":"dongle", "exp": "동글이", "url": "dongle"}</ctx>
+        <ctx>{"event": "move", "obj": "map", "exp": "이동하기", "quest": [900, 900], "done": "auto", "dims": []}</ctx>
+        <ctx>{"event": "touch", "obj": "dongle", "exp": "NPC 이야기", "quest": "000", "done": "auto", "dims": []}</ctx>
+        <ctx>{"event": "talk", "obj": "dongle", "exp": "NPC 이야기", "quest": "001", "done": "auto", "dims": ["home", "forward", "backward"]}</ctx>
+        <ctx>{"event": "talk", "obj": "dongle", "exp": "NPC 선다형 문제", "quest": "002", "done": "answer", "dims": ["home", "forward", "backward"]}</ctx>
+      </situation>
+    </scene>
+  </sequence>
+</story>
