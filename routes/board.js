@@ -4,7 +4,7 @@ const db_config = require('../dbConfig')
 const mysql = require('mysql')
 const pool = new mysql.createPool(db_config)
 
-router.get('/', async (req, res) => {
+router.post('/', async (req, res) => {
   pool.query(
     `
     select 
@@ -22,10 +22,11 @@ router.get('/', async (req, res) => {
     }
   )
 })
+
 router.post('/check', async (req, res) => {
   const { board_id, pswd } = req.body
-  console.log(board_id, pswd)
   const masterKey = process.env.MASTERKEY
+
   if (pswd === masterKey) {
     pool.query(
       `
