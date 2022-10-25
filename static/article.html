@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NewKL : 게시판</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+    <!-- ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <style>
+    button {
+      background-color: #f9b514;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    const queryString = window.location.search
+    const urlParams = new URLSearchParams(queryString)
+    const board_id = urlParams.get('boardId')
+
+    let standardPSWD = ''
+
+    $(document).ready(function () {
+      one(board_id)
+    })
+
+    function one(board_id) {
+      $.ajax({
+        type: 'POST',
+        url: 'api/board/article',
+        data: {
+          board_id,
+        },
+        success: function (res) {
+          if (res.success) {
+            console.log(res.rows[0])
+            let board_id = res.rows[0].BOARD_ID
+            let title = res.rows[0].TITLE
+            let writer = res.rows[0].WRITER
+            let contents = res.rows[0].CONTENTS
+            let regDate = res.rows[0].REG_DATE
+            let comment = res.rows[0].COMMENT_ID
+            let email = res.rows[0].EMAIL
+            let phone_number = res.rows[0].PHONE_NUMBER
+            standardPSWD = res.rows[0].PSWD
+            let splitRegDate = regDate.split(' ')[0]
+
+            let temp_html = `
+                <hr>
+                <p> 이름: ${writer} </p>
+                <p> 이메일: ${email} </p>
+                <p> 전화번호: ${phone_number} </p>
+                <p> 제목: ${title} </p>
+                <p> 작성일자: ${splitRegDate} </p>
+                <p> 내용: ${contents} </p>
+                <hr>
+                                    `
+            $('#article').append(temp_html)
+          }
+        },
+        error: function (err) {
+          console.log(err)
+        },
+      })
+    }
+  </script>
+
+  <body>
+    <div id="article"></div>
+  </body>
+</html>

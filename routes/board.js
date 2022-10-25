@@ -4,56 +4,108 @@ const db_config = require('../dbConfig')
 const mysql = require('mysql')
 const pool = new mysql.createPool(db_config)
 
-router.post('/board/post', async (req, res) => {
-  const { title, name, pswd, contents } = req.body
+router.get('/', async (req, res) => {
   pool.query(
     `
-    insert into TB_BOARD (TITLE, WRITER,PSWD ,CONTENTS, REG_DATE) values ('${title}','${name}', ${pswd},'${contents}',now() )
+    select 
+      tb.*,
+      tc.COMMENT_ID 
+    from 
+      TB_BOARD as tb 
+      left join 
+      TB_COMMENT as tc 
+      on tb.BOARD_ID = tc.BOARD_ID 
     `,
     (error, rows) => {
       if (error) throw error
-      console.log(rows)
+      else return res.send({ success: true, rows })
     }
   )
 })
-
-router.post('/board/:boardId', async (req, res) => {
-  const { boardId } = req.params
-  const { pswd } = req.body
+router.post('/check', async (req, res) => {
+  const { board_id, pswd } = req.body
+  console.log(board_id, pswd)
   const masterKey = process.env.MASTERKEY
-  if (psed === masterKey) {
+  if (pswd === masterKey) {
     pool.query(
       `
-      select * from TB_BOARD where BOARD_ID = ${boardId}
+      select * from TB_BOARD where BOARD_ID = ${board_id}
       `,
       (error, rows) => {
         if (error) throw error
-        console.log(rows)
+        else return res.send({ success: true })
       }
     )
   } else {
     pool.query(
       `
-      select * from TB_BOARD where BOARD_ID = ${boardId} and PASSWORD = ${pswd}
+      select * from TB_BOARD where BOARD_ID = ${board_id} and PSWD = ${pswd}
       `,
+
       (error, rows) => {
         if (error) throw error
-        console.log(rows)
+        else {
+          if (rows.length) {
+            return res.send({ success: true })
+          } else {
+            return res.send({
+              success: false,
+              msg: '비밀번호가 일치하지 않습니다.',
+            })
+          }
+        }
       }
     )
   }
 })
 
-router.get('/', async (req, res) => {
+router.post('/article', async (req, res) => {
+  const { board_id, pswd } = req.body
+  console.log(board_id, pswd)
+  const masterKey = process.env.MASTERKEY
+  if (pswd === masterKey) {
+    pool.query(
+      `
+      select * from TB_BOARD where BOARD_ID = ${board_id}
+      `,
+      (error, rows) => {
+        if (error) throw error
+        else return res.send({ success: true, rows })
+      }
+    )
+  } else {
+    pool.query(
+      `
+      select * from TB_BOARD where BOARD_ID = ${board_id} and PSWD = ${pswd}
+      `,
+
+      (error, rows) => {
+        if (error) throw error
+        else {
+          if (rows.length) {
+            return res.send({ success: true, rows })
+          } else {
+            return res.send({
+              success: false,
+              msg: '비밀번호가 일치하지 않습니다.',
+            })
+          }
+        }
+      }
+    )
+  }
+})
+
+router.post('/post', async (req, res) => {
+  const { title, name, pswd, contents, email, phone_number } = req.body
   pool.query(
     `
-    select tb.BOARD_ID, tb.TITLE, tb.WRITER , tb.REG_DATE, tc.COMMENT_ID from TB_BOARD as tb , TB_COMMENT as tc WHERE tc.BOARD_ID = tb.BOARD_ID  
+    insert into TB_BOARD (TITLE, WRITER, PSWD ,CONTENTS, EMAIL, PHONE_NUMBER, REG_DATE) values ('${title}','${name}', '${pswd}','${contents}', '${email}','${phone_number}' , now() )
     `,
     (error, rows) => {
       if (error) throw error
-      res.send(rows)
+      else return res.send({ success: true })
     }
   )
 })
-
 module.exports = router
