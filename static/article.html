@@ -39,13 +39,13 @@
                     board_id,
                 },
                 success: function (res) {
+                    console.log(res);
                     if (res.success) {
-                        let comment_id = res.rows[0].COMMENT_ID;
-                        let contents = res.rows[0].CONTENTS;
-                        let link = res.rows[0].LINK;
-                        console.log('link', link);
-                        let regDate = res.rows[0].REG_DATE;
-                        let splitRegDate = regDate.split(' ')[0];
+                        let comment_id = res.comment[0].COMMENT_ID;
+                        let contents = res.comment[0].CONTENTS;
+                        let link = res.comment[0].LINK;
+                        let regDate = res.comment[0].REG_DATE;
+                        let splitRegDate = regDate.split('T')[0];
                         let temp_html = `
                         <div>
                           <p>답변 내용 : ${contents}</p>
@@ -95,15 +95,15 @@
                 },
                 success: function (res) {
                     if (res.success) {
-                        let title = res.rows[0].TITLE;
-                        let writer = res.rows[0].WRITER;
-                        let contents = res.rows[0].CONTENTS;
-                        let regDate = res.rows[0].REG_DATE;
-                        let email = res.rows[0].EMAIL;
-                        let phone_number = res.rows[0].PHONE_NUMBER;
-                        let link = res.rows[0].LINK;
-                        standardPSWD = res.rows[0].PSWD;
-                        let splitRegDate = regDate.split(' ')[0];
+                        let title = res.article.TITLE;
+                        let writer = res.article.WRITER;
+                        let contents = res.article.CONTENTS;
+                        let regDate = res.article.REG_DATE;
+                        let email = res.article.EMAIL;
+                        let phone_number = res.article.PHONE_NUMBER;
+                        let link = res.article.LINK;
+                        standardPSWD = res.article.PSWD;
+                        let splitRegDate = regDate.split(' ');
 
                         let temp_html = `
                 <hr>

@@ -36,14 +36,13 @@
                     board_id,
                 },
                 success: function (res) {
-                    console.log(res);
                     if (res.success) {
-                        $('#title').val(res.rows[0].TITLE);
-                        $('#name').val(res.rows[0].WRITER);
-                        $('#pswd').val(res.rows[0].PSWD);
-                        $('#contents').val(res.rows[0].CONTENTS);
-                        $('#email').val(res.rows[0].EMAIL);
-                        $('#phone').val(res.rows[0].PHONE_NUMBER);
+                        $('#title').val(res.article.TITLE);
+                        $('#name').val(res.article.WRITER);
+                        $('#pswd').val(res.article.PSWD);
+                        $('#contents').val(res.article.CONTENTS);
+                        $('#email').val(res.article.EMAIL);
+                        $('#phone').val(res.article.PHONE_NUMBER);
                     }
                 },
                 error: function (err) {

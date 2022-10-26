@@ -38,8 +38,8 @@
                 },
                 success: function (res) {
                     if (res.success) {
-                        $('#contents').val(res.rows[0].CONTENTS);
-                        $('#link').val(res.rows[0].LINK);
+                        $('#contents').val(res.comment[0].CONTENTS);
+                        $('#link').val(res.comment[0].LINK);
                     }
                 },
                 error: function (err) {

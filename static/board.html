@@ -23,22 +23,25 @@
             $.ajax({
                 type: 'POST',
                 url: 'api/board',
-                data: {},
+                data: {
+                    currentPage: 1,
+                },
                 success: function (res) {
                     if (res.success) {
-                        for (let i = 0; i < res.rows.length; i++) {
-                            // let row_num = res.rows[i].row_num;
-                            let board_id = res.rows[i].BOARD_ID;
-                            let title = res.rows[i].TITLE;
-                            let writer = res.rows[i].WRITER;
-                            let contents = res.rows[i].CONTENTS;
-                            let regDate = res.rows[i].REG_DATE;
-                            let comment = res.rows[i].COMMENT_ID;
-                            let pswd = res.rows[i].PSWD;
-                            let splitRegDate = regDate.split(' ')[0];
+                        for (let i = 0; i < res.result.length; i++) {
+                            let row_num = res.result[i].row_num;
+                            let board_id = res.result[i].BOARD_ID;
+                            let title = res.result[i].TITLE;
+                            let writer = res.result[i].WRITER;
+                            let contents = res.result[i].CONTENTS;
+                            let regDate = res.result[i].REG_DATE;
+                            let comment = res.result[i].COMMENT_ID;
+                            let pswd = res.result[i].PSWD;
+                            let splitRegDate = regDate.split('T')[0];
 
                             let temp_html = `
                                     <div>
+                                        <p> ${row_num}</p>
                                         <p onclick="location.href='/checkPswd.html?boardId=${board_id}'">
                                         제목: ${title} ${
                                 comment ? '[자물쇠], 답변있음' : '[자물쇠]'
