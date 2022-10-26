@@ -147,17 +147,17 @@
                 },
             });
         }
-        function delComment(board_id) {
+        function delComment(comment_id) {
             $.ajax({
                 type: 'POST',
-                url: 'api/board/delete',
+                url: 'api/comment/delete',
                 data: {
-                    board_id,
+                    comment_id,
                 },
                 success: function (res) {
                     if (res.success) {
                         alert(res.msg);
-                        window.location.href = '/board.html';
+                        window.location.href = `/article.html?boardId=${board_id}&m=true`;
                     }
                 },
                 error: function (err) {

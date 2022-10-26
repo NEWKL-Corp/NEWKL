@@ -48,7 +48,6 @@ router.post('/post', async (req, res) => {
 
 router.post('/delete', async (req, res) => {
     const { comment_id } = req.body;
-
     pool.query(
         `
         delete from TB_COMMENT where COMMENT_ID = ${comment_id}
