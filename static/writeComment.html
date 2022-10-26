@@ -21,6 +21,32 @@
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const board_id = urlParams.get('boardId');
+        const comment_id = urlParams.get('commentId');
+
+        if (comment_id) {
+            $(document).ready(function () {
+                showComment(board_id);
+            });
+        }
+
+        function showComment(board_id) {
+            $.ajax({
+                type: 'POST',
+                url: 'api/comment',
+                data: {
+                    board_id,
+                },
+                success: function (res) {
+                    if (res.success) {
+                        $('#contents').val(res.rows[0].CONTENTS);
+                        $('#link').val(res.rows[0].LINK);
+                    }
+                },
+                error: function (err) {
+                    console.log(err);
+                },
+            });
+        }
 
         function postComment() {
             let contents = $('#contents').val();

@@ -85,20 +85,35 @@ router.post('/article', async (req, res) => {
 router.post('/post', async (req, res) => {
     const { board_id, title, name, pswd, contents, email, phone_number, link } =
         req.body;
-
-    pool.query(
-        `
+    if (board_id) {
+        pool.query(
+            `
+      update TB_BOARD set TITLE =  '${title}', WRITER = '${name}', PSWD =  '${pswd}', CONTENTS = '${contents}', EMAIL = '${email}', PHONE_NUMBER = '${phone_number}', LINK='${link}' where BOARD_ID = ${board_id}
+      `,
+            (error, rows) => {
+                if (error) throw error;
+                else
+                    return res.send({
+                        success: true,
+                        msg: '게시글이 수정되었습니다.',
+                    });
+            }
+        );
+    } else {
+        pool.query(
+            `
       insert into TB_BOARD (TITLE, WRITER, PSWD ,CONTENTS, EMAIL, PHONE_NUMBER, REG_DATE,LINK) values ('${title}','${name}', '${pswd}','${contents}', '${email}','${phone_number}' , now(),'${link}' )
       `,
-        (error, rows) => {
-            if (error) throw error;
-            else
-                return res.send({
-                    success: true,
-                    msg: '게시글이 작성되었습니다.',
-                });
-        }
-    );
+            (error, rows) => {
+                if (error) throw error;
+                else
+                    return res.send({
+                        success: true,
+                        msg: '게시글이 작성되었습니다.',
+                    });
+            }
+        );
+    }
 });
 
 router.post('/delete', async (req, res) => {
