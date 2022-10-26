@@ -25,21 +25,11 @@
 
         let flag = true;
         let standardPSWD = '';
+        let comment_id = 0;
 
         $(document).ready(function () {
             showArticle(board_id);
             showComment(board_id);
-            if (masterKey) {
-                let temp_html = `
-            <div>
-              <label>답변</label>
-              <input type="text" id="comment" placeholder="내용" />
-              <button onclick="postComment(${board_id})">답변 작성</button>
-            </div>
-            <hr>
-        `;
-                $('#comment').append(temp_html);
-            }
         });
 
         function showComment(board_id) {
@@ -51,26 +41,36 @@
                 },
                 success: function (res) {
                     if (res.success) {
+                        comment_id = res.rows[0].COMMENT_ID;
                         let comment = res.rows[0].CONTENTS;
                         let regDate = res.rows[0].REG_DATE;
                         let splitRegDate = regDate.split(' ')[0];
                         let temp_html = `
-            <div>
-              <p>답변 내용 : ${comment}</p>
-              <p>작성일자 : ${splitRegDate}</p>
-              ${
-                  masterKey
-                      ? `<div>
-                    <button onclick="updateComment(${board_id})">
-                      답변 수정
-                    </button>
-                    <button onclick="delComment(${board_id})">답변 삭제</button>
-                  </div>`
-                      : ''
-              }
-            </div>
-            <hr>
-        `;
+                        <div>
+                          <p>답변 내용 : ${comment}</p>
+                          <p>작성일자 : ${splitRegDate}</p>
+                          ${
+                              masterKey === 'true'
+                                  ? `<div>
+                                      <button onclick="goTo(6)">답변 수정</button>
+                                      <button onclick="goTo(7)">답변 삭제</button>
+                                    </div>`
+                                  : ''
+                          }
+                        </div>
+                        <hr>
+                        `;
+                        $('#comment').append(temp_html);
+                    } else {
+                        let temp_html = `
+                         ${
+                             masterKey === 'true'
+                                 ? `<div>
+                                      <button onclick="goTo(5)">답변 작성하기</button>
+                                      <hr />
+                                    </div>`
+                                 : ''
+                         }`;
                         $('#comment').append(temp_html);
                     }
                 },
@@ -80,26 +80,8 @@
             });
         }
 
-        function postComment(board_id) {
-            let comment = $('#comment').val();
-            console.log(comment);
-            $.ajax({
-                type: 'POST',
-                url: 'api/comment/post',
-                data: {
-                    board_id,
-                    comment,
-                },
-                success: function (res) {
-                    if (res.success) {
-                        window.location.replace();
-                    }
-                },
-                error: function (err) {
-                    console.log(err);
-                },
-            });
-        }
+        function updateComment(board_id) {}
+        function delComment(board_id) {}
 
         function showArticle(board_id) {
             $.ajax({
@@ -116,6 +98,7 @@
                         let regDate = res.rows[0].REG_DATE;
                         let email = res.rows[0].EMAIL;
                         let phone_number = res.rows[0].PHONE_NUMBER;
+                        let link = res.rows[0].LINK;
                         standardPSWD = res.rows[0].PSWD;
                         let splitRegDate = regDate.split(' ')[0];
 
@@ -127,6 +110,7 @@
                 <p> 제목: ${title} </p>
                 <p> 작성일자: ${splitRegDate} </p>
                 <p> 내용: ${contents} </p>
+                <p> 첨부 링크: <a href="${link}">${link} </a> </p>
                 <hr>
                 `;
                         $('#article').append(temp_html);
@@ -158,20 +142,30 @@
         }
 
         function goTo(num) {
+            console.log(num);
             let confirmMsg = '';
             let confirmUrl = '';
             if (num === 1) {
                 confirmMsg = '수정페이지로 이동합니다.';
-                confirmUrl = `/write.html?boardId=${board_id}`;
+                confirmUrl = `/writeArticle.html?boardId=${board_id}`;
             } else if (num === 2) {
                 confirmMsg = '정말로 삭제하시겠습니까?';
                 confirmUrl = '/board.html';
             } else if (num === 3) {
                 confirmMsg = '전체 글 목록으로 이동합니다.';
                 confirmUrl = '/board.html';
-            } else {
+            } else if (num === 4) {
                 confirmMsg = '작성페이지로 이동합니다.';
-                confirmUrl = '/write.html';
+                confirmUrl = '/writeArticle.html';
+            } else if (num === 5) {
+                confirmMsg = '수정페이지로 이동합니다.';
+                confirmUrl = `/wirteComment.html?commentId=${comment_id}`;
+            } else if (num === 6) {
+                confirmMsg = '작성페이지로 이동합니다.';
+                confirmUrl = '/wirteComment.html';
+            } else {
+                confirmMsg = '정말로 삭제하시겠습니까?';
+                confirmUrl = '/board.html';
             }
 
             var confirmResult = confirm(`${confirmMsg}`);
@@ -188,6 +182,7 @@
     <body>
         <div id="article"></div>
         <div id="comment"></div>
+
         <button onclick="goTo(1)">수정</button>
         <button onclick="goTo(2)">삭제</button>
         <button onclick="goTo(3)">목록</button>
