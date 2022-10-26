@@ -7,25 +7,59 @@ router.post('/', async (req, res) => {
     const { board_id } = req.body;
     pool.query(
         `
-    select * from TB_COMMENT where BOARD_ID = ${board_id}
+    select * from TB_COMMENT where BOARD_ID = ${board_id} and exists(select * from TB_COMMENT where BOARD_ID = ${board_id})
         `,
         (error, rows) => {
             if (error) throw error;
-            else return res.send({ success: true, rows });
+            if (rows.length) {
+                return res.send({ success: true, rows });
+            } else {
+                return res.send({ success: false });
+            }
         }
     );
 });
 
 router.post('/post', async (req, res) => {
-    const { board_id, comment } = req.body;
-    console.log(board_id, comment);
+    const { board_id, comment_id, contents, link } = req.body;
+
+    if (comment_id) {
+        pool.query(
+            `
+            update TB_COMMENT set CONTENTS='${contents}' , LINK='${link}' where COMMENT_ID = ${comment_id}
+            `,
+            (error, rows) => {
+                if (error) throw error;
+                else return res.send({ success: true });
+            }
+        );
+    } else {
+        pool.query(
+            `
+            insert into TB_COMMENT (CONTENTS,REG_DATE,BOARD_ID) values ('${contents}',now(), ${board_id})
+            `,
+            (error, rows) => {
+                if (error) throw error;
+                else return res.send({ success: true });
+            }
+        );
+    }
+});
+
+router.post('/delete', async (req, res) => {
+    const { comment_id } = req.body;
+
     pool.query(
         `
-    insert into TB_COMMENT (CONTENTS,REG_DATE,BOARD_ID) values ('${comment}',now(), ${board_id})
-    `,
+        delete from TB_COMMENT where COMMENT_ID = ${comment_id}
+        `,
         (error, rows) => {
             if (error) throw error;
-            else return res.send({ success: true, rows });
+            else
+                return res.send({
+                    success: true,
+                    msg: '답변이 삭제되었습니다.',
+                });
         }
     );
 });

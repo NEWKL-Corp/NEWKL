@@ -25,7 +25,6 @@
 
         let flag = true;
         let standardPSWD = '';
-        let comment_id = 0;
 
         $(document).ready(function () {
             showArticle(board_id);
@@ -41,19 +40,26 @@
                 },
                 success: function (res) {
                     if (res.success) {
-                        comment_id = res.rows[0].COMMENT_ID;
-                        let comment = res.rows[0].CONTENTS;
+                        let comment_id = res.rows[0].COMMENT_ID;
+                        let contents = res.rows[0].CONTENTS;
+                        let link = res.rows[0].LINK;
+                        console.log('link', link);
                         let regDate = res.rows[0].REG_DATE;
                         let splitRegDate = regDate.split(' ')[0];
                         let temp_html = `
                         <div>
-                          <p>답변 내용 : ${comment}</p>
+                          <p>답변 내용 : ${contents}</p>
+                          ${
+                              link
+                                  ? `<p> 첨부 링크: <a href="${link}">${link} </a> </p>`
+                                  : ''
+                          }
                           <p>작성일자 : ${splitRegDate}</p>
                           ${
                               masterKey === 'true'
                                   ? `<div>
-                                      <button onclick="goTo(6)">답변 수정</button>
-                                      <button onclick="goTo(7)">답변 삭제</button>
+                                      <button onclick="goTo(6,${comment_id})">답변 수정</button>
+                                      <button onclick="goTo(7,${comment_id})">답변 삭제</button>
                                     </div>`
                                   : ''
                           }
@@ -79,9 +85,6 @@
                 },
             });
         }
-
-        function updateComment(board_id) {}
-        function delComment(board_id) {}
 
         function showArticle(board_id) {
             $.ajax({
@@ -110,7 +113,11 @@
                 <p> 제목: ${title} </p>
                 <p> 작성일자: ${splitRegDate} </p>
                 <p> 내용: ${contents} </p>
-                <p> 첨부 링크: <a href="${link}">${link} </a> </p>
+                ${
+                    link
+                        ? `<p> 첨부 링크: <a href="${link}">${link} </a> </p>`
+                        : ''
+                }
                 <hr>
                 `;
                         $('#article').append(temp_html);
@@ -140,31 +147,48 @@
                 },
             });
         }
+        function delComment(board_id) {
+            $.ajax({
+                type: 'POST',
+                url: 'api/board/delete',
+                data: {
+                    board_id,
+                },
+                success: function (res) {
+                    if (res.success) {
+                        alert(res.msg);
+                        window.location.href = '/board.html';
+                    }
+                },
+                error: function (err) {
+                    console.log(err);
+                },
+            });
+        }
 
-        function goTo(num) {
-            console.log(num);
+        function goTo(num, comment_id) {
             let confirmMsg = '';
             let confirmUrl = '';
             if (num === 1) {
-                confirmMsg = '수정페이지로 이동합니다.';
+                confirmMsg = '게시글 수정페이지로 이동합니다.';
                 confirmUrl = `/writeArticle.html?boardId=${board_id}`;
             } else if (num === 2) {
-                confirmMsg = '정말로 삭제하시겠습니까?';
+                confirmMsg = '정말로 게시글을 삭제하시겠습니까?';
                 confirmUrl = '/board.html';
             } else if (num === 3) {
-                confirmMsg = '전체 글 목록으로 이동합니다.';
+                confirmMsg = '전체 게시글 목록으로 이동합니다.';
                 confirmUrl = '/board.html';
             } else if (num === 4) {
-                confirmMsg = '작성페이지로 이동합니다.';
+                confirmMsg = '게시글 작성페이지로 이동합니다.';
                 confirmUrl = '/writeArticle.html';
             } else if (num === 5) {
-                confirmMsg = '수정페이지로 이동합니다.';
-                confirmUrl = `/wirteComment.html?commentId=${comment_id}`;
+                confirmMsg = '답변 작성페이지로 이동합니다.';
+                confirmUrl = `/writeComment.html?boardId=${board_id}`;
             } else if (num === 6) {
-                confirmMsg = '작성페이지로 이동합니다.';
-                confirmUrl = '/wirteComment.html';
+                confirmMsg = '답변 수정페이지로 이동합니다.';
+                confirmUrl = `/writeComment.html?boardId=${board_id}&commentId=${comment_id}`;
             } else {
-                confirmMsg = '정말로 삭제하시겠습니까?';
+                confirmMsg = '정말로 답변을 삭제하시겠습니까?';
                 confirmUrl = '/board.html';
             }
 
@@ -172,6 +196,8 @@
             if (confirmResult) {
                 if (num === 2) {
                     deleteArticle();
+                } else if (num === 7) {
+                    delComment(comment_id);
                 } else {
                     window.location.href = `${confirmUrl}`;
                 }

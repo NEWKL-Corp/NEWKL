@@ -36,8 +36,8 @@
                     board_id,
                 },
                 success: function (res) {
+                    console.log(res);
                     if (res.success) {
-                        console.log('dd');
                         $('#title').val(res.rows[0].TITLE);
                         $('#name').val(res.rows[0].WRITER);
                         $('#pswd').val(res.rows[0].PSWD);
