@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>NewKL : 게시판</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charset="UTF-8" />
+
+        <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+        <!-- ajax -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <style>
+        button {
+            background-color: #f9b514;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const board_id = urlParams.get('boardId');
+        const comment_id = urlParams.get('commentId');
+
+        if (comment_id) {
+            $(document).ready(function () {
+                showComment(board_id);
+            });
+        }
+
+        function showComment(board_id) {
+            $.ajax({
+                type: 'POST',
+                url: 'api/comment',
+                data: {
+                    board_id,
+                },
+                success: function (res) {
+                    if (res.success) {
+                        $('#contents').val(res.rows[0].CONTENTS);
+                        $('#link').val(res.rows[0].LINK);
+                    }
+                },
+                error: function (err) {
+                    console.log(err);
+                },
+            });
+        }
+
+        function postComment() {
+            let contents = $('#contents').val();
+            let link = $('#link').val();
+            $.ajax({
+                type: 'POST',
+                url: 'api/comment/post',
+                data: {
+                    board_id,
+                    comment_id,
+                    contents,
+                    link,
+                },
+                success: function (res) {
+                    if (res.success) {
+                        window.location.href = `/article.html?boardId=${board_id}&m=true`;
+                    }
+                },
+                error: function (err) {
+                    console.log(err);
+                },
+            });
+        }
+        function goToArticlePage() {
+            let contents = $('#contents').val();
+            let link = $('#link').val();
+
+            if (contents || link) {
+                var confirmResult = confirm(
+                    '작성하신 내용은 저장되지 않습니다.'
+                );
+                if (confirmResult) {
+                    window.location.href = `/article.html?boardId=${board_id}&m=true`;
+                }
+            } else {
+                window.location.href = `/article.html?boardId=${board_id}&m=true`;
+            }
+        }
+    </script>
+
+    <body>
+        <div>
+            <label>내용</label>
+            <input type="text" id="contents" />
+        </div>
+        <div>
+            <label>링크</label>
+            <input type="text" id="link" placeholder="링크 주소 입력" />
+        </div>
+        <button type="submit" class="btn btn-dark" onclick="goToArticlePage()">
+            작성취소
+        </button>
+        <button type="submit" class="btn btn-dark" onclick="postComment()">
+            작성완료
+        </button>
+
+        <hr />
+    </body>
+</html>

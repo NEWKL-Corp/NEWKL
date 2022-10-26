@@ -1,55 +1,111 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>NewKL : 게시판</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta charset="UTF-8" />
+    <head>
+        <title>NewKL : 게시판</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charset="UTF-8" />
 
-    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
-    <!-- ajax -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  </head>
-  <style>
-    button {
-      background-color: #f9b514;
-      padding: 5px 10px;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-  </style>
-  <script>
-    const queryString = window.location.search
-    const urlParams = new URLSearchParams(queryString)
-    const board_id = urlParams.get('boardId')
+        <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+        <!-- ajax -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <style>
+        button {
+            background-color: #f9b514;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const board_id = urlParams.get('boardId');
+        const masterKey = urlParams.get('m');
 
-    let standardPSWD = ''
+        let flag = true;
+        let standardPSWD = '';
 
-    $(document).ready(function () {
-      one(board_id)
-    })
+        $(document).ready(function () {
+            showArticle(board_id);
+            showComment(board_id);
+        });
 
-    function one(board_id) {
-      $.ajax({
-        type: 'POST',
-        url: 'api/board/article',
-        data: {
-          board_id,
-        },
-        success: function (res) {
-          if (res.success) {
-            console.log(res.rows[0])
-            let board_id = res.rows[0].BOARD_ID
-            let title = res.rows[0].TITLE
-            let writer = res.rows[0].WRITER
-            let contents = res.rows[0].CONTENTS
-            let regDate = res.rows[0].REG_DATE
-            let comment = res.rows[0].COMMENT_ID
-            let email = res.rows[0].EMAIL
-            let phone_number = res.rows[0].PHONE_NUMBER
-            standardPSWD = res.rows[0].PSWD
-            let splitRegDate = regDate.split(' ')[0]
+        function showComment(board_id) {
+            $.ajax({
+                type: 'POST',
+                url: 'api/comment',
+                data: {
+                    board_id,
+                },
+                success: function (res) {
+                    if (res.success) {
+                        let comment_id = res.rows[0].COMMENT_ID;
+                        let contents = res.rows[0].CONTENTS;
+                        let link = res.rows[0].LINK;
+                        console.log('link', link);
+                        let regDate = res.rows[0].REG_DATE;
+                        let splitRegDate = regDate.split(' ')[0];
+                        let temp_html = `
+                        <div>
+                          <p>답변 내용 : ${contents}</p>
+                          ${
+                              link
+                                  ? `<p> 첨부 링크: <a href="${link}">${link} </a> </p>`
+                                  : ''
+                          }
+                          <p>작성일자 : ${splitRegDate}</p>
+                          ${
+                              masterKey === 'true'
+                                  ? `<div>
+                                      <button onclick="goTo(6,${comment_id})">답변 수정</button>
+                                      <button onclick="goTo(7,${comment_id})">답변 삭제</button>
+                                    </div>`
+                                  : ''
+                          }
+                        </div>
+                        <hr>
+                        `;
+                        $('#comment').append(temp_html);
+                    } else {
+                        let temp_html = `
+                         ${
+                             masterKey === 'true'
+                                 ? `<div>
+                                      <button onclick="goTo(5)">답변 작성하기</button>
+                                      <hr />
+                                    </div>`
+                                 : ''
+                         }`;
+                        $('#comment').append(temp_html);
+                    }
+                },
+                error: function (err) {
+                    console.log(err);
+                },
+            });
+        }
 
-            let temp_html = `
+        function showArticle(board_id) {
+            $.ajax({
+                type: 'POST',
+                url: 'api/board/article',
+                data: {
+                    board_id,
+                },
+                success: function (res) {
+                    if (res.success) {
+                        let title = res.rows[0].TITLE;
+                        let writer = res.rows[0].WRITER;
+                        let contents = res.rows[0].CONTENTS;
+                        let regDate = res.rows[0].REG_DATE;
+                        let email = res.rows[0].EMAIL;
+                        let phone_number = res.rows[0].PHONE_NUMBER;
+                        let link = res.rows[0].LINK;
+                        standardPSWD = res.rows[0].PSWD;
+                        let splitRegDate = regDate.split(' ')[0];
+
+                        let temp_html = `
                 <hr>
                 <p> 이름: ${writer} </p>
                 <p> 이메일: ${email} </p>
@@ -57,19 +113,105 @@
                 <p> 제목: ${title} </p>
                 <p> 작성일자: ${splitRegDate} </p>
                 <p> 내용: ${contents} </p>
+                ${
+                    link
+                        ? `<p> 첨부 링크: <a href="${link}">${link} </a> </p>`
+                        : ''
+                }
                 <hr>
-                                    `
-            $('#article').append(temp_html)
-          }
-        },
-        error: function (err) {
-          console.log(err)
-        },
-      })
-    }
-  </script>
+                `;
+                        $('#article').append(temp_html);
+                    }
+                },
+                error: function (err) {
+                    console.log(err);
+                },
+            });
+        }
 
-  <body>
-    <div id="article"></div>
-  </body>
+        function deleteArticle() {
+            $.ajax({
+                type: 'POST',
+                url: 'api/board/delete',
+                data: {
+                    board_id,
+                },
+                success: function (res) {
+                    if (res.success) {
+                        alert(res.msg);
+                        window.location.href = '/board.html';
+                    }
+                },
+                error: function (err) {
+                    console.log(err);
+                },
+            });
+        }
+        function delComment(comment_id) {
+            $.ajax({
+                type: 'POST',
+                url: 'api/comment/delete',
+                data: {
+                    comment_id,
+                },
+                success: function (res) {
+                    if (res.success) {
+                        alert(res.msg);
+                        window.location.href = `/article.html?boardId=${board_id}&m=true`;
+                    }
+                },
+                error: function (err) {
+                    console.log(err);
+                },
+            });
+        }
+
+        function goTo(num, comment_id) {
+            let confirmMsg = '';
+            let confirmUrl = '';
+            if (num === 1) {
+                confirmMsg = '게시글 수정페이지로 이동합니다.';
+                confirmUrl = `/writeArticle.html?boardId=${board_id}`;
+            } else if (num === 2) {
+                confirmMsg = '정말로 게시글을 삭제하시겠습니까?';
+                confirmUrl = '/board.html';
+            } else if (num === 3) {
+                confirmMsg = '전체 게시글 목록으로 이동합니다.';
+                confirmUrl = '/board.html';
+            } else if (num === 4) {
+                confirmMsg = '게시글 작성페이지로 이동합니다.';
+                confirmUrl = '/writeArticle.html';
+            } else if (num === 5) {
+                confirmMsg = '답변 작성페이지로 이동합니다.';
+                confirmUrl = `/writeComment.html?boardId=${board_id}`;
+            } else if (num === 6) {
+                confirmMsg = '답변 수정페이지로 이동합니다.';
+                confirmUrl = `/writeComment.html?boardId=${board_id}&commentId=${comment_id}`;
+            } else {
+                confirmMsg = '정말로 답변을 삭제하시겠습니까?';
+                confirmUrl = '/board.html';
+            }
+
+            var confirmResult = confirm(`${confirmMsg}`);
+            if (confirmResult) {
+                if (num === 2) {
+                    deleteArticle();
+                } else if (num === 7) {
+                    delComment(comment_id);
+                } else {
+                    window.location.href = `${confirmUrl}`;
+                }
+            }
+        }
+    </script>
+
+    <body>
+        <div id="article"></div>
+        <div id="comment"></div>
+
+        <button onclick="goTo(1)">수정</button>
+        <button onclick="goTo(2)">삭제</button>
+        <button onclick="goTo(3)">목록</button>
+        <button onclick="goTo(4)">글쓰기</button>
+    </body>
 </html>
