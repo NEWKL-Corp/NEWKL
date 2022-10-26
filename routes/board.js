@@ -3,17 +3,31 @@ const db_config = require('../dbConfig');
 const mysql = require('mysql');
 const pool = new mysql.createPool(db_config);
 
-router.post('/', async (req, res) => {
+router.post('/', (req, res) => {
+    const { currentPage, searchText, searchType } = req.body;
+    let totalCount = 0;
+    let pageSize = 20;
+    let queryText = '';
+    if (searchType === 1) {
+        queryText = ``;
+    }
+    const A = pool.query(
+        `
+        select count(BOARD_ID) as totalCount from TB_BOARD
+        `,
+        (error, rows) => {
+            if (error) throw error;
+            else totalCount = rows[0].totalCount;
+        }
+    );
     pool.query(
         `
-    select 
-      tb.*,
-      tc.COMMENT_ID 
-    from 
-      TB_BOARD as tb 
-      left join 
-      TB_COMMENT as tc 
-      on tb.BOARD_ID = tc.BOARD_ID 
+        select * from (select ROW_NUMBER() over(ORDER by BOARD_ID asc) as row_num,
+        tb.*,tc.COMMENT_ID
+        from TB_BOARD tb left join TB_COMMENT tc on tb.BOARD_ID=tc.BOARD_ID) as T
+        WHERE row_num BETWEEN
+        ${totalCount - 1 * pageSize + 1} and ${totalCount - (1 - 1) * pageSize}
+        order by row_num desc
     `,
         (error, rows) => {
             if (error) throw error;
