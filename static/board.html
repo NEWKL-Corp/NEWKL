@@ -14,17 +14,41 @@
             integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
             crossorigin="anonymous"
         ></script>
+        <style>
+            .move {
+                cursor: pointer;
+            }
+        </style>
     </head>
     <script>
+        let currentPage = 1;
         $(document).ready(function () {
-            show();
+            totalCount();
         });
-        function show() {
+
+        function totalCount() {
+            $.ajax({
+                type: 'POST',
+                url: 'api/board/totalCount',
+                data: {},
+                success: function (res) {
+                    if (res.success) {
+                        show(res.totalCount);
+                    }
+                },
+                error: function (err) {
+                    console.log(err);
+                },
+            });
+        }
+
+        function show(totalCount) {
             $.ajax({
                 type: 'POST',
                 url: 'api/board',
                 data: {
-                    currentPage: 1,
+                    totalCount,
+                    currentPage,
                 },
                 success: function (res) {
                     if (res.success) {
@@ -67,20 +91,16 @@
         }
     </script>
 
-    <style>
-        body {
-            margin: 0;
-            /*드래그 방지 ~*/
-            user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            -webkit-user-select: none;
-            /*~ 드래그 방지*/
-        }
-    </style>
-
     <body>
         <div id="show"></div>
+        <div style="display: flex">
+            <div class="move" onclick="moveTo()">|<<|</div>
+            <div class="move" onclick="moveTo()"><|</div>
+            <div>1,2,3,4,5</div>
+            <div class="move" onclick="moveTo()">|>|</div>
+            <div class="move" onclick="moveTo()">>>|</div>
+        </div>
+
         <button onclick="goToWritePage()">글쓰기</button>
     </body>
 </html>

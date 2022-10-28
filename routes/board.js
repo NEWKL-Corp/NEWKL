@@ -4,8 +4,17 @@ const mysql = require('mysql2');
 const pool = new mysql.createPool(db_config);
 const promisePool = pool.promise();
 
+router.post('/totalCount', async (req, res) => {
+    const execQuery = `
+    select count(BOARD_ID) as totalCount from TB_BOARD
+    `;
+    const execResult = await promisePool.query(execQuery);
+    const totalCount = execResult[0][0].totalCount;
+    return res.status(200).json({ success: true, totalCount });
+});
+
 router.post('/', async (req, res) => {
-    const { currentPage, searchText, searchType } = req.body;
+    const { totalCount, currentPage, searchText, searchType } = req.body;
     let pageSize = 20;
     let queryText = '';
     if (searchType === 1) {
@@ -13,29 +22,28 @@ router.post('/', async (req, res) => {
     }
 
     try {
-        const execQuery = `
-        select count(BOARD_ID) as totalCount from TB_BOARD
-        `;
-        const execResult = await promisePool.query(execQuery);
-        const totalCount = execResult[0][0].totalCount;
-
+        //페이지 네이션 필요
+        // const pagingQuery = `
+        // select
+        //     list.*
+        // from (
+        //     select
+        //         ROW_NUMBER() over(ORDER by BOARD_ID asc) as row_num, tb.*, tc.COMMENT_ID
+        //     from
+        //         TB_BOARD tb left join TB_COMMENT tc on tb.BOARD_ID=tc.BOARD_ID
+        //     ) as list
+        // WHERE
+        //     row_num BETWEEN
+        //     ${totalCount - currentPage * pageSize + 1}
+        //     and
+        //     ${totalCount - (currentPage - 1) * pageSize}
+        //     order by row_num desc
+        // `;
         const pagingQuery = `
         select 
-            list.* 
-        from (
-            select 
-                ROW_NUMBER() over(ORDER by BOARD_ID asc) as row_num, tb.*, tc.COMMENT_ID
-            from
-                TB_BOARD tb left join TB_COMMENT tc on tb.BOARD_ID=tc.BOARD_ID
-            ) as list
-        WHERE 
-            row_num BETWEEN
-            ${totalCount - currentPage * pageSize + 1} 
-            and 
-            ${totalCount - (currentPage - 1) * pageSize}
-            order by row_num desc
-        `;
-
+        ROW_NUMBER() over(ORDER by BOARD_ID asc) as row_num, tb.*, tc.COMMENT_ID
+        from TB_BOARD tb left join TB_COMMENT tc on tb.BOARD_ID=tc.BOARD_ID
+`;
         const pagingResult = await promisePool.query(pagingQuery);
         const boardList = pagingResult[0];
         return res.status(200).json({ success: true, result: boardList });
