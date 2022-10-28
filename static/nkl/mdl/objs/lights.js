@@ -1,7 +1,7 @@
 import { DirectionalLight, HemisphereLight, SpotLight } from 'three';
 
-const ambientLight = new HemisphereLight(0xffffff, 0x888888, 3.5); ///. sky color, ground color, intensity
-const mainLight = new DirectionalLight(0xffffff, 3);
+const ambientLight = new HemisphereLight(0xffffff, 0x888888, 2.5); ///. sky color, ground color, intensity
+const mainLight = new DirectionalLight(0xffffff, 2);
 mainLight.position.set(0, 32, 0);
 // mainLight.target.position.set(0, 0, 0);
 mainLight.castShadow = true;

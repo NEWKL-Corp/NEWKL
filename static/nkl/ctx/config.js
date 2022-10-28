@@ -1,3 +1,5 @@
+import { mStg } from '../mdl/story/stage.js';
+
 const addEleBtnPlay = () => {
   let overlay = document.createElement("div");
   overlay.setAttribute('id', 'overlay');
@@ -13,7 +15,7 @@ const addEleBtnPlay = () => {
 
 async function trigger() {
   ///. DATA BINDING
-  const { mStg } = await import('../mdl/story/stage.js');
+  // const { mStg } = await import('../mdl/story/stage.js');
   let _j = await mStg().xml('/nkl/ctx/space.xml'); ///. xml을 파싱하고 json으로 나타낸다
 
   ///. LOADING
