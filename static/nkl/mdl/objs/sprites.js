@@ -15,7 +15,7 @@ mSpr.fn = mSpr.prototype = {
   ver: '22-0929-1541',
   length: 0,
 
-  loadImg: async (_f, _p, _s, _c, _t) => { ///. file, [x, y, z] position, [w, h] scale, [h, v] coordinate, name Material
+  load: async (_f, _p, _s, _c, _t) => { ///. file, [x, y, z] position, [w, h] scale, [h, v] coordinate, name Material
     let _r;
 
     const loader = new TextureLoader();
@@ -55,9 +55,9 @@ function set(_i, _p, _s, _c, _t) { ///. image, [x, y, z] position, [w, h] scale,
   _r.name = _t;
 
   _c = mCmr().camera;
-  let vec = new Vector3(0, 5, 0);
-  vec.applyQuaternion(_c.quaternion);
-  _r.position.copy(vec);
+  let _v = new Vector3(0, 5, 0);
+  _v.applyQuaternion(_c.quaternion); ///. 항상 카메라를 바라보게 나타낸다
+  _r.position.copy(_v);
 
   return _r;
 }

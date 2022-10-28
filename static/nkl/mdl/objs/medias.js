@@ -17,7 +17,7 @@ mMda.fn = mMda.prototype = {
   length: 0,
   // addlistener: listener,
 
-  loadSound: async (_f) => {
+  load: async (_f) => {
 
     let _b = await audioLoader.load(_f);
 

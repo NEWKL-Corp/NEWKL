@@ -289,15 +289,20 @@ const addEleJoystick = () => {
   stick['btn'] = false;
   stick['ready'] = false;
 
-  stick.rect.addEventListener('mousedown', () => { stick.ready = true }, false);
-  stick.rect.addEventListener('mouseup', () => {
+  stick.rect.addEventListener('mousedown', (e) => { stick.ready = true }, false);
+  window.addEventListener('mouseup', (e) => {
+    if(!stick.ready){ 
+      e.preventDefault();
+      return false;
+    }
+
     stick.ready = false;
     onJoystickStop();
   }, false);
-  stick.rect.addEventListener('mousemove', onJoystickMove, false);
+  window.addEventListener('mousemove', onJoystickMove, false);
 
-  stick.rect.addEventListener('touchstart', () => { stick.ready = true }, false);
-  stick.rect.addEventListener('touchend', () => {
+  stick.rect.addEventListener('touchstart', (e) => { stick.ready = true }, false);
+  stick.rect.addEventListener('touchend', (e) => {
     stick.ready = false;
     onJoystickStop();
   }, false);

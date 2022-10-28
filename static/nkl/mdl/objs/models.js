@@ -3,16 +3,19 @@ import { AnimationMixer, AnimationClip, LoopOnce, LoopRepeat, Matrix4, Quaternio
 import { GLTFLoader } from 'GLTFLoader';
 import { DRACOLoader } from 'DRACOLoader';
 
-const ids = [];
+const ids = []; ///. 캐릭터 아이디(0번째는 자신)를 나타낸다
 const players = {};
 const speed = {
   Idle: 0.00,
   Walking: 0.035,
   Running: 0.105,
-  Rotating: {walk: 0.500, run: 1.000}
+  Rotating: { walk: 0.500, run: 1.000 }
 };
 
 const targetQuaternion = new Quaternion();
+
+const npcs = {}; ///. 이벤트가 있는 오젝트들를 나타낸다
+const stuffs = {}; ///. 이벤튼 없는 오젝트들을 나타낸다
 
 const mMdl = function (_t, _v) {
   return new mMdl.fn.init(_t, _v);
@@ -26,8 +29,10 @@ mMdl.fn = mMdl.prototype = {
 
   ids: ids,
   players: players,
+  stuffs: stuffs,
+  npcs: npcs,
 
-  loadModel: async (_f, _p, _s, _n, _t) => { // file, pos, scale, num sene or children, name object
+  load: async (_f, _p, _s, _n, _t, _o, _x) => { // file, pos, scale, num sene [] or children [0], type object, name object, name path
     let _r;
 
     const loader = new GLTFLoader();
@@ -38,12 +43,32 @@ mMdl.fn = mMdl.prototype = {
 
     let _d = await loader.loadAsync(_f);
 
-    _r = set(_d, _p, _s, _n, _t);
+    _r = set(_d, _p, _s, _n); ///. 초기 위치, 크기, 그림자 등을 나타낸다 
+
+    if (_t === 'stuffs') { ///. 단순 오브젝트를 나타낸다
+      stuffs[_o] = {
+        model: _r,
+        path: _x
+      }
+
+      _r.userData.name = undefined
+    }
+
+    if (_t === 'npcs') { ///. 이벤트 오브젝트를 나타낸다
+      npcs[_o] = {
+        model: _r,
+        path: _x,
+        active: true
+      }
+
+      _r.userData.name = undefined
+    }
 
     if (_r.userData.name !== undefined) {
-      console.log('///.' + _r.userData.name);
-      ids.push(_r.userData.name); ///. 첫 번째는 자신을 나타낸다
-      let _pls = players[_r.userData.name] = {
+      console.log('///. ' + _r.userData.name); ///. glb 전체(_n [])를 로딩하면 undefined로 나타낸다
+
+      ids.push(_o); ///. 첫 번째는 자신을 나타낸다
+      let _m = players[_o] = {
         model: _r,
         mixer: undefined,
         active: true,
@@ -56,21 +81,22 @@ mMdl.fn = mMdl.prototype = {
         activeDone: false, ///. 행동 끝남을 나타낸다
         activeSet: undefined, ///. 해야할 행동을 나타낸다
         face: '',
-        ctrl: '' ///. 캐릭터 콘트롤 픽 그라운드, 화면 조이스틱, 키보드 등을 나타낸다
+        ctrl: '', ///. 캐릭터 콘트롤 픽 그라운드, 화면 조이스틱, 키보드 등을 나타낸다
+        path: _x
       };
 
-      _pls.mixer = new AnimationMixer(_r); ///. 모델에 애니메이션 버퍼를 나타낸다
-      _pls.mixer.addEventListener('finished', (e) => { _pls.activeDone = true; });
+      _m.mixer = new AnimationMixer(_r); ///. 모델에 애니메이션 버퍼를 나타낸다
+      _m.mixer.addEventListener('finished', (e) => { _m.activeDone = true; });
 
-      _pls.clips = _d.animations;
+      _m.clips = _d.animations;
 
-      let clip = AnimationClip.findByName(_pls.clips, _pls.state);
-      _pls.speed = speed[_pls.state]; /// 'Standing', 'Walking', 'Running' 0, 0.02, 0.1
+      let _c = AnimationClip.findByName(_m.clips, _m.state);
+      _m.speed = speed[_m.state]; /// 'Standing', 'Walking', 'Running' 0, 0.02, 0.1
 
-      _pls.state = clip.name;
-      _pls.activeAction = _pls.mixer.clipAction(clip);
-      _pls.activeDone = false;
-      _pls.activeAction.play();
+      _m.state = _c.name;
+      _m.activeAction = _m.mixer.clipAction(_c);
+      _m.activeDone = false;
+      _m.activeAction.play();
 
       // for (let i = 0; i < _d.animations.length; i++) {
       //   const clip = _d.animations[i];
@@ -122,27 +148,33 @@ const init = mMdl.fn.init = function (_t, _v) {
 
 init.prototype = mMdl.fn;
 
-function set(_d, _p, _s, _n, _t) {
+function set(_d, _p, _s, _n) {
   let _r, _m, _c; /// result, model(scene), count of model
   _m = _d.scene;
   _c = _m.children.length - 1;
 
-  if (_n.length) {
+  if (_n.length) { ///. 특정 오브젝트를 나타낸다
     _n = _n > _c ? _c : _n;
     _r = _m.children[_n]; ///. one model
 
-  } else {
+  } else { ///. 전체 오브젝트를 나타낸다
     _r = _m; ///. total model
   }
 
-  _r.traverse(function (node) {
-    if (node.isMesh)
-      node.castShadow = true;
-    node.receiveShadow = false;
-  });
+  if (_p.length) { ///. 위치를 나타낸다
+    _r.position.set(_p[0], _p[1], _p[2]);
+  }
 
-  // _r.castShadow = true;
-  // _r.receiveShadow = false;
+  if (_s.length) { ///. 크기를 나타낸다
+    _r.scale.set(_s[0], _s[1], _s[2]);
+  }
+
+  _r.traverse((node) => {
+    if (node.isMesh) {
+      node.castShadow = true;
+      node.receiveShadow = false;
+    }
+  });
 
   return _r;
 }
@@ -162,7 +194,7 @@ function move(_m) {
   }
 
   if (_m.model.quaternion.y.toFixed(3) !== targetQuaternion.y.toFixed(3) || _m.model.quaternion.w.toFixed(3) !== targetQuaternion.w.toFixed(3)) { ///. 이동 방향으로 회전을 나타낸다
-    let _s = _m.state === 'Walking'? speed.Rotating.walk : speed.Rotating.run;
+    let _s = _m.state === 'Walking' ? speed.Rotating.walk : speed.Rotating.run;
     _m.model.quaternion.rotateTowards(targetQuaternion, _m.speed * _s);
 
   } else { ///. 이동 거리을 나타낸다
@@ -184,7 +216,7 @@ function move(_m) {
     _m.model.position.x = _m.model.position.x + (_m.speed * (diffX / distance)) * multiplierX;
     _m.model.position.z = _m.model.position.z + (_m.speed * (diffZ / distance)) * multiplierZ;
 
-    ///. 그라운드 픽에 따른 이동을 나타낸다
+    ///. 지정 위치에 따른 이동을 나타낸다
     if (_m.ctrl === 'pick' || _m.ctrl === 'stick') {
       if ((_m.model.position).distanceTo(aPos) < 0.800 && _m.state !== 'Walking' && _c === 1) {
         _m.activeDone = true;
@@ -204,29 +236,6 @@ function move(_m) {
         }
       }
     }
-
-    // ///. 스틱 버튼에 따른 이동을 나타낸다
-    // if (_m.ctrl === 'stick' && _m.activeDone) {
-    //   let _v = _c > 1 ? _m.movements[1] : _m.movements[0];
-
-    //   _m.movements.shift(); ///. 도착한 위치 삭제을 나타낸다
-    //   _m.deltaMove = undefined; ///. 다음 위치 방향 회전을 초기화를 나타낸다
-
-    //   _c = _m.movements.length; ///. 다음 이동을 나타낸다
-    //   if (_c) {
-    //     if (_m.model.position.distanceTo(_v) < 2.200) {
-    //       if (_m.state !== 'Walking') {
-    //         activeAction('Walking');
-    //       }
-    //     } else {
-    //       if (_m.state !== 'Running') {
-    //         activeAction('Running');
-    //       }
-    //     }
-    //   } else {
-    //     activeAction('Idle');
-    //   }
-    // }
   }
 
   function activeAction(_t) {
@@ -237,8 +246,8 @@ function move(_m) {
     let _a = _m.activeAction; ///. Current Action 현재의 행동을 나타낸다
     let _n = _m.mixer.clipAction(_c); ///. Next Action 다음 행동을 나타낸다
     // _m.activeAction.stop();
-    // console.log(_n._clip.name);
-    _n.reset();  
+
+    _n.reset();
     _n.setLoop(LoopOnce, 1);
     _n.clampWhenFinished = true;
     _n.crossFadeFrom(_a, 0.2, true); ///. 행동 모션트위닝을 나타낸다
