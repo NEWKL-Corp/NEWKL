@@ -12,6 +12,7 @@ const app = express()
 
 app.use(express.static('src'))
 app.use(express.static('nkl'))
+app.use(express.static('static'))
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
