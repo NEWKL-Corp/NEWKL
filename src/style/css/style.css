@@ -17,6 +17,21 @@ body {
     height: 100vh;
     overflow: hidden;
 }
+#wrap .inner {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+}
 #wrap header:hover {
     background: rgba(255, 255, 255, 0.7);
     -webkit-transition: all 0.7s;
@@ -28,7 +43,7 @@ body {
     width: 100%;
     max-width: 1920px;
     height: 3.5vw;
-    background: transparent;
+    background: #fff;
     color: #000;
     font-size: 16px;
     font-weight: 550;
@@ -40,6 +55,12 @@ body {
     transition: all 0.4s;
     -webkit-transition: 0.4s;
     transition: 0.4s;
+    border-bottom: 1px solid #bbb;
+}
+#wrap header .inner {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
 }
 #wrap header .headerContainer {
     display: -webkit-box;
@@ -49,15 +70,6 @@ body {
     -ms-flex-pack: justify;
     justify-content: space-between;
     height: inherit;
-    padding: 0 20px;
-}
-#wrap header .headerContainer div {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
 }
 #wrap header .headerContainer .headerLogo {
     width: 4vw;
@@ -105,19 +117,8 @@ body {
 #wrap .container #main3d {
     background-color: #fcc !important;
 }
-#wrap .container #Consulting::before {
-    content: '';
-    position: absolute;
-    opacity: 0.5;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #062a4e;
-}
 #wrap .container #Consulting {
     position: relative;
-    background: url('../../img/Consulting_bg.jpg') no-repeat center center/cover !important;
 }
 #wrap .container #Consulting .table {
     display: -webkit-box;
@@ -129,17 +130,172 @@ body {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
     position: relative;
     width: 100%;
     height: 100%;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    gap: 5%;
 }
-#wrap .container #Consulting .table .container {
+#wrap .container #Consulting .table .table_wrap {
     position: relative;
     width: 100%;
-    height: 70%;
-    background-color: rgba(255, 255, 255, 0.6);
 }
-#wrap .container #Consulting .table .container .title {
+#wrap .container #Consulting .table .table_wrap.front {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 3%;
+    height: 40%;
+    background-color: #f0f5ff;
+}
+#wrap .container #Consulting .table .table_wrap.front .table_left {
+    width: 100%;
+    height: 100%;
+}
+#wrap .container #Consulting .table .table_wrap.front .table_left .title {
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: space-evenly;
+    -ms-flex-pack: space-evenly;
+    justify-content: space-evenly;
+    text-align: start;
+    padding-top: 20%;
+    line-height: 1.2;
+}
+#wrap .container #Consulting .table .table_wrap.front .table_left .title h3 {
+    font-size: 26px;
+    font-weight: bold;
+    color: #062a4e;
+    font-size: 1.5em;
+}
+#wrap .container #Consulting .table .table_wrap.front .table_left .title span {
+    font-size: 21px;
+}
+#wrap
+    .container
+    #Consulting
+    .table
+    .table_wrap.front
+    .table_left
+    .title
+    .btn_section
+    button {
+    cursor: pointer;
+}
+#wrap
+    .container
+    #Consulting
+    .table
+    .table_wrap.front
+    .table_left
+    .title
+    .btn_section
+    .contact_btn:hover {
+    background-color: #fff;
+    border: 1px solid #7156bc;
+    color: #7156bc;
+    -webkit-transition: all 0.6s;
+    transition: all 0.6s;
+}
+#wrap
+    .container
+    #Consulting
+    .table
+    .table_wrap.front
+    .table_left
+    .title
+    .btn_section
+    .contact_btn {
+    width: 150px;
+    height: 50px;
+    background-color: #7156bc;
+    border: 1px solid #7156bc;
+    border-radius: 15px;
+    font-size: 1em;
+    color: #fff;
+    margin-right: 5%;
+}
+#wrap
+    .container
+    #Consulting
+    .table
+    .table_wrap.front
+    .table_left
+    .title
+    .btn_section
+    .more_btn:hover {
+    background-color: #7156bc;
+    color: #fff;
+    -webkit-transition: all 0.6s;
+    transition: all 0.6s;
+}
+#wrap
+    .container
+    #Consulting
+    .table
+    .table_wrap.front
+    .table_left
+    .title
+    .btn_section
+    .more_btn {
+    width: 150px;
+    height: 50px;
+    background-color: #fff;
+    border: 1px solid #7156bc;
+    color: #7156bc;
+    font-size: 1em;
+    border-radius: 15px;
+}
+#wrap .container #Consulting .table .table_wrap.front .table_right {
+    width: 100%;
+    height: 100%;
+    border: 1px solid red;
+}
+#wrap .container #Consulting .table .table_wrap.end {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: space-evenly;
+    -ms-flex-pack: space-evenly;
+    justify-content: space-evenly;
+    height: 25%;
+    position: relative;
+}
+#wrap .container #Consulting .table .table_wrap.end .inner::after {
+    content: '';
+    width: 100%;
+    height: 60%;
+    background-color: #f0f5ff;
+    position: absolute;
+    top: 60%;
+    z-index: -1;
+}
+#wrap .container #Consulting .table .table_wrap.end .inner {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+#wrap .container #Consulting .table .table_wrap.end .inner .title {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -156,17 +312,18 @@ body {
     justify-content: center;
     gap: 1vw;
     text-align: center;
-    height: 30%;
 }
-#wrap .container #Consulting .table .container .title h3 {
+#wrap .container #Consulting .table .table_wrap.end .inner .title h3 {
     font-size: 26px;
     font-weight: bold;
     color: #062a4e;
+    font-size: 2.5em;
+    padding-bottom: 20px;
 }
-#wrap .container #Consulting .table .container .title span {
+#wrap .container #Consulting .table .table_wrap.end .inner .title span {
     font-size: 21px;
 }
-#wrap .container #Consulting .table .container .contents {
+#wrap .container #Consulting .table .table_wrap.end .inner .contents {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -178,7 +335,7 @@ body {
     align-items: center;
     height: 70%;
 }
-#wrap .container #Consulting .table .container .contents .cardWrap {
+#wrap .container #Consulting .table .table_wrap.end .inner .contents .cardWrap {
     width: 100%;
     height: 100%;
     display: -webkit-box;
@@ -190,24 +347,593 @@ body {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
+}
+#wrap
+    .container
+    #Consulting
+    .table
+    .table_wrap.end
+    .inner
+    .contents
+    .cardWrap
+    .card {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: space-evenly;
+    -ms-flex-pack: space-evenly;
+    justify-content: space-evenly;
+    background: #fff;
+    width: 100%;
+    min-width: 270px;
+    height: inherit;
+    margin: 0 2%;
+    border-radius: 30px;
+    -webkit-box-shadow: 4px 4px 4px 4px #eee;
+    box-shadow: 4px 4px 4px 4px #eee;
+}
+#wrap
+    .container
+    #Consulting
+    .table
+    .table_wrap.end
+    .inner
+    .contents
+    .cardWrap
+    .card
+    .card_title {
+    width: 100%;
+    font-size: 26px;
+    font-weight: bold;
+    color: #062a4e;
+}
+#wrap
+    .container
+    #Consulting
+    .table
+    .table_wrap.end
+    .inner
+    .contents
+    .cardWrap
+    .card
+    .card_text {
+    width: 80%;
+    line-height: 1.3;
+    font-weight: 500;
+}
+#wrap .container #XRLearning .layer {
+    width: 100%;
+    height: 100%;
+    padding-top: 3.5vw;
+    background: url(../../img/low-poly-grid-haikei.svg) no-repeat center
+        top/cover;
+}
+#wrap .container #XRLearning .layer .inner {
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    gap: 3vw;
+}
+#wrap .container #XRLearning .layer .inner .intro {
+    width: 100%;
+    height: 35%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+#wrap .container #XRLearning .layer .inner .intro .xr_title {
+    font-size: 26px;
+    font-weight: bold;
+    color: #062a4e;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
     -webkit-box-align: start;
     -ms-flex-align: start;
     align-items: flex-start;
 }
-#wrap .container #Consulting .table .container .contents .cardWrap .card {
-    background: #fff;
-    min-width: 270px;
-    height: 90%;
-    margin: 0 2%;
+#wrap .container #XRLearning .layer .inner .intro .xr_title .img {
+    color: transparent;
+    width: 300px;
+    height: 100%;
+    background: url(../../img/xrImage.png) no-repeat center center/cover !important;
+    margin: 5% auto;
 }
-#wrap .container #XRLearning {
-    background-color: #ccf;
+#wrap .container #XRLearning .layer .inner .intro .xr_index {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    gap: 3vw;
+}
+#wrap .container #XRLearning .layer .inner .intro .xr_index div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: space-evenly;
+    -ms-flex-pack: space-evenly;
+    justify-content: space-evenly;
+}
+#wrap .container #XRLearning .layer .inner .intro .xr_index div h2 {
+    font-size: 26px;
+    font-weight: bold;
+    color: #062a4e;
+}
+#wrap .container #XRLearning .layer .inner .intro .xr_index div p {
+    line-height: 1.2;
+    width: 50%;
+}
+#wrap .container #XRLearning .layer .inner .youtube {
+    width: 100%;
+    height: 40%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-line-pack: start;
+    align-content: flex-start;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    gap: 2vw;
+}
+#wrap .container #XRLearning .layer .inner .youtube .yt_title.tab_menu {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    gap: 1vw;
+}
+#wrap .container #XRLearning .layer .inner .youtube .yt_title.tab_menu span {
+    background: #749ef9;
+    background: -webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        from(#749ef9),
+        to(#1753d5)
+    );
+    background: linear-gradient(to bottom, #749ef9 0%, #1753d5 100%);
+    background: -webkit-linear-gradient(top, #749ef9 0%, #1753d5 100%);
+    border-radius: 20px;
+    color: #fff;
+    display: inline-block;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#749ef9", endColorstr="#1753d5",GradientType=0 );
+    font-size: 1.3em;
+    height: 42px;
+    line-height: 42px;
+    margin: 9px 0;
+    padding: 0 25px;
+    text-align: center;
+    width: 15%;
+    cursor: pointer;
+}
+#wrap .container #XRLearning .layer .inner .youtube .yt_box {
+    width: 100%;
+    height: 80%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    border-radius: 30px;
+}
+#wrap .container #XRLearning .layer .inner .youtube .yt_box p {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 50%;
+}
+#wrap .container #XRLearning .layer .inner .youtube .yt_box iframe {
+    border-radius: 30px;
+}
+#wrap .container #XRLearning .layer .inner .youtube .btn_section {
+    width: 100%;
+}
+#wrap .container #XRLearning .layer .inner .youtube .btn_section button:hover {
+    background: #749ef9;
+    -webkit-transition: all 0.6s;
+    transition: all 0.6s;
+    color: #fff;
+}
+#wrap .container #XRLearning .layer .inner .youtube .btn_section button {
+    width: 150px;
+    height: 50px;
+    border-radius: 30px;
+    border: 3px solid #749ef9;
+    background-color: #fff;
+    color: #749ef9;
+    font-size: 1em;
+    cursor: pointer;
 }
 #wrap .container #MetaverseLearning {
-    background-color: #cfc;
+    background: url(../../img/wave-haikei.svg) no-repeat center center/cover !important;
+}
+#wrap .container #MetaverseLearning .table {
+    width: 100%;
+    height: 100%;
+    padding-top: 3.5vw;
+}
+#wrap .container #MetaverseLearning .table .inner {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+#wrap .container #MetaverseLearning .table .inner .left {
+    width: 40%;
+}
+#wrap .container #MetaverseLearning .table .inner .left h2 {
+    text-align: start;
+    margin-bottom: 30%;
+    font-size: 26px;
+    color: #062a4e;
+    font-weight: bold;
+}
+#wrap .container #MetaverseLearning .table .inner .left .text_area {
+    text-align: start;
+}
+#wrap
+    .container
+    #MetaverseLearning
+    .table
+    .inner
+    .left
+    .text_area
+    li:nth-child(1) {
+    width: 100%;
+    margin-bottom: 3%;
+    color: #222;
+    line-height: 1.2;
+    font-size: 2.5em;
+    font-weight: bold;
+}
+#wrap
+    .container
+    #MetaverseLearning
+    .table
+    .inner
+    .left
+    .text_area
+    li:nth-child(1)
+    span {
+    display: block;
+}
+#wrap
+    .container
+    #MetaverseLearning
+    .table
+    .inner
+    .left
+    .text_area
+    li:nth-child(2) {
+    margin-bottom: 2%;
+    font-size: 1.2em;
+    line-height: 1.2;
+    color: #222;
+}
+#wrap
+    .container
+    #MetaverseLearning
+    .table
+    .inner
+    .left
+    .text_area
+    li:nth-child(2)
+    strong {
+    color: #1753d5;
+}
+#wrap
+    .container
+    #MetaverseLearning
+    .table
+    .inner
+    .left
+    .text_area
+    li:nth-child(2)::after {
+    content: '';
+    margin: 5% 0;
+    border-bottom: 1px solid #1753d5;
+    display: block;
+}
+#wrap .container #MetaverseLearning .table .inner .left .text_area li {
+    width: 70%;
+    font-size: 1.1em;
+    margin: 10% 0;
+}
+#wrap
+    .container
+    #MetaverseLearning
+    .table
+    .inner
+    .left
+    .text_area
+    li
+    .sub_title {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+#wrap .container #MetaverseLearning .table .inner .left .text_area li strong {
+    color: #1753d5;
+    font-weight: 600;
+}
+#wrap .container #MetaverseLearning .table .inner .left .text_area li span {
+    margin: 5% 0;
+    display: block;
+}
+#wrap .container #MetaverseLearning .table .inner .left .text_area li p {
+    display: inline;
+    color: #5e90fa;
+}
+#wrap .container #MetaverseLearning .table .inner .left .text_area li svg {
+    width: 15%;
+    height: 1.1em;
+}
+#wrap .container #MetaverseLearning .table .inner .right {
+    width: 40%;
+}
+#wrap .container #MetaverseLearning .table .inner .right .xr_img {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+#wrap .container #MetaverseLearning .table .inner .right .xr_img .xr_img_top {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+#wrap
+    .container
+    #MetaverseLearning
+    .table
+    .inner
+    .right
+    .xr_img
+    .xr_img_top
+    img {
+    width: 70%;
+}
+#wrap
+    .container
+    #MetaverseLearning
+    .table
+    .inner
+    .right
+    .xr_img
+    .xr_img_bottom
+    img {
+    width: 100%;
+}
+#wrap .container #MetaverseLearning .table .inner .right .xr_img span {
+    width: 100%;
+    margin: 10% 0;
+    color: #fff;
+    line-height: 1.2;
+    font-size: 2em;
+    font-weight: bold;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    gap: 2vw;
+}
+#wrap
+    .container
+    #MetaverseLearning
+    .table
+    .inner
+    .right
+    .xr_img
+    span
+    button:hover {
+    background-color: #222;
+    color: #fff;
+    -webkit-transition: all 0.6s;
+    transition: all 0.6s;
+}
+#wrap .container #MetaverseLearning .table .inner .right .xr_img span button {
+    width: 30%;
+    border-radius: 30px;
+    border: none;
+    background-color: #fff;
+    color: #749ef9;
+    font-size: 0.7em;
+    cursor: pointer;
 }
 #wrap .container #SmartLearning {
-    background-color: #ccc;
+    background-color: #fff;
+}
+#wrap .container #SmartLearning .table {
+    width: 100%;
+    height: 100%;
+    padding-top: 3.5vw;
+}
+#wrap .container #SmartLearning .table .inner {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+#wrap .container #SmartLearning .table .inner div {
+    border: 1px solid red;
+}
+#wrap .container #SmartLearning .table .inner .smart_top {
+    width: 100%;
+    height: 30%;
+}
+#wrap .container #SmartLearning .table .inner .smart_top .logo_section {
+    width: 100%;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+#wrap .container #SmartLearning .table .inner .smart_top .logo_section li {
+    display: inline-block;
+}
+#wrap .container #SmartLearning .table .inner .smart_bottom {
+    width: 100%;
+    height: 50%;
+}
+#wrap .container #SmartLearning .table .inner .smart_bottom .bottom_section {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    position: fixed;
+    left: 0;
+    width: 100vw;
+    height: 40%;
+    background-color: #006cfa;
+}
+#wrap
+    .container
+    #SmartLearning
+    .table
+    .inner
+    .smart_bottom
+    .bottom_section
+    .bottom_inner {
+    width: 100%;
+    max-width: 1200px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+#wrap
+    .container
+    #SmartLearning
+    .table
+    .inner
+    .smart_bottom
+    .bottom_section
+    .learn_index {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    text-align: start;
+    width: 50%;
+    height: 100%;
+    padding: 5% 0 0 5%;
+    color: #fff;
+}
+#wrap
+    .container
+    #SmartLearning
+    .table
+    .inner
+    .smart_bottom
+    .bottom_section
+    .learn_index
+    h1 {
+    font-size: 2em;
+    line-height: 1.5;
+    padding-bottom: 5%;
+}
+#wrap
+    .container
+    #SmartLearning
+    .table
+    .inner
+    .smart_bottom
+    .bottom_section
+    .learn_index
+    p {
+    line-height: 1.2;
+}
+#wrap
+    .container
+    #SmartLearning
+    .table
+    .inner
+    .smart_bottom
+    .bottom_section
+    .learn_img {
+    width: 50%;
+    height: 100%;
 }
 #wrap .container #ABOUT {
     background-color: #cff;
@@ -227,7 +953,7 @@ body {
         padding: 3% 12% !important;
         margin: 12% 0;
         margin-top: 20%;
-        background-color: rgba(143, 137, 226, 0.2);
+        background-color: rgba(255, 255, 255, 0.4392156863);
         font-weight: bold;
     }
     .News .title h1 {

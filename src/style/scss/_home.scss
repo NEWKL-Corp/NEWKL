@@ -1,0 +1,579 @@
+#wrap {
+    height: 100vh;
+    overflow: hidden;
+    .inner{
+        @include flex-center;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        height: 100%;
+    }
+    
+    header:hover {
+        background: rgba(255, 255, 255, 0.7);
+        // color: #111;
+        transition: all 0.7s;
+        transition: 0.7s;
+    }
+    header {
+        width: 100%;
+        max-width: 1920px;
+        height: 3.5vw;
+        background: #fff;
+        color: #000;
+        font-size: 16px;
+        font-weight: 550;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 99;
+        transition: all 0.4s;
+        transition: 0.4s;
+        border-bottom: 1px solid #bbb;
+        .inner{
+            justify-content: space-between;
+        }
+        .headerContainer {
+            display: flex;
+            justify-content: space-between;
+            height: inherit;
+            .headerLogo {
+                width: 4vw;
+
+                a {
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
+
+            #gnb {
+                @include flex-center;
+
+                .menu {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    gap: 5vw;
+
+                    li {
+                        a {
+                            color: inherit;
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .swiper-slide {
+        @include flex-center;
+        width: 100%;
+    }
+
+    .container {
+        #main3d {
+            background-color: #fcc !important;
+        }
+        // #Consulting::before {
+        //     content: "";
+        //     position: absolute;
+        //     opacity: 0.5;
+        //     top: 0;
+        //     left: 0;
+        //     right: 0;
+        //     bottom: 0;
+        //     background-color: #062a4e;
+        // }
+        #Consulting {
+            position: relative;
+            // background: url("../../img/Consulting_bg.jpg") no-repeat center center / cover !important;
+
+            .table {
+                @include flex-center;
+                flex-wrap: wrap;
+
+                position: relative;
+                width: 100%;
+                height: 100%;
+                align-content: center;
+                gap: 5%;
+                .table_wrap {
+                    position: relative;
+                    width: 100%;
+                    &.front{
+                        display: flex;
+                        margin-top: 3%;
+                        height: 40%;
+                        background-color: #f0f5ff;
+                        .table_left{
+                            width: 100%;
+                            height: 100%;
+                            // border: 1px solid red;
+                            
+                            .title {
+                                height: 100%;
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: space-evenly;
+                                text-align: start;
+                                padding-top: 20%;
+                                line-height: 1.2;
+                                h3 {
+                                    @include title-font;
+                                    font-size: 1.5em;
+                                }
+                                span {
+                                    font-size: 21px;
+                                    
+                                }
+                                .btn_section{
+                                    button{
+                                        cursor: pointer;
+                                    }
+                                    .contact_btn:hover{
+                                        background-color: #fff;
+                                        border: 1px solid #7156bc;
+                                        color: #7156bc;
+                                        transition: all .6s;
+                                    }
+                                    .contact_btn{
+                                        width: 150px;
+                                        height: 50px;
+                                        background-color: #7156bc;
+                                        border: 1px solid #7156bc;
+                                        border-radius: 15px;
+                                        font-size: 1em;
+                                        color: #fff;
+                                        margin-right: 5%;
+                                    }
+                                    .more_btn:hover{
+                                        background-color: #7156bc;
+                                        color: #fff;
+                                        transition: all .6s;
+                                    }
+                                    .more_btn{
+                                        width: 150px;
+                                        height: 50px;
+                                        background-color: #fff;
+                                        border: 1px solid #7156bc;
+                                        color: #7156bc;
+                                        font-size: 1em;
+                                        border-radius: 15px;
+                                    }
+                                }
+                            }
+
+                        }
+                        .table_right{
+                            width: 100%;
+                            height: 100%;
+                            border: 1px solid red;
+                            
+                        }
+                    }
+                    &.end{
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-evenly;
+                        height: 25%;
+                        position: relative;
+                        .inner::after{
+                            content: '';
+                            width: 100%;
+                            height: 60%;
+                            background-color: #f0f5ff;
+                            position: absolute;
+                            top: 60%;
+                            z-index: -1;
+                        }
+                        .inner{
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+                            .title {
+                                @include flex-center;
+                                flex-direction: column;
+                                justify-content: center;
+                                gap: 1vw;
+                                text-align: center;
+        
+                                h3 {
+                                    @include title-font;
+                                    font-size: 2.5em;
+                                    padding-bottom: 20px;
+                                }
+        
+                                span {
+                                    font-size: 21px;
+                                }
+                            }
+        
+                            .contents {
+                                @include flex-center;
+                                height: 70%;
+        
+                                .cardWrap {
+                                    width: 100%;
+                                    height: 100%;
+                                    @include flex-center;
+        
+                                    .card {
+                                        @include flex-center;
+                                        flex-direction: column;
+                                        justify-content: space-evenly;
+                                        background: #fff;
+                                        width: 100%;
+                                        min-width: 270px;
+                                        height: inherit;
+                                        margin: 0 2%;
+                                        border-radius: 30px;
+                                        box-shadow: 4px 4px 4px 4px #eee;
+                                        .card_title{
+                                            width: 100%;
+                                            @include title-font;
+                                        }
+                                        .card_text{
+                                            width: 80%;
+                                            line-height: 1.3;
+                                            font-weight: 500;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+
+        #XRLearning {
+            // background: url(../../img/XRLearning_bg.jpg) center bottom / cover;
+            .layer{
+                width: 100%;
+                height: 100%;
+                padding-top: 3.5vw;
+                background: url(../../img/low-poly-grid-haikei.svg)no-repeat center top / cover;
+                .inner{
+                    flex-wrap: wrap;
+                    align-content: center;
+                    gap: 3vw;
+                    .intro{
+                        width: 100%;
+                        height: 35%;
+                        display: flex;
+                        .xr_title{
+                            @include title-font;
+                            width: 100%;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: flex-start;
+                            .img{
+                                color: transparent;
+                                width: 300px;
+                                height: 100%;
+                                background: url(../../img/xrImage.png)no-repeat center center / cover !important;
+                                margin: 5% auto;
+                            }
+                        }
+                        .xr_index{
+                            width: 100%;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            gap: 3vw;
+                            div{
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-evenly;
+                                h2{
+                                    @include title-font;
+                                }
+                                p{
+                                    line-height: 1.2;
+                                    width: 50%;
+                                }
+                            }
+                            
+                            // @include flex-center;
+                        }
+                    }
+                    .youtube{
+                        width: 100%;
+                        height: 40%;
+                        display: flex;
+                        flex-direction: column;
+                        align-content: flex-start;
+                        justify-content: center;
+                        gap: 2vw;
+                        .yt_title{
+                            &.tab_menu{
+                                position: relative;
+                                display: flex;
+                                justify-content: center;
+                                gap: 1vw;
+                                span{ 
+                                    background: #749ef9;
+                                    background: linear-gradient(to bottom, #749ef9 0%, #1753d5 100%);
+                                    background: -moz-linear-gradient(top, #749ef9 0%, #1753d5 100%);
+                                    background: -webkit-linear-gradient(top, #749ef9 0%, #1753d5 100%);
+                                    border-radius: 20px;
+                                    color: #fff;
+                                    display: inline-block;
+                                    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#749ef9', endColorstr='#1753d5',GradientType=0 );
+                                    font-size: 1.3em;
+                                    height: 42px;
+                                    line-height: 42px;
+                                    margin: 9px 0;
+                                    padding: 0 25px;
+                                    text-align: center;
+                                    width: 15%;
+                                    cursor: pointer;
+                                }
+                            }
+                        }
+                        .yt_box{
+                            width: 100%;
+                            height: 80%;
+                            // border: 1px solid red;
+                            display: flex;
+                            border-radius: 30px;
+                            p{
+                                @include flex-center;
+                                width: 50%;
+                            }
+                            iframe{
+                                border-radius: 30px;
+                            }
+                        }
+
+                        .btn_section{
+                            width: 100%;
+                            button:hover{
+                                background: #749ef9;
+                                transition: all .6s;
+                                color: #fff;
+                            }
+                            button{
+                                width: 150px;
+                                height: 50px;
+                                border-radius: 30px;
+                                border: 3px solid #749ef9;
+                                background-color: #fff;
+                                color: #749ef9;
+                                font-size: 1em;
+                                cursor: pointer;
+                            }
+                            // .more_btn{
+                            //     border: 3px solid #724fff;
+                            //     color: #724fff;
+                            // }
+                        }
+                    }
+                }
+            }
+        }
+
+        #MetaverseLearning {
+            background: url(../../img/wave-haikei.svg) no-repeat center center / cover !important;
+            .table{
+                width: 100%;
+                height: 100%;
+                padding-top: 3.5vw;
+                .inner{
+                    display: flex;
+                    justify-content: space-between;
+                    .left{
+                        width: 40%;
+                        h2{
+                            text-align: start;
+                            margin-bottom: 30%;
+                            font-size: 26px;
+                            color: #062a4e;
+                            font-weight: bold;
+                        }
+                        .text_area{
+                            text-align: start;
+                            li:nth-child(1){
+                                width: 100%;
+                                margin-bottom: 3%;
+                                color: #222;
+                                line-height: 1.2;
+                                font-size: 2.5em;
+                                font-weight: bold;
+                                span{display: block;}
+                            }
+                            
+                            li:nth-child(2){
+                                margin-bottom: 2%;
+                                font-size: 1.2em;
+                                line-height: 1.2;
+                                color: #222;
+                                strong{color: #1753d5;}
+                            }
+                            li:nth-child(2)::after{
+                                content: '';
+                                margin: 5% 0;
+                                border-bottom: 1px solid #1753d5;
+                                display: block;
+                            }
+                            li{
+                                width: 70%;
+                                font-size: 1.1em;
+                                margin: 10% 0;
+                                .sub_title{
+                                    display: flex;
+                                }
+                                strong{
+                                    color: #1753d5;
+                                    font-weight: 600;
+                                }
+                                span{
+                                    margin: 5% 0;
+                                    display: block;
+                                }
+                                p{  
+                                    display: inline;
+                                    color: #5e90fa
+                                }
+                                svg{
+                                    width: 15%;
+                                    height: 1.1em;
+                                }
+                            }
+
+
+                        }
+                    }
+                    .right{
+                        width: 40%;
+                        .xr_img{
+                            @include flex-center;
+                            flex-direction: column;
+                            
+                            .xr_img_top{
+                                display: flex;
+                                justify-content: center;
+                                img{
+                                    width: 70%;
+                                    
+                                }
+                            }
+                            .xr_img_bottom{
+                                img{
+                                    width: 100%;
+                                }
+                            }
+                            span{
+                                width: 100%;
+                                margin: 10% 0;
+                                color: #fff;
+                                line-height: 1.2;
+                                font-size: 2em;
+                                font-weight: bold;
+                                @include flex-center;
+                                gap: 2vw;
+                                button:hover{
+                                    background-color: #222;
+                                    color: #fff;
+                                    transition: all .6s;
+                                }
+                                button{
+                                    width: 30%;
+                                    border-radius: 30px;
+                                    border: none;
+                                    background-color: #fff;
+                                    color: #749ef9;
+                                    font-size: 0.7em;
+                                    cursor: pointer;
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+
+        #SmartLearning {
+            background-color: #fff;
+            .table{
+                width: 100%;
+                height: 100%;
+                padding-top: 3.5vw;
+                .inner{
+                    display: flex;
+                    flex-direction: column;
+                    div{
+                        border: 1px solid red;
+                    }
+                    .smart_top{
+                        width: 100%;
+                        height: 30%;
+                        .logo_section{
+                            width: 100%;
+                            height: 100%;
+                            @include flex-center;
+                            flex-wrap : wrap;
+                            li{
+                                display: inline-block;
+                            }
+                        }
+                    }
+                    .smart_bottom{
+                        width: 100%;
+                        height: 50%;
+                        .bottom_section{
+                            display: flex;
+                            justify-content: center;
+                            position: fixed;
+                            left: 0;
+                            width: 100vw;
+                            height: 40%;
+                            background-color: #006cfa;
+                            .bottom_inner{
+                                width: 100%;
+                                max-width: 1200px;
+                                @include flex-center;
+                            }
+                            .learn_index{
+                                display: flex;
+                                flex-direction: column;
+                                text-align: start;
+
+                                width: 50%;
+                                height: 100%;
+                                padding: 5% 0 0 5%;
+                                color: #fff;
+                                h1{
+                                    font-size: 2em;
+                                    line-height: 1.5;
+                                    padding-bottom: 5%;
+                                }
+                                p{
+                                    line-height: 1.2;
+                                }
+                            }
+                            .learn_img{
+                                width: 50%;
+                                height: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        #ABOUT {
+            background-color: #cff;
+        }
+    }
+
+    footer {
+        height: 400px !important;
+        background: #000;
+    }
+}
