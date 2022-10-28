@@ -379,10 +379,192 @@
 
         #MetaverseLearning {
             background: url(../../img/wave-haikei.svg) no-repeat center center / cover !important;
+            .table{
+                width: 100%;
+                height: 100%;
+                padding-top: 3.5vw;
+                .inner{
+                    display: flex;
+                    justify-content: space-between;
+                    .left{
+                        width: 40%;
+                        h2{
+                            text-align: start;
+                            margin-bottom: 30%;
+                            font-size: 26px;
+                            color: #062a4e;
+                            font-weight: bold;
+                        }
+                        .text_area{
+                            text-align: start;
+                            li:nth-child(1){
+                                width: 100%;
+                                margin-bottom: 3%;
+                                color: #222;
+                                line-height: 1.2;
+                                font-size: 2.5em;
+                                font-weight: bold;
+                                span{display: block;}
+                            }
+                            
+                            li:nth-child(2){
+                                margin-bottom: 2%;
+                                font-size: 1.2em;
+                                line-height: 1.2;
+                                color: #222;
+                                strong{color: #1753d5;}
+                            }
+                            li:nth-child(2)::after{
+                                content: '';
+                                margin: 5% 0;
+                                border-bottom: 1px solid #1753d5;
+                                display: block;
+                            }
+                            li{
+                                width: 70%;
+                                font-size: 1.1em;
+                                margin: 10% 0;
+                                .sub_title{
+                                    display: flex;
+                                }
+                                strong{
+                                    color: #1753d5;
+                                    font-weight: 600;
+                                }
+                                span{
+                                    margin: 5% 0;
+                                    display: block;
+                                }
+                                p{  
+                                    display: inline;
+                                    color: #5e90fa
+                                }
+                                svg{
+                                    width: 15%;
+                                    height: 1.1em;
+                                }
+                            }
+
+
+                        }
+                    }
+                    .right{
+                        width: 40%;
+                        .xr_img{
+                            @include flex-center;
+                            flex-direction: column;
+                            
+                            .xr_img_top{
+                                display: flex;
+                                justify-content: center;
+                                img{
+                                    width: 70%;
+                                    
+                                }
+                            }
+                            .xr_img_bottom{
+                                img{
+                                    width: 100%;
+                                }
+                            }
+                            span{
+                                width: 100%;
+                                margin: 10% 0;
+                                color: #fff;
+                                line-height: 1.2;
+                                font-size: 2em;
+                                font-weight: bold;
+                                @include flex-center;
+                                gap: 2vw;
+                                button:hover{
+                                    background-color: #222;
+                                    color: #fff;
+                                    transition: all .6s;
+                                }
+                                button{
+                                    width: 30%;
+                                    border-radius: 30px;
+                                    border: none;
+                                    background-color: #fff;
+                                    color: #749ef9;
+                                    font-size: 0.7em;
+                                    cursor: pointer;
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
         }
 
         #SmartLearning {
-            background-color: #ccc;
+            background-color: #fff;
+            .table{
+                width: 100%;
+                height: 100%;
+                padding-top: 3.5vw;
+                .inner{
+                    display: flex;
+                    flex-direction: column;
+                    div{
+                        border: 1px solid red;
+                    }
+                    .smart_top{
+                        width: 100%;
+                        height: 30%;
+                        .logo_section{
+                            width: 100%;
+                            height: 100%;
+                            @include flex-center;
+                            flex-wrap : wrap;
+                            li{
+                                display: inline-block;
+                            }
+                        }
+                    }
+                    .smart_bottom{
+                        width: 100%;
+                        height: 50%;
+                        .bottom_section{
+                            display: flex;
+                            justify-content: center;
+                            position: fixed;
+                            left: 0;
+                            width: 100vw;
+                            height: 40%;
+                            background-color: #006cfa;
+                            .bottom_inner{
+                                width: 100%;
+                                max-width: 1200px;
+                                @include flex-center;
+                            }
+                            .learn_index{
+                                display: flex;
+                                flex-direction: column;
+                                text-align: start;
+
+                                width: 50%;
+                                height: 100%;
+                                padding: 5% 0 0 5%;
+                                color: #fff;
+                                h1{
+                                    font-size: 2em;
+                                    line-height: 1.5;
+                                    padding-bottom: 5%;
+                                }
+                                p{
+                                    line-height: 1.2;
+                                }
+                            }
+                            .learn_img{
+                                width: 50%;
+                                height: 100%;
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         #ABOUT {

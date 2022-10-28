@@ -514,8 +514,246 @@ body {
 #wrap .container #MetaverseLearning {
   background: url(../../img/wave-haikei.svg) no-repeat center center/cover !important;
 }
+#wrap .container #MetaverseLearning .table {
+  width: 100%;
+  height: 100%;
+  padding-top: 3.5vw;
+}
+#wrap .container #MetaverseLearning .table .inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+#wrap .container #MetaverseLearning .table .inner .left {
+  width: 40%;
+}
+#wrap .container #MetaverseLearning .table .inner .left h2 {
+  text-align: start;
+  margin-bottom: 30%;
+  font-size: 26px;
+  color: #062a4e;
+  font-weight: bold;
+}
+#wrap .container #MetaverseLearning .table .inner .left .text_area {
+  text-align: start;
+}
+#wrap .container #MetaverseLearning .table .inner .left .text_area li:nth-child(1) {
+  width: 100%;
+  margin-bottom: 3%;
+  color: #222;
+  line-height: 1.2;
+  font-size: 2.5em;
+  font-weight: bold;
+}
+#wrap .container #MetaverseLearning .table .inner .left .text_area li:nth-child(1) span {
+  display: block;
+}
+#wrap .container #MetaverseLearning .table .inner .left .text_area li:nth-child(2) {
+  margin-bottom: 2%;
+  font-size: 1.2em;
+  line-height: 1.2;
+  color: #222;
+}
+#wrap .container #MetaverseLearning .table .inner .left .text_area li:nth-child(2) strong {
+  color: #1753d5;
+}
+#wrap .container #MetaverseLearning .table .inner .left .text_area li:nth-child(2)::after {
+  content: "";
+  margin: 5% 0;
+  border-bottom: 1px solid #1753d5;
+  display: block;
+}
+#wrap .container #MetaverseLearning .table .inner .left .text_area li {
+  width: 70%;
+  font-size: 1.1em;
+  margin: 10% 0;
+}
+#wrap .container #MetaverseLearning .table .inner .left .text_area li .sub_title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+#wrap .container #MetaverseLearning .table .inner .left .text_area li strong {
+  color: #1753d5;
+  font-weight: 600;
+}
+#wrap .container #MetaverseLearning .table .inner .left .text_area li span {
+  margin: 5% 0;
+  display: block;
+}
+#wrap .container #MetaverseLearning .table .inner .left .text_area li p {
+  display: inline;
+  color: #5e90fa;
+}
+#wrap .container #MetaverseLearning .table .inner .left .text_area li svg {
+  width: 15%;
+  height: 1.1em;
+}
+#wrap .container #MetaverseLearning .table .inner .right {
+  width: 40%;
+}
+#wrap .container #MetaverseLearning .table .inner .right .xr_img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+#wrap .container #MetaverseLearning .table .inner .right .xr_img .xr_img_top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+#wrap .container #MetaverseLearning .table .inner .right .xr_img .xr_img_top img {
+  width: 70%;
+}
+#wrap .container #MetaverseLearning .table .inner .right .xr_img .xr_img_bottom img {
+  width: 100%;
+}
+#wrap .container #MetaverseLearning .table .inner .right .xr_img span {
+  width: 100%;
+  margin: 10% 0;
+  color: #fff;
+  line-height: 1.2;
+  font-size: 2em;
+  font-weight: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 2vw;
+}
+#wrap .container #MetaverseLearning .table .inner .right .xr_img span button:hover {
+  background-color: #222;
+  color: #fff;
+  -webkit-transition: all 0.6s;
+  transition: all 0.6s;
+}
+#wrap .container #MetaverseLearning .table .inner .right .xr_img span button {
+  width: 30%;
+  border-radius: 30px;
+  border: none;
+  background-color: #fff;
+  color: #749ef9;
+  font-size: 0.7em;
+  cursor: pointer;
+}
 #wrap .container #SmartLearning {
-  background-color: #ccc;
+  background-color: #fff;
+}
+#wrap .container #SmartLearning .table {
+  width: 100%;
+  height: 100%;
+  padding-top: 3.5vw;
+}
+#wrap .container #SmartLearning .table .inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+#wrap .container #SmartLearning .table .inner div {
+  border: 1px solid red;
+}
+#wrap .container #SmartLearning .table .inner .smart_top {
+  width: 100%;
+  height: 30%;
+}
+#wrap .container #SmartLearning .table .inner .smart_top .logo_section {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+#wrap .container #SmartLearning .table .inner .smart_top .logo_section li {
+  display: inline-block;
+}
+#wrap .container #SmartLearning .table .inner .smart_bottom {
+  width: 100%;
+  height: 50%;
+}
+#wrap .container #SmartLearning .table .inner .smart_bottom .bottom_section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: fixed;
+  left: 0;
+  width: 100vw;
+  height: 40%;
+  background-color: #006cfa;
+}
+#wrap .container #SmartLearning .table .inner .smart_bottom .bottom_section .bottom_inner {
+  width: 100%;
+  max-width: 1200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#wrap .container #SmartLearning .table .inner .smart_bottom .bottom_section .learn_index {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: start;
+  width: 50%;
+  height: 100%;
+  padding: 5% 0 0 5%;
+  color: #fff;
+}
+#wrap .container #SmartLearning .table .inner .smart_bottom .bottom_section .learn_index h1 {
+  font-size: 2em;
+  line-height: 1.5;
+  padding-bottom: 5%;
+}
+#wrap .container #SmartLearning .table .inner .smart_bottom .bottom_section .learn_index p {
+  line-height: 1.2;
+}
+#wrap .container #SmartLearning .table .inner .smart_bottom .bottom_section .learn_img {
+  width: 50%;
+  height: 100%;
 }
 #wrap .container #ABOUT {
   background-color: #cff;
